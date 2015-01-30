@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Coulr</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../build-Coulr-Desktop_Qt_5_4_0_GCC_64bit-Debug/logo64.png</normaloff>../build-Coulr-Desktop_Qt_5_4_0_GCC_64bit-Debug/logo64.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
@@ -109,7 +113,7 @@
         <height>0</height>
        </size>
       </property>
-      <widget class="QWidget" name="tabWidgetPage1" native="true">
+      <widget class="QWidget" name="tabWidgetPage1">
        <attribute name="title">
         <string>Render</string>
        </attribute>
