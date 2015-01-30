@@ -13,7 +13,11 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    QString generateColor(int r, int g, int b);
     ~MainWindow();
+
+public slots:
+    void changeColor();
 
 private:
     Ui::MainWindow *ui;
