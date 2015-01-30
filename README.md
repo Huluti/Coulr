@@ -1,27 +1,33 @@
 # Coulr
 
-Coulr is a color box to help developpers and designers. Currently it allows to :
+Coulr is a color box to help developers and designers. Currently, it allows to :
 
-  - select a color rgb and get the hexadecimal
+  - select a rgb color and get its hexadecimal code
 
-### Version
-0.1
-
-## Screenshoot
+### Screenshot
 
 ![alt tag](http://pix.toile-libre.org/upload/original/1422642289.png)
+
+### Version
+
+Coulr is currently in version 0.1
 
 ### Installation
 
 Grab [the latest deb here](https://github.com/Huluti/Coulr/releases).
-It works on Ubuntu and its derivatives
+It works on Ubuntu and its flavours.
 
 ### Tech
 
-Colour uses open source projects to work properly:
+Coulr uses open-source projects to work properly:
 
 * [Qt Project] - Cross-platform application and UI framework
 
 ### License
 
-MIT
+This project is under MIT licence ... so do what you want with it :)
+
+### Help me
+
+That would make me very happy you make me feedback on using the software.
+Thanks for your interest and see you soon !
