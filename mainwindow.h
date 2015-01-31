@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDesktopWidget>
 #include <QMessageBox>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -15,11 +16,12 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    QString generateColor(int r, int g, int b);
+    void applyColor(int param1, int param2, int param3, int t);
     ~MainWindow();
 
 public slots:
-    void changeColor();
+    void changeColorByRGB();
+    void changeColorByHSL();
     void about();
 
 private:

@@ -3,14 +3,15 @@
 Coulr is a color box to help developers and designers. Currently, it allows to :
 
   - select a rgb color and get its hexadecimal code
+  - select a hsl color and get its hexadecimal code
 
 ### Screenshot
 
-![alt tag](http://pix.toile-libre.org/upload/original/1422712215.png)
+![alt tag](http://pix.toile-libre.org/upload/original/1422727940.png)
 
 ### Version
 
-Coulr is currently in version 0.1.1
+Coulr is currently in version 0.2
 
 ### Installation
 

@@ -14,29 +14,70 @@ MainWindow::MainWindow(QWidget *parent) :
     move(x, y);
 
     // Setup color at lauch (#000)
-    changeColor();
+    changeColorByRGB();
 
     // Signals
-    connect(ui->red, SIGNAL(valueChanged(int)), this, SLOT(changeColor()));
-    connect(ui->green, SIGNAL(valueChanged(int)), this, SLOT(changeColor()));
-    connect(ui->blue, SIGNAL(valueChanged(int)), this, SLOT(changeColor()));
+
+    connect(ui->red, SIGNAL(valueChanged(int)), this, SLOT(changeColorByRGB()));
+    connect(ui->green, SIGNAL(valueChanged(int)), this, SLOT(changeColorByRGB()));
+    connect(ui->blue, SIGNAL(valueChanged(int)), this, SLOT(changeColorByRGB()));
+
+    connect(ui->hue, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSL()));
+    connect(ui->saturation, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSL()));
+    connect(ui->lightness, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSL()));
+
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 }
 
-//  Get HTML color
-QString MainWindow::generateColor(int r, int g, int b)
+void MainWindow::changeColorByRGB()
 {
-    QColor color = QColor(r, g, b);
-
-    return color.name();
+    if(ui->tabWidget->currentIndex() == 0)
+    {
+        applyColor(ui->red->value(), ui->green->value(), ui->blue->value(), 0);
+    }
 }
 
-// Change widget background
-void MainWindow::changeColor()
+void MainWindow::changeColorByHSL()
 {
-    QString color = generateColor(ui->red->value(), ui->green->value(), ui->blue->value());
-    ui->color_widget->setStyleSheet("background: " + color + ";");
-    ui->html_color->setText(color);
+    if(ui->tabWidget->currentIndex() == 1)
+    {
+        applyColor(ui->hue->value(), ui->saturation->value(), ui->lightness->value(), 1);
+    }
+}
+
+//  Get HTML color and change widget background
+void MainWindow::applyColor(int param1, int param2, int param3, int t)
+{
+    /* t:
+    * 0: RGB
+    * 1: HSL
+    */
+
+    QColor color;
+    QColor rgb;
+    QColor hsl;
+
+    switch (t) {
+        case 0:
+            color = QColor(param1, param2, param3);
+            hsl = color.convertTo(QColor::Hsl);
+            ui->hue->setValue(hsl.hslHue());
+            ui->saturation->setValue(hsl.saturation());
+            ui->lightness->setValue(hsl.lightness());
+            break;
+        case 1:
+            color = QColor::fromHsl(param1, param2, param3);
+            rgb = color.convertTo(QColor::Rgb);
+            ui->red->setValue(rgb.red());
+            ui->green->setValue(rgb.green());
+            ui->blue->setValue(rgb.blue());
+            break;
+    }
+
+    QString html_color = color.name();
+
+    ui->color_widget->setStyleSheet("background: " + html_color + ";");
+    ui->html_color->setText(html_color);
 }
 
 // About Coulr
