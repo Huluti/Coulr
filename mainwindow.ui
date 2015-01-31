@@ -13,8 +13,42 @@
   <property name="windowTitle">
    <string>Coulr</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icons/coulr48.png</normaloff>icons/coulr48.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="minimumSize">
+       <size>
+        <width>172</width>
+        <height>0</height>
+       </size>
+      </property>
+      <widget class="QWidget" name="tabWidgetPage1">
+       <attribute name="title">
+        <string>Render</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <item>
+         <widget class="QWidget" name="color_widget" native="true"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="html_color">
+          <property name="placeholderText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
@@ -101,36 +135,6 @@
       </widget>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="minimumSize">
-       <size>
-        <width>172</width>
-        <height>0</height>
-       </size>
-      </property>
-      <widget class="QWidget" name="tabWidgetPage1">
-       <attribute name="title">
-        <string>Render</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="sizeConstraint">
-         <enum>QLayout::SetDefaultConstraint</enum>
-        </property>
-        <item>
-         <widget class="QWidget" name="color_widget" native="true"/>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="html_color">
-          <property name="placeholderText">
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -143,9 +147,44 @@
     </rect>
    </property>
   </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::AllToolBarAreas</set>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>true</bool>
+   </attribute>
+   <addaction name="actionAbout"/>
+  </widget>
   <action name="actionQuitter">
    <property name="text">
     <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionPick_color">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/picker.png</normaloff>icons/picker.png</iconset>
+   </property>
+   <property name="text">
+    <string>Pick color</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset theme="help-about"/>
+   </property>
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>
@@ -169,7 +208,7 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>76</x>
+     <x>127</x>
      <y>133</y>
     </hint>
     <hint type="destinationlabel">
@@ -189,7 +228,7 @@
      <y>134</y>
     </hint>
     <hint type="destinationlabel">
-     <x>65</x>
+     <x>116</x>
      <y>133</y>
     </hint>
    </hints>
@@ -201,7 +240,7 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>68</x>
+     <x>119</x>
      <y>200</y>
     </hint>
     <hint type="destinationlabel">
@@ -221,7 +260,7 @@
      <y>201</y>
     </hint>
     <hint type="destinationlabel">
-     <x>69</x>
+     <x>120</x>
      <y>200</y>
     </hint>
    </hints>
@@ -233,7 +272,7 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>58</x>
+     <x>109</x>
      <y>267</y>
     </hint>
     <hint type="destinationlabel">

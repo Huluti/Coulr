@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDesktopWidget>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +20,7 @@ public:
 
 public slots:
     void changeColor();
+    void about();
 
 private:
     Ui::MainWindow *ui;
