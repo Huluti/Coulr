@@ -6,7 +6,7 @@ Coulr is a color box to help developers and designers. Currently, it allows to :
 
 ### Screenshot
 
-![alt tag](http://pix.toile-libre.org/upload/original/1422647331.png)
+![alt tag](http://pix.toile-libre.org/upload/original/1422712215.png)
 
 ### Version
 
