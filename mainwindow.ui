@@ -14,8 +14,7 @@
    <string>Coulr</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icons/coulr48.png</normaloff>icons/coulr48.png</iconset>
+   <iconset theme="coulr"/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
