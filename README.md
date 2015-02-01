@@ -12,7 +12,7 @@ Coulr is a color box to help developers and designers. Currently, it allows to :
 
 ### Version
 
-Coulr is currently in version 0.3
+Coulr is currently in version 0.3.1
 
 ### Installation
 
