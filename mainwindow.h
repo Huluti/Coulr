@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QDesktopWidget>
 #include <QMessageBox>
-#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +21,7 @@ public:
 public slots:
     void changeColorByRGB();
     void changeColorByHSL();
+    void changeColorByHSV();
     void about();
 
 private:

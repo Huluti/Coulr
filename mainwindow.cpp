@@ -26,6 +26,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->saturation, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSL()));
     connect(ui->lightness, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSL()));
 
+    connect(ui->hue2, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSV()));
+    connect(ui->saturation2, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSV()));
+    connect(ui->value, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSV()));
+
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 }
 
@@ -45,17 +49,27 @@ void MainWindow::changeColorByHSL()
     }
 }
 
+void MainWindow::changeColorByHSV()
+{
+    if(ui->tabWidget->currentIndex() == 2)
+    {
+        applyColor(ui->hue2->value(), ui->saturation2->value(), ui->value->value(), 2);
+    }
+}
+
 //  Get HTML color and change widget background
 void MainWindow::applyColor(int param1, int param2, int param3, int t)
 {
     /* t:
     * 0: RGB
     * 1: HSL
+    * 2: HSV
     */
 
     QColor color;
     QColor rgb;
     QColor hsl;
+    QColor hsv;
 
     switch (t) {
         case 0:
@@ -64,6 +78,10 @@ void MainWindow::applyColor(int param1, int param2, int param3, int t)
             ui->hue->setValue(hsl.hslHue());
             ui->saturation->setValue(hsl.saturation());
             ui->lightness->setValue(hsl.lightness());
+            hsv = color.convertTo(QColor::Hsv);
+            ui->hue2->setValue(hsv.hue());
+            ui->saturation2->setValue(hsv.saturation());
+            ui->value->setValue(hsv.value());
             break;
         case 1:
             color = QColor::fromHsl(param1, param2, param3);
@@ -71,7 +89,21 @@ void MainWindow::applyColor(int param1, int param2, int param3, int t)
             ui->red->setValue(rgb.red());
             ui->green->setValue(rgb.green());
             ui->blue->setValue(rgb.blue());
+            hsv = color.convertTo(QColor::Hsv);
+            ui->hue2->setValue(hsv.hue());
+            ui->saturation2->setValue(hsv.saturation());
+            ui->value->setValue(hsv.value());
             break;
+        case 2:
+            color = QColor::fromHsv(param1, param2, param3);
+            rgb = color.convertTo(QColor::Rgb);
+            ui->red->setValue(rgb.red());
+            ui->green->setValue(rgb.green());
+            ui->blue->setValue(rgb.blue());
+            hsl = color.convertTo(QColor::Hsl);
+            ui->hue->setValue(hsl.hue());
+            ui->saturation->setValue(hsl.saturation());
+            ui->lightness->setValue(hsl.lightness());
     }
 
     QString html_color = color.name();
