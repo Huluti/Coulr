@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void applyColor(int param1, int param2, int param3, int t);
+    void palette();
     ~MainWindow();
 
 public slots:

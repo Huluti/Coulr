@@ -110,6 +110,30 @@ void MainWindow::applyColor(int param1, int param2, int param3, int t)
 
     ui->color_widget->setStyleSheet("background: " + html_color + ";");
     ui->html_color->setText(html_color);
+
+    palette();
+}
+
+// Choose palette
+void MainWindow::palette()
+{
+    QString color = ui->html_color->text();
+
+    // Original color
+    ui->color1->setStyleSheet("background: " + color + ";");
+    ui->color1_html->setText(color);
+
+    QString color2 = QColor(color).lighter(150).name();
+    ui->color2->setStyleSheet("background: " + color2 + ";");
+    ui->color2_html->setText(color2);
+
+    QString color3 = QColor(color).darker(150).name();
+    ui->color3->setStyleSheet("background: " + color3 + ";");
+    ui->color3_html->setText(color3);
+
+    QString color4 = QColor(color).darker(290).name();
+    ui->color4->setStyleSheet("background: " + color4 + ";");
+    ui->color4_html->setText(color4);
 }
 
 // About Coulr

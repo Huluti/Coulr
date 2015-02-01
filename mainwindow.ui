@@ -14,7 +14,9 @@
    <string>Coulr</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="coulr"/>
+   <iconset theme="coulr">
+    <normaloff/>
+   </iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -43,6 +45,37 @@
            <string/>
           </property>
          </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Palette</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="2" column="0">
+         <widget class="QWidget" name="color3" native="true"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QWidget" name="color4" native="true"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QWidget" name="color1" native="true"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QWidget" name="color2" native="true"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="color2_html"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="color1_html"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLineEdit" name="color3_html"/>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="color4_html"/>
         </item>
        </layout>
       </widget>
