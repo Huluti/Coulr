@@ -7,10 +7,11 @@ Coulr is a color box to help developers and designers. Currently, it allows to :
   - select a hsv color and get its hexadecimal code
   - view palette of selected color
 
-### Screenshot
+### Screenshots
 
-![alt tag](http://pix.toile-libre.org/upload/original/1422810079.png)
-![alt tag](http://pix.toile-libre.org/upload/original/1422810101.png)
+![alt tag](http://pix.toile-libre.org/upload/original/1422816208.png)
+
+![alt tag](http://pix.toile-libre.org/upload/original/1422816244.png)
 
 ### Version
 
