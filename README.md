@@ -19,13 +19,13 @@ Coulr is currently in version 0.4.1
 
 ### Installation
 
-Ubuntu :
+#### Ubuntu :
 
-sudo add-apt-repository ppa:huluti/coulr
-sudo apt-get update
-sudo apt-get install coulr
+  - sudo add-apt-repository ppa:huluti/coulr
+  - sudo apt-get update
+  - sudo apt-get install coulr
 
-Others :
+#### Others :
 
 Grab [the latest deb here](https://github.com/Huluti/Coulr/releases).
 It works on Ubuntu and its flavours.
