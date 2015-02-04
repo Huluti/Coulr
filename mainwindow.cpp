@@ -30,14 +30,26 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->saturation2, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSV()));
     connect(ui->value, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSV()));
 
+    connect(ui->html_color, SIGNAL(returnPressed()), this, SLOT(changeColorByHexa()));
+
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
+}
+
+void MainWindow::changeColorByHexa()
+{
+    if(QColor::isValidColor(ui->html_color->text()))
+    {
+        QColor color = QColor();
+        color.setNamedColor(ui->html_color->text());
+        applyColor(color.red(), color.blue(), color.green(), 0);
+    }
 }
 
 void MainWindow::changeColorByRGB()
 {
     if(ui->tabWidget->currentIndex() == 0)
     {
-        applyColor(ui->red->value(), ui->green->value(), ui->blue->value(), 0);
+        applyColor(ui->red->value(), ui->green->value(), ui->blue->value(), 1);
     }
 }
 
@@ -45,7 +57,7 @@ void MainWindow::changeColorByHSL()
 {
     if(ui->tabWidget->currentIndex() == 1)
     {
-        applyColor(ui->hue->value(), ui->saturation->value(), ui->lightness->value(), 1);
+        applyColor(ui->hue->value(), ui->saturation->value(), ui->lightness->value(), 2);
     }
 }
 
@@ -53,7 +65,7 @@ void MainWindow::changeColorByHSV()
 {
     if(ui->tabWidget->currentIndex() == 2)
     {
-        applyColor(ui->hue2->value(), ui->saturation2->value(), ui->value->value(), 2);
+        applyColor(ui->hue2->value(), ui->saturation2->value(), ui->value->value(), 3);
     }
 }
 
@@ -61,9 +73,10 @@ void MainWindow::changeColorByHSV()
 void MainWindow::applyColor(int param1, int param2, int param3, int t)
 {
     /* t:
-    * 0: RGB
-    * 1: HSL
-    * 2: HSV
+    * 0: Hexa
+    * 1: RGB
+    * 2: HSL
+    * 3: HSV
     */
 
     QColor color;
@@ -71,13 +84,17 @@ void MainWindow::applyColor(int param1, int param2, int param3, int t)
     switch (t) {
         case 0:
             color = QColor(param1, param2, param3);
-            fillValues(false, true, true, color);
+            fillValues(true, true, true, color);
             break;
         case 1:
+            color = QColor(param1, param2, param3);
+            fillValues(false, true, true, color);
+            break;
+        case 2:
             color = QColor::fromHsl(param1, param2, param3);
             fillValues(true, false, true, color);
             break;
-        case 2:
+        case 3:
             color = QColor::fromHsv(param1, param2, param3);
             fillValues(true, true, false, color);
     }
@@ -85,7 +102,7 @@ void MainWindow::applyColor(int param1, int param2, int param3, int t)
     html_color = color.name();
 
     ui->color_widget->setStyleSheet("background: " + html_color + ";");
-    ui->html_color->setText(html_color);
+    ui->html_color->setText(html_color.toUpper());
 
     palette();
 }
@@ -125,19 +142,19 @@ void MainWindow::palette()
 
     // Original color
     ui->color1->setStyleSheet("background: " + html_color + ";");
-    ui->color1_html->setText(html_color);
+    ui->color1_html->setText(html_color.toUpper());
 
     QString color2 = color.lighter(150).name();
     ui->color2->setStyleSheet("background: " + color2 + ";");
-    ui->color2_html->setText(color2);
+    ui->color2_html->setText(color2.toUpper());
 
     QString color3 = color.darker(150).name();
     ui->color3->setStyleSheet("background: " + color3 + ";");
-    ui->color3_html->setText(color3);
+    ui->color3_html->setText(color3.toUpper());
 
-    QString color4 = color.darker(290).name();
+    QString color4 = color.darker(300).name();
     ui->color4->setStyleSheet("background: " + color4 + ";");
-    ui->color4_html->setText(color4);
+    ui->color4_html->setText(color4.toUpper());
 }
 
 // About Coulr

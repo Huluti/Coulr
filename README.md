@@ -2,33 +2,27 @@
 
 Coulr is a color box to help developers and designers. Currently, it allows to :
 
-  - select a rgb color and get its hexadecimal code
-  - select a hsl color and get its hexadecimal code
-  - select a hsv color and get its hexadecimal code
+  - select a RGB, HSL, or HSV color and get its hexadecimal code
+  - get RGB, HSL and HSV values from hexadecimal code
   - view palette of selected color
 
 ### Screenshots
 
-![alt tag](http://pix.toile-libre.org/upload/original/1422816208.png)
+![alt tag](http://pix.toile-libre.org/upload/original/1423058615.png)
 
-![alt tag](http://pix.toile-libre.org/upload/original/1422816244.png)
+![alt tag](http://pix.toile-libre.org/upload/original/1423058647.png)
 
 ### Version
 
-Coulr is currently in version 0.4.1
+Coulr is currently in version 0.4.2
 
 ### Installation
 
-#### Ubuntu :
+#### Ubuntu and its flavours (with PPA):
 
   - sudo add-apt-repository ppa:huluti/coulr
   - sudo apt-get update
   - sudo apt-get install coulr
-
-#### Others :
-
-Grab [the latest deb here](https://github.com/Huluti/Coulr/releases).
-It works on Ubuntu and its flavours.
 
 ### Tech
 

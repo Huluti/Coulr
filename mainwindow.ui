@@ -28,6 +28,9 @@
         <height>0</height>
        </size>
       </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <widget class="QWidget" name="tabWidgetPage1">
        <attribute name="title">
         <string>Render</string>
@@ -48,7 +51,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="tabWidgetPage2">
        <attribute name="title">
         <string>Palette</string>
        </attribute>
@@ -345,7 +348,7 @@
     <set>Qt::AllToolBarAreas</set>
    </property>
    <attribute name="toolBarArea">
-    <enum>LeftToolBarArea</enum>
+    <enum>RightToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
