@@ -24,6 +24,16 @@ Coulr is currently in version 0.4.2
   - sudo apt-get update
   - sudo apt-get install coulr
 
+### Compilation
+
+cmake >= 2.8.9
+
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - ./coulr
+
 ### Tech
 
 Coulr uses open-source projects to work properly:
