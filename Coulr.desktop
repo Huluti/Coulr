@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Coulr
+Exec=coulr
+Comment=Give a little color to all this
+Icon=coulr
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Categories=Utility;Graphics;
+Name[fr_FR]=Coulr
