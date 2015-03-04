@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QDesktopWidget>
 #include <QMessageBox>
-#include <QDebug>
+#include <QSignalMapper>
 
 namespace Ui {
 class MainWindow;
@@ -22,15 +22,13 @@ public:
     ~MainWindow();
 
 public slots:
-    void changeColorByHexa();
-    void changeColorByRGB();
-    void changeColorByHSL();
-    void changeColorByHSV();
+    void changeColor(QString method);
     void about();
 
 private:
     Ui::MainWindow *ui;
     QString html_color;
+    QSignalMapper *signalMapper;
 };
 
 #endif // MAINWINDOW_H

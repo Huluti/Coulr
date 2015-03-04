@@ -14,58 +14,74 @@ MainWindow::MainWindow(QWidget *parent) :
     move(x, y);
 
     // Setup color at lauch (#000)
-    changeColorByRGB();
+    changeColor("RGB");
 
     // Signals
+    signalMapper = new QSignalMapper (this) ;
 
-    connect(ui->red, SIGNAL(valueChanged(int)), this, SLOT(changeColorByRGB()));
-    connect(ui->green, SIGNAL(valueChanged(int)), this, SLOT(changeColorByRGB()));
-    connect(ui->blue, SIGNAL(valueChanged(int)), this, SLOT(changeColorByRGB()));
+    // HEXA
+    connect(ui->html_color, SIGNAL(returnPressed()), signalMapper, SLOT(map()));
+    signalMapper->setMapping (ui->html_color, "HEXA");
+    // RGB
+    connect(ui->red, SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
+    connect(ui->green, SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
+    connect(ui->blue, SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
+    signalMapper->setMapping (ui->red, "RGB");
+    signalMapper->setMapping (ui->green, "RGB");
+    signalMapper->setMapping (ui->blue, "RGB");
+    // HSL
+    connect(ui->hue, SIGNAL(valueChanged(int)), signalMapper, SLOT(map())) ;
+    connect(ui->saturation, SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
+    connect(ui->lightness, SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
+    signalMapper->setMapping (ui->hue, "HSL");
+    signalMapper->setMapping (ui->saturation, "HSL");
+    signalMapper->setMapping (ui->lightness, "HSL");
+    // HSV
+    connect(ui->hue2, SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
+    connect(ui->saturation2, SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
+    connect(ui->value, SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
+    signalMapper->setMapping (ui->hue2, "HSV");
+    signalMapper->setMapping (ui->saturation2, "HSV");
+    signalMapper->setMapping (ui->value, "HSV");
 
-    connect(ui->hue, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSL()));
-    connect(ui->saturation, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSL()));
-    connect(ui->lightness, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSL()));
-
-    connect(ui->hue2, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSV()));
-    connect(ui->saturation2, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSV()));
-    connect(ui->value, SIGNAL(valueChanged(int)), this, SLOT(changeColorByHSV()));
-
-    connect(ui->html_color, SIGNAL(returnPressed()), this, SLOT(changeColorByHexa()));
+    connect(signalMapper, SIGNAL(mapped(QString)), this, SLOT(changeColor(QString)));
 
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 }
 
-void MainWindow::changeColorByHexa()
+void MainWindow::changeColor(QString method)
 {
-    if(QColor::isValidColor(ui->html_color->text()))
+    if(method == "HEXA")
     {
-        QColor color = QColor();
-        color.setNamedColor(ui->html_color->text());
-        applyColor(color.red(), color.blue(), color.green(), 0);
-    }
-}
+        QString color_code = ui->html_color->text();
 
-void MainWindow::changeColorByRGB()
-{
-    if(ui->tabWidget->currentIndex() == 0)
-    {
-        applyColor(ui->red->value(), ui->green->value(), ui->blue->value(), 1);
+        if(QColor::isValidColor(color_code) && color_code != html_color)
+        {
+            QColor color = QColor();
+            color.setNamedColor(color_code);
+            applyColor(color.red(), color.green(), color.blue(), 0);
+        }
     }
-}
-
-void MainWindow::changeColorByHSL()
-{
-    if(ui->tabWidget->currentIndex() == 1)
+    else if(method == "RGB")
     {
-        applyColor(ui->hue->value(), ui->saturation->value(), ui->lightness->value(), 2);
+        if(ui->tabWidget->currentIndex() == 0)
+        {
+            applyColor(ui->red->value(), ui->green->value(), ui->blue->value(), 1);
+        }
     }
-}
-
-void MainWindow::changeColorByHSV()
-{
-    if(ui->tabWidget->currentIndex() == 2)
+    else if(method == "HSL")
     {
-        applyColor(ui->hue2->value(), ui->saturation2->value(), ui->value->value(), 3);
+        if(ui->tabWidget->currentIndex() == 1)
+        {
+            applyColor(ui->hue->value(), ui->saturation->value(), ui->lightness->value(), 2);
+        }
+    }
+    else if(method == "HSV")
+    {
+        if(ui->tabWidget->currentIndex() == 2)
+        {
+            applyColor(ui->hue2->value(), ui->saturation2->value(), ui->value->value(), 3);
+        }
     }
 }
 
@@ -73,7 +89,7 @@ void MainWindow::changeColorByHSV()
 void MainWindow::applyColor(int param1, int param2, int param3, int t)
 {
     /* t:
-    * 0: Hexa
+    * 0: HEXA
     * 1: RGB
     * 2: HSL
     * 3: HSV
@@ -100,9 +116,8 @@ void MainWindow::applyColor(int param1, int param2, int param3, int t)
     }
 
     html_color = color.name();
-
     ui->color_widget->setStyleSheet("background: " + html_color + ";");
-    ui->html_color->setText(html_color.toUpper());
+    ui->html_color->setText(html_color);
 
     palette();
 }
@@ -142,25 +157,25 @@ void MainWindow::palette()
 
     // Original color
     ui->color1->setStyleSheet("background: " + html_color + ";");
-    ui->color1_html->setText(html_color.toUpper());
+    ui->color1_html->setText(html_color);
 
     QString color2 = color.lighter(150).name();
     ui->color2->setStyleSheet("background: " + color2 + ";");
-    ui->color2_html->setText(color2.toUpper());
+    ui->color2_html->setText(color2);
 
     QString color3 = color.darker(150).name();
     ui->color3->setStyleSheet("background: " + color3 + ";");
-    ui->color3_html->setText(color3.toUpper());
+    ui->color3_html->setText(color3);
 
     QString color4 = color.darker(300).name();
     ui->color4->setStyleSheet("background: " + color4 + ";");
-    ui->color4_html->setText(color4.toUpper());
+    ui->color4_html->setText(color4);
 }
 
 // About Coulr
 void MainWindow::about()
 {
-    QMessageBox::information(this, tr("About"), tr("Coulr is a free color box software designed by <a href=\"https://github.com/Huluti\">Hugo Posnic</a> using Qt 5. Software under <a href=\"https://github.com/Huluti/Coulr/blob/master/LICENSE\">MIT Licence</a>."));
+    QMessageBox::information(this, tr("About"), tr("Coulr is a free color box software designed by <a href=\"https://github.com/Huluti\">Hugo Posnic</a> using Qt 5. Software under <a href=\"https://github.com/Huluti/Coulr/blob/master/LICENSE\">MIT Licence</a>.<br> Version : 0.5"));
 }
 
 MainWindow::~MainWindow()

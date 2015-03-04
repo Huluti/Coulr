@@ -41,7 +41,7 @@ public:
     QVBoxLayout *verticalLayout;
     QWidget *color_widget;
     QLineEdit *html_color;
-    QWidget *tab_4;
+    QWidget *tabWidgetPage2;
     QGridLayout *gridLayout_5;
     QWidget *color3;
     QWidget *color4;
@@ -146,53 +146,53 @@ public:
         verticalLayout->addWidget(html_color);
 
         tabWidget1->addTab(tabWidgetPage1, QString());
-        tab_4 = new QWidget();
-        tab_4->setObjectName(QStringLiteral("tab_4"));
-        gridLayout_5 = new QGridLayout(tab_4);
+        tabWidgetPage2 = new QWidget();
+        tabWidgetPage2->setObjectName(QStringLiteral("tabWidgetPage2"));
+        gridLayout_5 = new QGridLayout(tabWidgetPage2);
         gridLayout_5->setSpacing(6);
         gridLayout_5->setContentsMargins(11, 11, 11, 11);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        color3 = new QWidget(tab_4);
+        color3 = new QWidget(tabWidgetPage2);
         color3->setObjectName(QStringLiteral("color3"));
 
         gridLayout_5->addWidget(color3, 2, 0, 1, 1);
 
-        color4 = new QWidget(tab_4);
+        color4 = new QWidget(tabWidgetPage2);
         color4->setObjectName(QStringLiteral("color4"));
 
         gridLayout_5->addWidget(color4, 2, 1, 1, 1);
 
-        color1 = new QWidget(tab_4);
+        color1 = new QWidget(tabWidgetPage2);
         color1->setObjectName(QStringLiteral("color1"));
 
         gridLayout_5->addWidget(color1, 0, 0, 1, 1);
 
-        color2 = new QWidget(tab_4);
+        color2 = new QWidget(tabWidgetPage2);
         color2->setObjectName(QStringLiteral("color2"));
 
         gridLayout_5->addWidget(color2, 0, 1, 1, 1);
 
-        color2_html = new QLineEdit(tab_4);
+        color2_html = new QLineEdit(tabWidgetPage2);
         color2_html->setObjectName(QStringLiteral("color2_html"));
 
         gridLayout_5->addWidget(color2_html, 1, 1, 1, 1);
 
-        color1_html = new QLineEdit(tab_4);
+        color1_html = new QLineEdit(tabWidgetPage2);
         color1_html->setObjectName(QStringLiteral("color1_html"));
 
         gridLayout_5->addWidget(color1_html, 1, 0, 1, 1);
 
-        color3_html = new QLineEdit(tab_4);
+        color3_html = new QLineEdit(tabWidgetPage2);
         color3_html->setObjectName(QStringLiteral("color3_html"));
 
         gridLayout_5->addWidget(color3_html, 3, 0, 1, 1);
 
-        color4_html = new QLineEdit(tab_4);
+        color4_html = new QLineEdit(tabWidgetPage2);
         color4_html->setObjectName(QStringLiteral("color4_html"));
 
         gridLayout_5->addWidget(color4_html, 3, 1, 1, 1);
 
-        tabWidget1->addTab(tab_4, QString());
+        tabWidget1->addTab(tabWidgetPage2, QString());
 
         gridLayout_2->addWidget(tabWidget1, 0, 1, 1, 1);
 
@@ -392,7 +392,7 @@ public:
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QStringLiteral("toolBar"));
         toolBar->setAllowedAreas(Qt::AllToolBarAreas);
-        MainWindow->addToolBar(Qt::LeftToolBarArea, toolBar);
+        MainWindow->addToolBar(Qt::RightToolBarArea, toolBar);
         QWidget::setTabOrder(tabWidget1, red);
         QWidget::setTabOrder(red, horizontalSlider);
         QWidget::setTabOrder(horizontalSlider, green);
@@ -423,6 +423,7 @@ public:
         QObject::connect(horizontalSlider_8, SIGNAL(valueChanged(int)), saturation2, SLOT(setValue(int)));
         QObject::connect(horizontalSlider_9, SIGNAL(valueChanged(int)), value, SLOT(setValue(int)));
 
+        tabWidget1->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
 
 
@@ -437,7 +438,7 @@ public:
         actionAbout->setText(QApplication::translate("MainWindow", "About", 0));
         html_color->setPlaceholderText(QString());
         tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage1), QApplication::translate("MainWindow", "Render", 0));
-        tabWidget1->setTabText(tabWidget1->indexOf(tab_4), QApplication::translate("MainWindow", "Palette", 0));
+        tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage2), QApplication::translate("MainWindow", "Palette", 0));
         label_3->setText(QApplication::translate("MainWindow", "R", 0));
         label_2->setText(QApplication::translate("MainWindow", "G", 0));
         label->setText(QApplication::translate("MainWindow", "B", 0));

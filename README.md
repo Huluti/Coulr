@@ -14,11 +14,11 @@ Coulr is a color box to help developers and designers. Currently, it allows to :
 
 ### Version
 
-Coulr is currently in version 0.4.2
+Coulr is currently in version 0.5
 
 ### Installation
 
-#### Ubuntu and its flavours (with PPA):
+#### Ubuntu 14.10 (with PPA):
 
   - sudo add-apt-repository ppa:huluti/coulr
   - sudo apt-get update
