@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.0
+** Created by: Qt User Interface Compiler version 5.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -19,6 +19,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTabWidget>
@@ -41,6 +42,7 @@ public:
     QVBoxLayout *verticalLayout;
     QWidget *color_widget;
     QLineEdit *html_color;
+    QPushButton *copyColor;
     QWidget *tabWidgetPage2;
     QGridLayout *gridLayout_5;
     QWidget *color3;
@@ -144,6 +146,11 @@ public:
         html_color->setObjectName(QStringLiteral("html_color"));
 
         verticalLayout->addWidget(html_color);
+
+        copyColor = new QPushButton(tabWidgetPage1);
+        copyColor->setObjectName(QStringLiteral("copyColor"));
+
+        verticalLayout->addWidget(copyColor);
 
         tabWidget1->addTab(tabWidgetPage1, QString());
         tabWidgetPage2 = new QWidget();
@@ -437,6 +444,7 @@ public:
         actionPick_color->setText(QApplication::translate("MainWindow", "Pick color", 0));
         actionAbout->setText(QApplication::translate("MainWindow", "About", 0));
         html_color->setPlaceholderText(QString());
+        copyColor->setText(QApplication::translate("MainWindow", "Copy", 0));
         tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage1), QApplication::translate("MainWindow", "Render", 0));
         tabWidget1->setTabText(tabWidget1->indexOf(tabWidgetPage2), QApplication::translate("MainWindow", "Palette", 0));
         label_3->setText(QApplication::translate("MainWindow", "R", 0));

@@ -2,9 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 #include <QDesktopWidget>
-#include <QMessageBox>
 #include <QSignalMapper>
+#include <QMessageBox>
+#include <QClipboard>
+#include <QCloseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -23,12 +26,19 @@ public:
 
 public slots:
     void changeColor(QString method);
+    void colorToClipboard();
     void about();
 
 private:
     Ui::MainWindow *ui;
-    QString html_color;
     QSignalMapper *signalMapper;
+    QClipboard *cb;
+    QString version;
+    QString html_color;
+
+protected:
+    void closeEvent(QCloseEvent *event);
+
 };
 
 #endif // MAINWINDOW_H

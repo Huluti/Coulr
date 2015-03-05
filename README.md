@@ -8,17 +8,15 @@ Coulr is a color box to help developers and designers. Currently, it allows to :
 
 ### Screenshots
 
-![alt tag](http://pix.toile-libre.org/upload/original/1423058615.png)
-
-![alt tag](http://pix.toile-libre.org/upload/original/1423058647.png)
+![alt tag](http://pix.toile-libre.org/upload/original/1425547485.png)
 
 ### Version
 
-Coulr is currently in version 0.5.1
+Coulr is currently in version 0.6
 
 ### Installation
 
-#### Ubuntu 14.10 (with PPA):
+#### Ubuntu Utopic 14.10 (PPA):
 
   - sudo add-apt-repository ppa:huluti/coulr
   - sudo apt-get update

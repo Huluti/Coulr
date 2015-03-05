@@ -49,6 +49,13 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="copyColor">
+          <property name="text">
+           <string>Copy</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tabWidgetPage2">

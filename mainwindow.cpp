@@ -7,14 +7,25 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Define version number
+    version = "0.6";
+
     // Move window at center
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
     int x = (screenGeometry.width()-this->width()) / 2;
     int y = (screenGeometry.height()-this->height()) / 2;
     move(x, y);
 
-    // Setup color at lauch (#000)
-    changeColor("RGB");
+    // Setup color at lauch
+    QSettings settings("Coulr", "Coulr");
+    if(!settings.value("last_color").toString().isEmpty()) {
+        QColor launch_color = QColor();
+        launch_color.setNamedColor(settings.value("last_color").toString());
+        applyColor(launch_color.red(), launch_color.green(), launch_color.blue(), 0);
+    }
+    else {
+        changeColor("RGB"); // #000
+    }
 
     // Signals
     signalMapper = new QSignalMapper (this) ;
@@ -45,10 +56,14 @@ MainWindow::MainWindow(QWidget *parent) :
     signalMapper->setMapping (ui->value, "HSV");
 
     connect(signalMapper, SIGNAL(mapped(QString)), this, SLOT(changeColor(QString)));
-
+    connect(ui->copyColor, SIGNAL(clicked()), this, SLOT(colorToClipboard()));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
+
+    // Clipboard
+    cb = QApplication::clipboard();
 }
 
+// Get values then call applyColor
 void MainWindow::changeColor(QString method)
 {
     if(method == "HEXA")
@@ -62,30 +77,21 @@ void MainWindow::changeColor(QString method)
             applyColor(color.red(), color.green(), color.blue(), 0);
         }
     }
-    else if(method == "RGB")
+    else if(method == "RGB" && ui->tabWidget->currentIndex() == 0)
     {
-        if(ui->tabWidget->currentIndex() == 0)
-        {
-            applyColor(ui->red->value(), ui->green->value(), ui->blue->value(), 1);
-        }
+        applyColor(ui->red->value(), ui->green->value(), ui->blue->value(), 1);
     }
-    else if(method == "HSL")
+    else if(method == "HSL" && ui->tabWidget->currentIndex() == 1)
     {
-        if(ui->tabWidget->currentIndex() == 1)
-        {
-            applyColor(ui->hue->value(), ui->saturation->value(), ui->lightness->value(), 2);
-        }
+        applyColor(ui->hue->value(), ui->saturation->value(), ui->lightness->value(), 2);
     }
-    else if(method == "HSV")
+    else if(method == "HSV" && ui->tabWidget->currentIndex() == 2)
     {
-        if(ui->tabWidget->currentIndex() == 2)
-        {
-            applyColor(ui->hue2->value(), ui->saturation2->value(), ui->value->value(), 3);
-        }
+        applyColor(ui->hue2->value(), ui->saturation2->value(), ui->value->value(), 3);
     }
 }
 
-//  Get HTML color and change widget background
+//  Create HTML color then change background color and create palette
 void MainWindow::applyColor(int param1, int param2, int param3, int t)
 {
     /* t:
@@ -150,7 +156,7 @@ void MainWindow::fillValues(bool rgb, bool hsl, bool hsv, QColor color)
     }
 }
 
-// Choose palette
+// Create palette
 void MainWindow::palette()
 {
     QColor color = QColor(html_color);
@@ -172,10 +178,25 @@ void MainWindow::palette()
     ui->color4_html->setText(color4);
 }
 
-// About Coulr
+// Copy a color into clipboard by pressing "copy" button
+void MainWindow::colorToClipboard()
+{
+    cb->setText(html_color);
+}
+
+// About window
 void MainWindow::about()
 {
-    QMessageBox::information(this, tr("About"), tr("Coulr is a free color box software designed by <a href=\"https://github.com/Huluti\">Hugo Posnic</a> using Qt 5. Software under <a href=\"https://github.com/Huluti/Coulr/blob/master/LICENSE\">MIT Licence</a>.<br> Version : 0.5"));
+    QMessageBox::information(this, tr("About"), tr("Coulr is a free color box software develop by <a href=\"https://github.com/Huluti\">Hugo Posnic</a> using <a href=\"http://qt-project.org/\">Qt 5</a>. Software under <a href=\"https://github.com/Huluti/Coulr/blob/master/LICENSE\">MIT Licence</a>.<br><br> Version : ") + version);
+}
+
+// Save last color at close
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QSettings settings("Coulr", "Coulr");
+    settings.setValue("last_color", html_color);
+
+    event->accept();
 }
 
 MainWindow::~MainWindow()
