@@ -3,8 +3,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+    ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
     // Define version number
@@ -64,36 +63,33 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 // Get values then call applyColor
-void MainWindow::changeColor(QString method)
-{
-    if(method == "HEXA")
-    {
+void MainWindow::changeColor(QString method) {
+    if(method == "HEXA") {
         QString color_code = ui->html_color->text();
 
-        if(QColor::isValidColor(color_code) && color_code != html_color)
-        {
+        if(color_code.at(0) != '#') {
+            color_code = "#" + color_code;
+        }
+
+        if(QColor::isValidColor(color_code) && color_code != html_color) {
             QColor color = QColor();
             color.setNamedColor(color_code);
             applyColor(color.red(), color.green(), color.blue(), 0);
         }
     }
-    else if(method == "RGB" && ui->tabWidget->currentIndex() == 0)
-    {
+    else if(method == "RGB" && ui->tabWidget->currentIndex() == 0) {
         applyColor(ui->red->value(), ui->green->value(), ui->blue->value(), 1);
     }
-    else if(method == "HSL" && ui->tabWidget->currentIndex() == 1)
-    {
+    else if(method == "HSL" && ui->tabWidget->currentIndex() == 1) {
         applyColor(ui->hue->value(), ui->saturation->value(), ui->lightness->value(), 2);
     }
-    else if(method == "HSV" && ui->tabWidget->currentIndex() == 2)
-    {
+    else if(method == "HSV" && ui->tabWidget->currentIndex() == 2) {
         applyColor(ui->hue2->value(), ui->saturation2->value(), ui->value->value(), 3);
     }
 }
 
 //  Create HTML color then change background color and create palette
-void MainWindow::applyColor(int param1, int param2, int param3, int t)
-{
+void MainWindow::applyColor(int param1, int param2, int param3, int t) {
     /* t:
     * 0: HEXA
     * 1: RGB
@@ -129,26 +125,22 @@ void MainWindow::applyColor(int param1, int param2, int param3, int t)
 }
 
 // Fill values of QLineEdits
-void MainWindow::fillValues(bool rgb, bool hsl, bool hsv, QColor color)
-{
+void MainWindow::fillValues(bool rgb, bool hsl, bool hsv, QColor color) {
     QColor rgb_color, hsl_color, hsv_color;
 
-    if(rgb)
-    {
+    if(rgb) {
         rgb_color = color.convertTo(QColor::Rgb);
         ui->red->setValue(rgb_color.red());
         ui->green->setValue(rgb_color.green());
         ui->blue->setValue(rgb_color.blue());
     }
-    if(hsl)
-    {
+    if(hsl) {
         hsl_color = color.convertTo(QColor::Hsl);
         ui->hue->setValue(hsl_color.hslHue());
         ui->saturation->setValue(hsl_color.saturation());
         ui->lightness->setValue(hsl_color.lightness());
     }
-    if(hsv)
-    {
+    if(hsv) {
         hsv_color = color.convertTo(QColor::Hsv);
         ui->hue2->setValue(hsv_color.hue());
         ui->saturation2->setValue(hsv_color.saturation());
@@ -157,8 +149,7 @@ void MainWindow::fillValues(bool rgb, bool hsl, bool hsv, QColor color)
 }
 
 // Create palette
-void MainWindow::palette()
-{
+void MainWindow::palette() {
     QColor color = QColor(html_color);
 
     // Original color
@@ -179,27 +170,23 @@ void MainWindow::palette()
 }
 
 // Copy a color into clipboard by pressing "copy" button
-void MainWindow::colorToClipboard()
-{
+void MainWindow::colorToClipboard() {
     cb->setText(html_color);
 }
 
 // About window
-void MainWindow::about()
-{
+void MainWindow::about() {
     QMessageBox::information(this, tr("About"), tr("Coulr is a free color box software develop by <a href=\"https://github.com/Huluti\">Hugo Posnic</a> using <a href=\"http://qt-project.org/\">Qt 5</a>. Software under <a href=\"https://github.com/Huluti/Coulr/blob/master/LICENSE\">MIT Licence</a>.<br><br> Version : ") + version);
 }
 
 // Save last color at close
-void MainWindow::closeEvent(QCloseEvent *event)
-{
+void MainWindow::closeEvent(QCloseEvent *event) {
     QSettings settings("Coulr", "Coulr");
     settings.setValue("last_color", html_color);
 
     event->accept();
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
