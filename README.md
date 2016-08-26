@@ -14,14 +14,6 @@ Coulr is a color box to help developers and designers. Currently, it allows to :
 
 Coulr is currently in version 0.6
 
-### Installation
-
-#### Ubuntu Utopic 14.10 (PPA):
-
-  - sudo add-apt-repository ppa:huluti/coulr
-  - sudo apt-get update
-  - sudo apt-get install coulr
-
 ### Compilation
 
 cmake >= 2.8.9
