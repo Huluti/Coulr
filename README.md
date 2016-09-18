@@ -6,7 +6,7 @@
 ## Enjoy colors and feel happy
 
 Coulr is a color box to help developers and designers. Currently, it allows to:
-  - convert RGB color its Hexadeciaml value and vice versa
+  - convert RGB color to its Hexadeciaml value and vice versa
   - copy selected color
 
 ### Screenshots
