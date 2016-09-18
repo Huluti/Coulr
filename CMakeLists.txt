@@ -1,6 +1,0 @@
-cmake_minimum_required(VERSION 2.8.9)
-project(coulr)
-find_package(Qt5Widgets REQUIRED)
-add_executable(coulr main.cpp mainwindow.cpp moc_mainwindow.cpp mainwindow.ui)
-install(TARGETS coulr RUNTIME DESTINATION bin)
-qt5_use_modules(coulr Widgets)

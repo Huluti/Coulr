@@ -1,34 +1,25 @@
 # Coulr
 
-Coulr is a color box to help developers and designers. Currently, it allows to :
+## Enjoy colors and feel happy
 
-  - select a RGB, HSL, or HSV color and get its hexadecimal code
-  - get RGB, HSL and HSV values from hexadecimal code
-  - view palette of selected color
+Coulr is a color box to help developers and designers. Currently, it allows to:
+  - convert RGB color its Hexadeciaml value and vice versa
+  - copy selected color
 
 ### Screenshots
 
-![alt tag](http://pix.toile-libre.org/upload/original/1425547485.png)
+![alt tag](coulr_screenshoot.png)
 
 ### Version
 
-Coulr is currently in version 0.6
-
-### Compilation
-
-cmake >= 2.8.9
-
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make
-  - ./coulr
+Coulr is currently in version 0.1
 
 ### Tech
 
 Coulr uses open-source projects to work properly:
 
-* [Qt Project] - Cross-platform application and UI framework
+* [Python 3](https://www.python.org/)
+    * [webcolors](https://github.com/ubernostrum/webcolors)
 
 ### License
 
