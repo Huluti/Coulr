@@ -1,0 +1,11 @@
+coulr (1.0.1) ; urgency=low
+
+  * Fix path to icon.
+
+ -- Hugo Posnic <hugo.posnic@gmail.com>  Thu, 22 Sep 2016 16:25:38 +0200
+
+coulr (1.0.0) ; urgency=low
+
+  * First stable version
+
+ -- Hugo Posnic <hugo.posnic@gmail.com>  Thu, 22 Sep 2016 16:09:46 +0200

@@ -1,0 +1,9 @@
+Package: coulr
+Version: 1.0.1
+Source: https://github.com/Huluti/Coulr
+Maintainer: Hugo Posnic <hugo.posnic@gmail.com>
+Section: graphics
+Homepage: https://github.com/Huluti/Coulr
+Priority: optional
+Architecture: all
+Description: Coulr is a color box to help developers and designers.
