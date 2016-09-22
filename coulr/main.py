@@ -229,7 +229,7 @@ class Coulr(Gtk.Window):
         aboutdialog.set_website("https://github.com/Huluti/Coulr")
         aboutdialog.set_website_label("Github")
         aboutdialog.set_authors(["Hugo Posnic"])
-        aboutdialog.set_logo(GdkPixbuf.Pixbuf.new_from_file("../coulr.png"))
+        aboutdialog.set_logo(GdkPixbuf.Pixbuf.new_from_file("coulr.png"))
         aboutdialog.set_license("MIT")
         aboutdialog.set_transient_for(self)
         aboutdialog.run()
