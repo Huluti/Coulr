@@ -22,11 +22,11 @@ class Coulr(Gtk.Window):
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
         # Header bar
-        hb = Gtk.HeaderBar()
-        hb.set_show_close_button(True)
-        hb.props.title = "Coulr"
-        hb.set_subtitle("Enjoy colors and feel happy !")
-        self.set_titlebar(hb)
+        header_bar = Gtk.HeaderBar()
+        header_bar.set_show_close_button(True)
+        header_bar.props.title = "Coulr"
+        header_bar.set_subtitle("Enjoy colors and feel happy !")
+        self.set_titlebar(header_bar)
 
         # Settings button
         menu = Gtk.Menu()
@@ -39,7 +39,7 @@ class Coulr(Gtk.Window):
         icon_settings = Gio.ThemedIcon(name="emblem-system-symbolic")
         image_settings = Gtk.Image.new_from_gicon(icon_settings, Gtk.IconSize.BUTTON)
         menu_button.add(image_settings)
-        hb.pack_end(menu_button)
+        header_bar.pack_end(menu_button)
 
         # Copy button
         button_copy = Gtk.Button()
@@ -47,7 +47,7 @@ class Coulr(Gtk.Window):
         image_copy = Gtk.Image.new_from_gicon(icon_copy, Gtk.IconSize.BUTTON)
         button_copy.add(image_copy)
         button_copy.connect("clicked", self.copy_output)
-        hb.pack_end(button_copy)
+        header_bar.pack_end(button_copy)
 
         # Main wrapper
         main_box = Gtk.Grid(column_spacing=6)
@@ -230,19 +230,19 @@ class Coulr(Gtk.Window):
 
     def about_dialog(self):
         """About dialog"""
-        aboutdialog = Gtk.AboutDialog(self)
-        aboutdialog.set_program_name("Coulr")
-        aboutdialog.set_version("0.1")
-        aboutdialog.set_copyright("Hugo Posnic")
-        aboutdialog.set_comments("Enjoy colors and feel happy !")
-        aboutdialog.set_website("https://github.com/Huluti/Coulr")
-        aboutdialog.set_website_label("Github")
-        aboutdialog.set_authors(["Hugo Posnic"])
-        aboutdialog.set_logo(GdkPixbuf.Pixbuf.new_from_file("coulr.png"))
-        aboutdialog.set_license("Coulr is under MIT Licence. \nSee https://github.com/Huluti/Coulr/blob/master/LICENSE")
-        aboutdialog.set_transient_for(self)
-        aboutdialog.run()
-        aboutdialog.destroy()
+        about_dialog = Gtk.AboutDialog(self)
+        about_dialog.set_program_name("Coulr")
+        about_dialog.set_version("0.1")
+        about_dialog.set_copyright("Hugo Posnic")
+        about_dialog.set_comments("Enjoy colors and feel happy !")
+        about_dialog.set_website("https://github.com/Huluti/Coulr")
+        about_dialog.set_website_label("Github")
+        about_dialog.set_authors(["Hugo Posnic"])
+        about_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file("coulr.png"))
+        about_dialog.set_license("Coulr is under MIT Licence. \nSee https://github.com/Huluti/Coulr/blob/master/LICENSE")
+        about_dialog.set_transient_for(self)
+        about_dialog.run()
+        about_dialog.destroy()
 
 win = Coulr()
 win.connect("delete-event", Gtk.main_quit)
