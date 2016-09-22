@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name="Coulr",
-      version="1.0.0",
+      version="1.0.1",
       description="Coulr is a color box to help developers and designers.",
       author="Hugo Posnic",
       url="https://github.com/Huluti/Coulr",

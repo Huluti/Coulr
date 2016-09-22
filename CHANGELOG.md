@@ -1,5 +1,8 @@
+## 1.0.1 (2016-09-22)
+  - Fix path to icon.
+
 ## 1.0.0 (2016-09-22)
-  - First stable version
+  - First stable version.
 
 ## 0.1 (2016-09-16)
   - Complete rewrite of the software in Python.
