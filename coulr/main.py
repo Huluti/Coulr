@@ -12,8 +12,7 @@ class Coulr(Gtk.Window):
 
     def __init__(self):
         """Initialize Coulr"""
-        Gtk.Window.__init__(self, title="Coulr")
-        self.set_border_width(10)
+        Gtk.Window.__init__(self, title="Coulr", border_width=10)
         self.set_size_request(600, 250)
 
         # Main vars
@@ -74,10 +73,9 @@ class Coulr(Gtk.Window):
 
         # Red slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
-        self.slider_r = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj)
+        self.slider_r = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj, draw_value=False)
         self.slider_r.set_vexpand(True)
         self.slider_r.set_hexpand(True)
-        self.slider_r.set_draw_value(False)
         self.slider_r.connect("value-changed", self.rgb_slider_moved)
         grid_rgb.attach(self.slider_r, 1, 0, 2, 1)
 
@@ -89,10 +87,9 @@ class Coulr(Gtk.Window):
 
         # Green slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
-        self.slider_g = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj)
+        self.slider_g = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj, draw_value=False)
         self.slider_g.set_vexpand(True)
         self.slider_g.set_hexpand(True)
-        self.slider_g.set_draw_value(False)
         self.slider_g.connect("value-changed", self.rgb_slider_moved)
         grid_rgb.attach(self.slider_g, 1, 1, 2, 1)
 
@@ -104,10 +101,9 @@ class Coulr(Gtk.Window):
 
         # Blue slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
-        self.slider_b = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj)
+        self.slider_b = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj, draw_value=False)
         self.slider_b.set_vexpand(True)
         self.slider_b.set_hexpand(True)
-        self.slider_b.set_draw_value(False)
         self.slider_b.connect("value-changed", self.rgb_slider_moved)
         grid_rgb.attach(self.slider_b, 1, 2, 2, 1)
 
@@ -136,8 +132,7 @@ class Coulr(Gtk.Window):
         self.combo_output.connect("changed", self.combo_output_format)
 
         # Output label
-        self.output = Gtk.Label()
-        self.output.set_selectable(True)
+        self.output = Gtk.Label(selectable=True)
 
         # Preview color with square
         self.square = Gtk.Frame()
