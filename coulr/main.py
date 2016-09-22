@@ -11,6 +11,7 @@ from helpers import rgb_to_hex, hex_to_rgb
 class Coulr(Gtk.Window):
 
     def __init__(self):
+        """Initialize Coulr"""
         Gtk.Window.__init__(self, title="Coulr")
         self.set_border_width(10)
         self.set_size_request(600, 250)
@@ -151,7 +152,12 @@ class Coulr(Gtk.Window):
         self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
 
     def change_color(self, rgb):
-        # Refresh preview and fields
+        """Refresh preview and set values of all fields.
+        :param rgb: rgb color values
+        :type rgb: tuple
+
+        """
+
         rgba = Gdk.RGBA()
         rgba.parse("rgb({},{},{})".format(*rgb))
         self.square.override_background_color(Gtk.StateType.NORMAL, rgba)
@@ -171,7 +177,7 @@ class Coulr(Gtk.Window):
         self.change_output()
 
     def change_output(self):
-        # Change output
+        """Set output field"""
         if self.output_format == 'hex':
             output = rgb_to_hex(self.color)
         elif self.output_format == 'rgb':
@@ -180,7 +186,7 @@ class Coulr(Gtk.Window):
         self.output.set_text(output)
 
     def spin_rgb_changed(self, event):
-        # Use RGB spinners values
+        """RGB spinners values changed"""
         spin_red = self.spinbutton_r.get_value_as_int()
         spin_green = self.spinbutton_g.get_value_as_int()
         spin_blue = self.spinbutton_b.get_value_as_int()
@@ -188,7 +194,7 @@ class Coulr(Gtk.Window):
         self.change_color((spin_red, spin_green, spin_blue))
 
     def slider_rgb_moved(self, event):
-        # Use RGB sliders values
+        """RGB sliders values changed"""
         slider_red = int(self.slider_r.get_value())
         slider_green = int(self.slider_g.get_value())
         slider_blue = int(self.slider_b.get_value())
@@ -196,7 +202,7 @@ class Coulr(Gtk.Window):
         self.change_color((slider_red, slider_green, slider_blue))
 
     def entry_hex_changed(self, event):
-        # Use hex entry value
+        """Hex entry value changed"""
         value = self.entry_hex.get_text().lstrip("#")
 
         if len(value) == 6:
@@ -204,23 +210,26 @@ class Coulr(Gtk.Window):
             self.change_color(rgb)
 
     def button_luck_clicked(self, event):
+        """Luck button clicked"""
         self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
 
     def combo_output_format(self, event):
-        # Change output format
+        """Change output format"""
         self.output_format = self.combo_output.get_active_id()
         self.change_output()
 
     def copy_output(self, event):
-        # Copy current output
+        """Copy current output"""
         self.clipboard.set_text(self.output.get_text(), -1)
 
     def menu_item(self, menu_item):
+        """Item menu clicked"""
         label = menu_item.get_label()
         if label == "About":
             self.about_dialog()
 
     def about_dialog(self):
+        """About dialog"""
         aboutdialog = Gtk.AboutDialog(self)
         aboutdialog.set_program_name("Coulr")
         aboutdialog.set_version("0.1")
