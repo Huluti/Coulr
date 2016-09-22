@@ -6,7 +6,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
 from random import randint
 
-import webcolors
+from helpers import rgb_to_hex, hex_to_rgb
 
 class Coulr(Gtk.Window):
 
@@ -165,7 +165,7 @@ class Coulr(Gtk.Window):
         self.slider_b.set_value(rgb[2])
         self.spinbutton_b.set_value(rgb[2])
 
-        self.entry_hex.set_text(webcolors.rgb_to_hex(rgb))
+        self.entry_hex.set_text(rgb_to_hex(rgb))
 
         self.color = rgb
         self.change_output()
@@ -173,7 +173,7 @@ class Coulr(Gtk.Window):
     def change_output(self):
         # Change output
         if self.output_format == 'hex':
-            output = webcolors.rgb_to_hex(self.color)
+            output = rgb_to_hex(self.color)
         elif self.output_format == 'rgb':
             output = "rgb({},{},{})".format(*self.color)
 
@@ -197,13 +197,11 @@ class Coulr(Gtk.Window):
 
     def entry_hex_changed(self, event):
         # Use hex entry value
-        value = self.entry_hex.get_text()
+        value = self.entry_hex.get_text().lstrip("#")
 
-        try:
-            rgb = webcolors.hex_to_rgb(value)
+        if len(value) == 6:
+            rgb = hex_to_rgb(value)
             self.change_color(rgb)
-        except ValueError:
-            pass
 
     def button_luck_clicked(self, event):
         self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
