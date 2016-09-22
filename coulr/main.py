@@ -112,7 +112,7 @@ class Coulr(Gtk.Window):
 
         # Hex tab
         box_hex = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, border_width=10)
-        self.entry_hex = Gtk.Entry()
+        self.entry_hex = Gtk.Entry(max_length=7)
         self.entry_hex.connect("changed", self.entry_hex_changed)
         box_hex.add(self.entry_hex)
 
