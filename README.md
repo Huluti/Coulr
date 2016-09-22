@@ -12,6 +12,12 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 
 ![alt tag](coulr_screenshoot.png)
 
+### Install
+
+#### Deb package
+
+Download [coulr_1.0.1_all.deb](https://github.com/Huluti/Coulr/releases/download/v1.0.1/coulr_1.0.1_all.deb).
+
 ### Version
 
 Coulr is currently in version 1.0.1
