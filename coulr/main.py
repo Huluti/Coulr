@@ -25,7 +25,7 @@ class Coulr(Gtk.Window):
         hb = Gtk.HeaderBar()
         hb.set_show_close_button(True)
         hb.props.title = "Coulr"
-        hb.set_subtitle("Enjoy colors and feel happy")
+        hb.set_subtitle("Enjoy colors and feel happy !")
         self.set_titlebar(hb)
 
         # Settings button
@@ -234,7 +234,7 @@ class Coulr(Gtk.Window):
         aboutdialog.set_program_name("Coulr")
         aboutdialog.set_version("0.1")
         aboutdialog.set_copyright("Hugo Posnic")
-        aboutdialog.set_comments("Enjoy colors and feel happy")
+        aboutdialog.set_comments("Enjoy colors and feel happy !")
         aboutdialog.set_website("https://github.com/Huluti/Coulr")
         aboutdialog.set_website_label("Github")
         aboutdialog.set_authors(["Hugo Posnic"])
