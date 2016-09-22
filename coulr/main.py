@@ -69,7 +69,7 @@ class Coulr(Gtk.Window):
         # Red spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_r = Gtk.SpinButton(adjustment=adj)
-        self.spinbutton_r.connect("value-changed", self.spin_rgb_changed)
+        self.spinbutton_r.connect("value-changed", self.rgb_spin_changed)
         grid_rgb.attach(self.spinbutton_r, 0, 0, 1, 1)
 
         # Red slider
@@ -78,13 +78,13 @@ class Coulr(Gtk.Window):
         self.slider_r.set_vexpand(True)
         self.slider_r.set_hexpand(True)
         self.slider_r.set_draw_value(False)
-        self.slider_r.connect("value-changed", self.slider_rgb_moved)
+        self.slider_r.connect("value-changed", self.rgb_slider_moved)
         grid_rgb.attach(self.slider_r, 1, 0, 2, 1)
 
         # Green spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_g = Gtk.SpinButton(adjustment=adj)
-        self.spinbutton_g.connect("value-changed", self.spin_rgb_changed)
+        self.spinbutton_g.connect("value-changed", self.rgb_spin_changed)
         grid_rgb.attach(self.spinbutton_g, 0, 1, 1, 1)
 
         # Green slider
@@ -93,13 +93,13 @@ class Coulr(Gtk.Window):
         self.slider_g.set_vexpand(True)
         self.slider_g.set_hexpand(True)
         self.slider_g.set_draw_value(False)
-        self.slider_g.connect("value-changed", self.slider_rgb_moved)
+        self.slider_g.connect("value-changed", self.rgb_slider_moved)
         grid_rgb.attach(self.slider_g, 1, 1, 2, 1)
 
         # Blue spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_b = Gtk.SpinButton(adjustment=adj)
-        self.spinbutton_b.connect("value-changed", self.spin_rgb_changed)
+        self.spinbutton_b.connect("value-changed", self.rgb_spin_changed)
         grid_rgb.attach(self.spinbutton_b, 0, 2, 1, 1)
 
         # Blue slider
@@ -108,19 +108,19 @@ class Coulr(Gtk.Window):
         self.slider_b.set_vexpand(True)
         self.slider_b.set_hexpand(True)
         self.slider_b.set_draw_value(False)
-        self.slider_b.connect("value-changed", self.slider_rgb_moved)
+        self.slider_b.connect("value-changed", self.rgb_slider_moved)
         grid_rgb.attach(self.slider_b, 1, 2, 2, 1)
 
         # Hex tab
         box_hex = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, border_width=10)
         self.entry_hex = Gtk.Entry(max_length=7)
-        self.entry_hex.connect("changed", self.entry_hex_changed)
+        self.entry_hex.connect("changed", self.hex_entry_changed)
         box_hex.add(self.entry_hex)
 
         # Lucky tab
         box_luck = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, border_width=10)
         self.button_luck = Gtk.Button("Feel lucky !")
-        self.button_luck.connect("clicked", self.button_luck_clicked)
+        self.button_luck.connect("clicked", self.luck_button_clicked)
         box_luck.add(self.button_luck)
 
         self.notebook_input.append_page(grid_rgb, Gtk.Label("RGB"))
@@ -185,7 +185,7 @@ class Coulr(Gtk.Window):
 
         self.output.set_text(output)
 
-    def spin_rgb_changed(self, event):
+    def rgb_spin_changed(self, event):
         """RGB spinners values changed"""
         spin_red = self.spinbutton_r.get_value_as_int()
         spin_green = self.spinbutton_g.get_value_as_int()
@@ -193,7 +193,7 @@ class Coulr(Gtk.Window):
 
         self.change_color((spin_red, spin_green, spin_blue))
 
-    def slider_rgb_moved(self, event):
+    def rgb_slider_moved(self, event):
         """RGB sliders values changed"""
         slider_red = int(self.slider_r.get_value())
         slider_green = int(self.slider_g.get_value())
@@ -201,7 +201,7 @@ class Coulr(Gtk.Window):
 
         self.change_color((slider_red, slider_green, slider_blue))
 
-    def entry_hex_changed(self, event):
+    def hex_entry_changed(self, event):
         """Hex entry value changed"""
         value = self.entry_hex.get_text().lstrip("#")
 
@@ -209,7 +209,7 @@ class Coulr(Gtk.Window):
             rgb = hex_to_rgb(value)
             self.change_color(rgb)
 
-    def button_luck_clicked(self, event):
+    def luck_button_clicked(self, event):
         """Luck button clicked"""
         self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
 
