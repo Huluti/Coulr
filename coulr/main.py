@@ -18,9 +18,13 @@ class Coulr(Gtk.Window):
         self.set_size_request(600, 250)
 
         # Main vars
+        self.config = dict()
         self.output_format = "hex"
         self.color = None
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+
+        # Config
+        self.config["config_path"] = os.path.expanduser("~") + "/.config/Coulr/"
 
         # Header bar
         header_bar = Gtk.HeaderBar()
@@ -147,7 +151,7 @@ class Coulr(Gtk.Window):
 
         # Initialize color
         try:
-            with open(os.path.expanduser("~") + "/.config/Coulr/save.json", "r") as save_file:
+            with open(self.config["config_path"] + "save.json", "r") as save_file:
                 data = json.load(save_file)
                 self.change_color(hex_to_rgb(data["color"].lstrip("#")))
         except EnvironmentError:
@@ -248,11 +252,11 @@ class Coulr(Gtk.Window):
 
     def quit_coulr(self, event, data):
         """Save last color then quit app"""
-        if not os.path.isdir(os.path.expanduser("~") + "/.config/Coulr/"):
-            os.makedirs(os.path.expanduser("~") + "/.config/Coulr/")
+        if not os.path.isdir(self.config["config_path"]):
+            os.makedirs(self.config["config_path"])
 
         try:
-            with open(os.path.expanduser("~") + "/.config/Coulr/save.json", "w") as save_file:
+            with open(self.config["config_path"] + "save.json", "w") as save_file:
                 data = {"color": self.output.get_text()}
                 json.dump(data, save_file)
         except EnvironmentError:
