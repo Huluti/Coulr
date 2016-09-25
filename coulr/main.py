@@ -136,7 +136,7 @@ class Coulr(Gtk.Window):
         self.combo_output.append("hex", "Hexadecimal")
         self.combo_output.append("rgb", "RGB")
         self.combo_output.set_active(0)
-        self.combo_output.connect("changed", self.combo_output_format)
+        self.combo_output.connect("changed", self.change_output)
 
         # Output label
         self.output = Gtk.Label(selectable=True)
@@ -183,7 +183,7 @@ class Coulr(Gtk.Window):
         self.rgb_color = rgb
         self.change_output()
 
-    def change_output(self):
+    def change_output(self, event=None):
         """Set output field"""
         combo_id = self.combo_output.get_active_id()
         if combo_id == "hex":
@@ -220,10 +220,6 @@ class Coulr(Gtk.Window):
     def luck_button_clicked(self, event):
         """Luck button clicked"""
         self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
-
-    def combo_output_format(self, event):
-        """Change output format"""
-        self.change_output()
 
     def copy_output(self, event):
         """Copy current output"""
