@@ -1,3 +1,7 @@
+## 1.1.0 (2016-09-25)
+  - Save last color at quit.
+  - Center window.
+
 ## 1.0.1 (2016-09-22)
   - Fix path to icon.
 

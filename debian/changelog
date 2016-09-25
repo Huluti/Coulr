@@ -1,3 +1,10 @@
+coulr (1.1.0) ; urgency=low
+
+  * Save last color at quit.
+    Center window.
+
+ -- Hugo Posnic <hugo.posnic@gmail.com>  Sun, 25 Sep 2016 14:16:10 +0200
+
 coulr (1.0.1) ; urgency=low
 
   * Fix path to icon.
@@ -6,6 +13,6 @@ coulr (1.0.1) ; urgency=low
 
 coulr (1.0.0) ; urgency=low
 
-  * First stable version
+  * First stable version.
 
  -- Hugo Posnic <hugo.posnic@gmail.com>  Thu, 22 Sep 2016 16:09:46 +0200
