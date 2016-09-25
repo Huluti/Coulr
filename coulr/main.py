@@ -16,6 +16,7 @@ class Coulr(Gtk.Window):
         """Initialize Coulr"""
         Gtk.Window.__init__(self, title="Coulr", border_width=10)
         self.set_size_request(600, 250)
+        self.set_position(Gtk.WindowPosition.CENTER)
 
         # Main vars
         self.config = dict()
