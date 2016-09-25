@@ -24,6 +24,7 @@ class Coulr(Gtk.Window):
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
         # Config
+        self.config["run_path"] = os.path.dirname(os.path.abspath(__file__)) + "/"
         self.config["config_path"] = os.path.expanduser("~") + "/.config/Coulr/"
 
         # Header bar
@@ -244,7 +245,7 @@ class Coulr(Gtk.Window):
         about_dialog.set_website("https://github.com/Huluti/Coulr")
         about_dialog.set_website_label("Github")
         about_dialog.set_authors(["Hugo Posnic"])
-        about_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(os.path.dirname(os.path.abspath(__file__)) + "/coulr.png"))
+        about_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(self.config["run_path"] + "coulr.png"))
         about_dialog.set_license("Coulr is under MIT Licence. \nSee https://github.com/Huluti/Coulr/blob/master/LICENSE")
         about_dialog.set_transient_for(self)
         about_dialog.run()
