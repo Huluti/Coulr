@@ -4,7 +4,7 @@
 import os
 import json
 import gi
-gi.require_version('Gtk', '3.0')
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
 from random import randint
 
@@ -184,9 +184,9 @@ class Coulr(Gtk.Window):
 
     def change_output(self):
         """Set output field"""
-        if self.output_format == 'hex':
+        if self.output_format == "hex":
             output = rgb_to_hex(self.color)
-        elif self.output_format == 'rgb':
+        elif self.output_format == "rgb":
             output = "rgb({},{},{})".format(*self.color)
 
         self.output.set_text(output)
