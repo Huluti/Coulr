@@ -2,6 +2,7 @@
 #!/usr/bin/env python
 
 import os
+import json
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
@@ -145,7 +146,12 @@ class Coulr(Gtk.Window):
         layout2.add(self.output)
 
         # Initialize color
-        self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
+        try:
+            with open(os.path.expanduser("~") + "/.config/Coulr/save.json", "r") as save_file:
+                data = json.load(save_file)
+                self.change_color(hex_to_rgb(data["color"].lstrip("#")))
+        except EnvironmentError:
+            self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
 
     def change_color(self, rgb):
         """Refresh preview and set values of all fields.
@@ -240,7 +246,21 @@ class Coulr(Gtk.Window):
         about_dialog.run()
         about_dialog.destroy()
 
+    def quit_coulr(self, event, data):
+        """Save last color then quit app"""
+        if not os.path.isdir(os.path.expanduser("~") + "/.config/Coulr/"):
+            os.makedirs(os.path.expanduser("~") + "/.config/Coulr/")
+
+        try:
+            with open(os.path.expanduser("~") + "/.config/Coulr/save.json", "w") as save_file:
+                data = {"color": self.output.get_text()}
+                json.dump(data, save_file)
+        except EnvironmentError:
+            print("Error when trying to set save file.")
+
+        Gtk.main_quit()
+
 win = Coulr()
-win.connect("delete-event", Gtk.main_quit)
+win.connect("delete-event", win.quit_coulr)
 win.show_all()
 Gtk.main()
