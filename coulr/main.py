@@ -20,7 +20,6 @@ class Coulr(Gtk.Window):
 
         # Main vars
         self.config = dict()
-        self.output_format = "hex"
         self.rgb_color = None
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
@@ -185,9 +184,10 @@ class Coulr(Gtk.Window):
 
     def change_output(self):
         """Set output field"""
-        if self.output_format == "hex":
+        combo_id = self.combo_output.get_active_id()
+        if combo_id == "hex":
             output = rgb_to_hex(self.rgb_color)
-        elif self.output_format == "rgb":
+        elif combo_id == "rgb":
             output = "rgb({},{},{})".format(*self.rgb_color)
 
         self.output.set_text(output)
@@ -222,7 +222,6 @@ class Coulr(Gtk.Window):
 
     def combo_output_format(self, event):
         """Change output format"""
-        self.output_format = self.combo_output.get_active_id()
         self.change_output()
 
     def copy_output(self, event):
