@@ -257,7 +257,7 @@ class Coulr(Gtk.Window):
 
         try:
             with open(self.config["config_path"] + "save.json", "w") as save_file:
-                data = {"color": self.output.get_text()}
+                data = {"color": rgb_to_hex(self.rgb_color)}
                 json.dump(data, save_file)
         except EnvironmentError:
             print("Error when trying to set save file.")
