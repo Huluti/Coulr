@@ -25,7 +25,28 @@ class Coulr(Gtk.Window):
 
         # Config
         self.config["run_path"] = os.path.dirname(os.path.abspath(__file__)) + "/"
-        self.config["config_path"] = os.path.expanduser("~") + "/.config/Coulr/"
+        self.config["config_folder"] = os.path.expanduser("~") + "/.config/Coulr/"
+        self.config["save_file"] = self.config["config_folder"] + "save.json"
+        self.config["preferences_file"] = self.config["config_folder"] + "preferences.json"
+
+        if not os.path.isdir(self.config["config_folder"]):
+            os.makedirs(self.config["config_folder"])
+
+        if not os.path.exists(self.config["preferences_file"]):
+            try:
+                with open(self.config["preferences_file"], "w") as preferences_file:
+                    data = {"general": {"save_last_color": True}}
+                    json.dump(data, preferences_file)
+                    self.config["preferences"] = data
+            except EnvironmentError:
+                print("Error when trying to create preferences file.")
+        else:
+            try:
+                with open(self.config["preferences_file"], "r") as preferences_file:
+                    data = json.load(preferences_file)
+                    self.config["preferences"] = data
+            except EnvironmentError:
+                print("Error when trying to read preferences file.")
 
         # Header bar
         header_bar = Gtk.HeaderBar()
@@ -36,7 +57,7 @@ class Coulr(Gtk.Window):
 
         # Settings button
         menu = Gtk.Menu()
-        for menu_label in ["About"]:
+        for menu_label in ["Preferences", "About"]:
             menu_item = Gtk.MenuItem(menu_label)
             menu_item.connect("activate", self.menu_item)
             menu.append(menu_item)
@@ -151,12 +172,15 @@ class Coulr(Gtk.Window):
         layout2.add(self.output)
 
         # Initialize color
-        try:
-            with open(self.config["config_path"] + "save.json", "r") as save_file:
-                data = json.load(save_file)
-                self.change_color(hex_to_rgb(data["color"].lstrip("#")))
-        except EnvironmentError:
-            self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
+        if self.config["preferences"]["general"]["save_last_color"]:
+            try:
+                with open(self.config["save_file"], "r") as save_file:
+                    data = json.load(save_file)
+                    self.change_color(hex_to_rgb(data["color"].lstrip("#")))
+            except EnvironmentError:
+                self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
+        else:
+                self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
 
     def change_color(self, rgb):
         """Refresh preview and set values of all fields.
@@ -230,6 +254,8 @@ class Coulr(Gtk.Window):
         label = menu_item.get_label()
         if label == "About":
             self.about_dialog()
+        elif label == "Preferences":
+            self.preferences_dialog()
 
     def about_dialog(self):
         """About dialog"""
@@ -247,18 +273,57 @@ class Coulr(Gtk.Window):
         about_dialog.run()
         about_dialog.destroy()
 
+    def preferences_dialog(self):
+        """Preferences dialog"""
+        preferences_dialog = Gtk.Dialog(title="Preferences", border_width=10, buttons=(Gtk.STOCK_OK, Gtk.ResponseType.OK, Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL))
+        preferences_dialog.set_size_request(400, 200)
+        preferences_dialog.set_transient_for(self)
+
+        notebook = Gtk.Notebook()
+
+        label_last_color = Gtk.Label("Save last color")
+        switch_last_color = Gtk.Switch()
+        switch_last_color.set_active(self.config["preferences"]["general"]["save_last_color"])
+
+        grid = Gtk.Grid(row_spacing=6, column_spacing=6, border_width=10)
+        grid.attach(label_last_color, 0, 0, 1, 1)
+        grid.attach(switch_last_color, 1, 0, 1, 1)
+
+        notebook.append_page(grid, Gtk.Label("General"))
+
+        box = preferences_dialog.get_content_area()
+        box.add(notebook)
+
+        preferences_dialog.show_all()
+
+        response = preferences_dialog.run()
+        if response == Gtk.ResponseType.OK:
+            # Save settings
+            save_last_color = bool(switch_last_color.get_active())
+
+            try:
+                with open(self.config["preferences_file"], "r+") as preferences_file:
+                    data = json.load(preferences_file)
+                    data["general"]["save_last_color"] = save_last_color
+                    preferences_file.seek(0)
+                    preferences_file.write(json.dumps(data))
+                    preferences_file.truncate()
+                    self.config["preferences"] = data
+
+            except EnvironmentError:
+                print("Error when trying to set preferences file.")
+
+        preferences_dialog.destroy()
+
     def quit_coulr(self, event, data):
         """Save last color then quit app"""
-        if not os.path.isdir(self.config["config_path"]):
-            os.makedirs(self.config["config_path"])
-
-        try:
-            with open(self.config["config_path"] + "save.json", "w") as save_file:
-                data = {"color": rgb_to_hex(self.rgb_color)}
-                json.dump(data, save_file)
-        except EnvironmentError:
-            print("Error when trying to set save file.")
-
+        if self.config["preferences"]["general"]["save_last_color"]:
+            try:
+                with open(self.config["save_file"], "w") as save_file:
+                    data = {"color": rgb_to_hex(self.rgb_color)}
+                    json.dump(data, save_file)
+            except EnvironmentError:
+                print("Error when trying to set save file.")
         Gtk.main_quit()
 
 win = Coulr()
