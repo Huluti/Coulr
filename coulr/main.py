@@ -276,7 +276,7 @@ class Coulr(Gtk.Window):
     def preferences_dialog(self):
         """Preferences dialog"""
         preferences_dialog = Gtk.Dialog(title="Preferences", border_width=10, buttons=(Gtk.STOCK_OK, Gtk.ResponseType.OK, Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL))
-        preferences_dialog.set_size_request(400, 200)
+        preferences_dialog.set_size_request(350, 150)
         preferences_dialog.set_transient_for(self)
 
         notebook = Gtk.Notebook()
