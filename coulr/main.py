@@ -317,13 +317,20 @@ class Coulr(Gtk.Window):
 
     def quit_coulr(self, event, data):
         """Save last color then quit app"""
-        if self.config["preferences"]["general"]["save_last_color"]:
-            try:
-                with open(self.config["save_file"], "w") as save_file:
-                    data = {"color": rgb_to_hex(self.rgb_color)}
-                    json.dump(data, save_file)
-            except EnvironmentError:
-                print("Error when trying to set save file.")
+        try:
+            with open(self.config["save_file"], "w+") as save_file:
+                try:
+                    data = json.load(save_file)
+                except ValueError:
+                    data = dict()
+                if self.config["preferences"]["general"]["save_last_color"]:
+                    data["color"] = rgb_to_hex(self.rgb_color)
+                save_file.seek(0)
+                save_file.write(json.dumps(data))
+                save_file.truncate()
+        except EnvironmentError:
+            print("Error when trying to set save file.")
+
         Gtk.main_quit()
 
 win = Coulr()
