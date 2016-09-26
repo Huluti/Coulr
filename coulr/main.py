@@ -180,7 +180,7 @@ class Coulr(Gtk.Window):
             except EnvironmentError:
                 self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
         else:
-                self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
+            self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
 
     def change_color(self, rgb):
         """Refresh preview and set values of all fields.
