@@ -32,7 +32,11 @@ class Coulr(Gtk.Window):
         if not os.path.isdir(self.config["config_folder"]):
             os.makedirs(self.config["config_folder"])
 
-        if not os.path.exists(self.config["preferences_file"]):
+        try:
+            with open(self.config["preferences_file"], "r") as preferences_file:
+                data = json.load(preferences_file)
+                self.config["preferences"] = data
+        except EnvironmentError:
             try:
                 with open(self.config["preferences_file"], "w") as preferences_file:
                     data = {"general": {"save_last_color": True}}
@@ -40,13 +44,6 @@ class Coulr(Gtk.Window):
                     self.config["preferences"] = data
             except EnvironmentError:
                 print("Error when trying to create preferences file.")
-        else:
-            try:
-                with open(self.config["preferences_file"], "r") as preferences_file:
-                    data = json.load(preferences_file)
-                    self.config["preferences"] = data
-            except EnvironmentError:
-                print("Error when trying to read preferences file.")
 
         # Header bar
         header_bar = Gtk.HeaderBar()
