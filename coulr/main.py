@@ -324,7 +324,6 @@ class Coulr(Gtk.Window):
                 save_file.truncate()
         except EnvironmentError:
             print("Error when trying to set save file.")
-
         Gtk.main_quit()
 
 win = Coulr()
