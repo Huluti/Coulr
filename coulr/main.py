@@ -33,17 +33,16 @@ class Coulr(Gtk.Window):
             os.makedirs(self.config["config_folder"])
 
         try:
-            with open(self.config["preferences_file"], "r") as preferences_file:
-                data = json.load(preferences_file)
-                self.config["preferences"] = data
-        except EnvironmentError:
-            try:
-                with open(self.config["preferences_file"], "w+") as preferences_file:
+            with open(self.config["preferences_file"], "a+") as preferences_file:
+                try:
+                    preferences_file.seek(0)
+                    data = json.load(preferences_file)
+                except ValueError:
                     data = {"general": {"save_last_color": True}}
                     json.dump(data, preferences_file)
-                    self.config["preferences"] = data
-            except EnvironmentError:
-                print("Error when trying to create preferences file.")
+                self.config["preferences"] = data
+        except EnvironmentError:
+                print("Error when trying to load or create preferences file.")
 
         # Header bar
         header_bar = Gtk.HeaderBar()
@@ -294,7 +293,6 @@ class Coulr(Gtk.Window):
         if response == Gtk.ResponseType.OK:
             # Save settings
             save_last_color = bool(switch_last_color.get_active())
-
             try:
                 with open(self.config["preferences_file"], "r+") as preferences_file:
                     data = json.load(preferences_file)
@@ -303,7 +301,6 @@ class Coulr(Gtk.Window):
                     preferences_file.write(json.dumps(data))
                     preferences_file.truncate()
                     self.config["preferences"] = data
-
             except EnvironmentError:
                 print("Error when trying to set preferences file.")
 
