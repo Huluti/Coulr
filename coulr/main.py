@@ -169,13 +169,10 @@ class Coulr(Gtk.Window):
         layout2.add(self.output)
 
         # Initialize color
-        if self.config["preferences"]["general"]["save_last_color"]:
-            try:
-                with open(self.config["save_file"], "r") as save_file:
-                    data = json.load(save_file)
-                    self.change_color(hex_to_rgb(data["color"].lstrip("#")))
-            except EnvironmentError:
-                self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
+        if self.config["preferences"]["general"]["save_last_color"] and os.path.exists(self.config["save_file"]):
+            with open(self.config["save_file"], "r") as save_file:
+                data = json.load(save_file)
+                self.change_color(hex_to_rgb(data["color"].lstrip("#")))
         else:
             self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
 
