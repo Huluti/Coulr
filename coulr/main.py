@@ -38,7 +38,7 @@ class Coulr(Gtk.Window):
                 self.config["preferences"] = data
         except EnvironmentError:
             try:
-                with open(self.config["preferences_file"], "w") as preferences_file:
+                with open(self.config["preferences_file"], "w+") as preferences_file:
                     data = {"general": {"save_last_color": True}}
                     json.dump(data, preferences_file)
                     self.config["preferences"] = data
