@@ -316,9 +316,7 @@ class Coulr(Gtk.Window):
                     data = dict()
                 if self.config["preferences"]["general"]["save_last_color"]:
                     data["color"] = rgb_to_hex(self.rgb_color)
-                save_file.seek(0)
-                save_file.write(json.dumps(data))
-                save_file.truncate()
+                json.dump(data, save_file)
         except EnvironmentError:
             print("Error when trying to set save file.")
         Gtk.main_quit()
