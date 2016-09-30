@@ -1,3 +1,9 @@
+coulr (1.2.0) ; urgency=low
+
+  * Add preferences window.
+
+ -- Hugo Posnic <hugo.posnic@gmail.com>  Fri, 30 Sep 2016 19:53:28 +0200
+
 coulr (1.1.0) ; urgency=low
 
   * Save last color at quit.

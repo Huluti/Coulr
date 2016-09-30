@@ -1,4 +1,7 @@
-## 1.1.0 (2016-09-25)
+## 1.2.0 (2016-09-30)
+  - Add preferences window.
+
+# 1.1.0 (2016-09-25)
   - Save last color at quit.
   - Center window.
 

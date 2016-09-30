@@ -17,11 +17,11 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 
 #### Deb package
 
-Download [coulr_1.1.0_all.deb](https://github.com/Huluti/Coulr/releases/download/v1.1.0/coulr_1.1.0_all.deb).
+Download [coulr_1.2.0_all.deb](https://github.com/Huluti/Coulr/releases/download/v1.2.0/coulr_1.2.0_all.deb).
 
 ### Version
 
-Coulr is currently in version 1.1.0
+Coulr is currently in version 1.2.0
 
 ### Tech
 
