@@ -8,7 +8,7 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
 from random import randint
 
-from helpers import rgb_to_hex, hex_to_rgb
+from helpers import rgb_to_hex, hex_to_rgb, rgb_floats_to_int
 
 class Coulr(Gtk.Window):
 
@@ -131,6 +131,15 @@ class Coulr(Gtk.Window):
         self.slider_b.connect("value-changed", self.rgb_slider_moved)
         grid_rgb.attach(self.slider_b, 1, 2, 2, 1)
 
+         # Palette tab
+        box_palette = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, border_width=10)
+        self.color_chooser = Gtk.ColorChooserWidget(show_editor=True, use_alpha=False)
+        self.event_box = Gtk.EventBox()
+        self.event_box.add(self.color_chooser)
+        self.event_box.connect('button-press-event', self.palette_changed)
+        self.event_box.connect('button-release-event', self.palette_changed)
+        box_palette.add(self.event_box)
+
         # Hex tab
         box_hex = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, border_width=10)
         self.entry_hex = Gtk.Entry(max_length=7)
@@ -146,6 +155,7 @@ class Coulr(Gtk.Window):
         self.notebook_input.append_page(grid_rgb, Gtk.Label("RGB"))
         self.notebook_input.append_page(box_hex, Gtk.Label("Hexadecimal"))
         self.notebook_input.append_page(box_luck, Gtk.Label("Lucky mode"))
+        self.notebook_input.append_page(box_palette, Gtk.Label("Palette"))
 
         # Layout 2
         # Output mode
@@ -197,6 +207,8 @@ class Coulr(Gtk.Window):
 
         self.entry_hex.set_text(rgb_to_hex(rgb))
 
+        self.color_chooser.set_rgba(rgba)
+
         self.rgb_color = rgb
         self.change_output()
 
@@ -225,6 +237,10 @@ class Coulr(Gtk.Window):
         slider_blue = int(self.slider_b.get_value())
 
         self.change_color((slider_red, slider_green, slider_blue))
+
+    def palette_changed(self, widget, event):
+        value = rgb_floats_to_int(self.color_chooser.get_rgba().to_color().to_floats())
+        self.change_color(value)
 
     def hex_entry_changed(self, event):
         """Hex entry value changed"""

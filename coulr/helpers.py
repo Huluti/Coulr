@@ -21,3 +21,14 @@ def hex_to_rgb(hexa):
     """
 
     return tuple(int(hexa[i:i+2], 16) for i in (0, 2, 4))
+
+def rgb_floats_to_int(rgb_floats):
+    """Convert RGB floats color to RGB (int) color.
+    :param rgb_floats: RGB floats color from Gtk.Color
+    :type rgb_floats: tuple
+    :return: RGB color
+    :rtype: tuple
+
+    """
+
+    return tuple(int(rgb_floats[i]*255) for i in range(3))
