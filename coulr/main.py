@@ -6,16 +6,15 @@ import json
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
-from random import randint
 
-from helpers import rgb_to_hex, hex_to_rgb
+from helpers import rgb_to_hex, hex_to_rgb, random_rgb
+
 
 class Coulr(Gtk.Window):
-
     def __init__(self):
         """Initialize Coulr"""
         Gtk.Window.__init__(self, title="Coulr", border_width=10)
-        self.set_size_request(600, 250)
+        self.set_size_request(600, -1)
         self.set_position(Gtk.WindowPosition.CENTER)
 
         # Main vars
@@ -24,25 +23,14 @@ class Coulr(Gtk.Window):
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
         # Config
-        self.config["run_path"] = os.path.dirname(os.path.abspath(__file__)) + "/"
-        self.config["config_folder"] = os.path.expanduser("~") + "/.config/Coulr/"
+        self.config["run_path"] = os.path.dirname(
+                                    os.path.abspath(__file__)) + "/"
+        home_path = os.path.expanduser("~")
+        self.config["config_folder"] = home_path + "/.config/Coulr/"
         self.config["save_file"] = self.config["config_folder"] + "save.json"
-        self.config["preferences_file"] = self.config["config_folder"] + "preferences.json"
 
         if not os.path.isdir(self.config["config_folder"]):
             os.makedirs(self.config["config_folder"])
-
-        try:
-            with open(self.config["preferences_file"], "a+") as preferences_file:
-                try:
-                    preferences_file.seek(0)
-                    data = json.load(preferences_file)
-                except ValueError:
-                    data = {"general": {"save_last_color": True}}
-                    json.dump(data, preferences_file)
-                self.config["preferences"] = data
-        except EnvironmentError:
-                print("Error when trying to load or create preferences file.")
 
         # Header bar
         header_bar = Gtk.HeaderBar()
@@ -51,18 +39,13 @@ class Coulr(Gtk.Window):
         header_bar.set_subtitle("Enjoy colors and feel happy !")
         self.set_titlebar(header_bar)
 
-        # Settings button
-        menu = Gtk.Menu()
-        for menu_label in ["Preferences", "About"]:
-            menu_item = Gtk.MenuItem(menu_label)
-            menu_item.connect("activate", self.menu_item)
-            menu.append(menu_item)
-        menu.show_all()
-        menu_button = Gtk.MenuButton(popup=menu)
-        icon_settings = Gio.ThemedIcon(name="emblem-system-symbolic")
-        image_settings = Gtk.Image.new_from_gicon(icon_settings, Gtk.IconSize.BUTTON)
-        menu_button.add(image_settings)
-        header_bar.pack_end(menu_button)
+        # About button
+        button_about = Gtk.Button()
+        icon_about = Gio.ThemedIcon(name="help-about-symbolic")
+        image_about = Gtk.Image.new_from_gicon(icon_about, Gtk.IconSize.BUTTON)
+        button_about.add(image_about)
+        button_about.connect("clicked", self.about_dialog)
+        header_bar.pack_end(button_about)
 
         # Copy button
         button_copy = Gtk.Button()
@@ -76,7 +59,7 @@ class Coulr(Gtk.Window):
         main_box = Gtk.Grid(column_spacing=6)
 
         # Second layout level
-        layout1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        layout1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, vexpand=False)
         layout2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
 
         main_box.attach(layout1, 0, 0, 1, 1)
@@ -97,7 +80,7 @@ class Coulr(Gtk.Window):
 
         # Red slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
-        self.slider_r = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj, draw_value=False)
+        self.slider_r = Gtk.Scale(adjustment=adj, draw_value=False)
         self.slider_r.set_vexpand(True)
         self.slider_r.set_hexpand(True)
         self.slider_r.connect("value-changed", self.rgb_slider_moved)
@@ -111,7 +94,7 @@ class Coulr(Gtk.Window):
 
         # Green slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
-        self.slider_g = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj, draw_value=False)
+        self.slider_g = Gtk.Scale(adjustment=adj, draw_value=False)
         self.slider_g.set_vexpand(True)
         self.slider_g.set_hexpand(True)
         self.slider_g.connect("value-changed", self.rgb_slider_moved)
@@ -125,7 +108,7 @@ class Coulr(Gtk.Window):
 
         # Blue slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
-        self.slider_b = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL, adjustment=adj, draw_value=False)
+        self.slider_b = Gtk.Scale(adjustment=adj, draw_value=False)
         self.slider_b.set_vexpand(True)
         self.slider_b.set_hexpand(True)
         self.slider_b.connect("value-changed", self.rgb_slider_moved)
@@ -138,7 +121,8 @@ class Coulr(Gtk.Window):
         box_hex.add(self.entry_hex)
 
         # Lucky tab
-        box_luck = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, border_width=10)
+        box_luck = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,
+                           border_width=10)
         self.button_luck = Gtk.Button("Feel lucky !")
         self.button_luck.connect("clicked", self.luck_button_clicked)
         box_luck.add(self.button_luck)
@@ -168,18 +152,21 @@ class Coulr(Gtk.Window):
         layout2.add(self.output)
 
         # Initialize color
-        if self.config["preferences"]["general"]["save_last_color"] and os.path.exists(self.config["save_file"]):
-            with open(self.config["save_file"], "r") as save_file:
-                data = json.load(save_file)
-                self.change_color(hex_to_rgb(data["color"].lstrip("#")))
+        if os.path.exists(self.config["save_file"]):
+            try:
+                with open(self.config["save_file"], "r") as save_file:
+                    data = json.load(save_file)
+                    color = hex_to_rgb(data["color"].lstrip("#"))
+            except (OSError, json.JSONDecodeError):
+                print("Error when trying to read save file.")
         else:
-            self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
+            color = random_rgb()
+        self.change_color(color)
 
     def change_color(self, rgb):
         """Refresh preview and set values of all fields.
         :param rgb: rgb color values
         :type rgb: tuple
-
         """
 
         rgba = Gdk.RGBA()
@@ -236,21 +223,13 @@ class Coulr(Gtk.Window):
 
     def luck_button_clicked(self, event):
         """Luck button clicked"""
-        self.change_color((randint(0, 255), randint(0, 255), randint(0, 255)))
+        self.change_color(random_rgb())
 
     def copy_output(self, event):
         """Copy current output"""
         self.clipboard.set_text(self.output.get_text(), -1)
 
-    def menu_item(self, menu_item):
-        """Item menu clicked"""
-        label = menu_item.get_label()
-        if label == "About":
-            self.about_dialog()
-        elif label == "Preferences":
-            self.preferences_dialog()
-
-    def about_dialog(self):
+    def about_dialog(self, event):
         """About dialog"""
         about_dialog = Gtk.AboutDialog(self)
         about_dialog.set_program_name("Coulr")
@@ -260,51 +239,12 @@ class Coulr(Gtk.Window):
         about_dialog.set_website("https://github.com/Huluti/Coulr")
         about_dialog.set_website_label("Github")
         about_dialog.set_authors(["Hugo Posnic"])
-        about_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(self.config["run_path"] + "coulr.png"))
-        about_dialog.set_license("Coulr is under MIT Licence. \nSee https://github.com/Huluti/Coulr/blob/master/LICENSE")
+        about_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(
+                                self.config["run_path"] + "coulr.png"))
+        about_dialog.set_license("Coulr is under MIT Licence.")
         about_dialog.set_transient_for(self)
         about_dialog.run()
         about_dialog.destroy()
-
-    def preferences_dialog(self):
-        """Preferences dialog"""
-        preferences_dialog = Gtk.Dialog(title="Preferences", border_width=10, buttons=(Gtk.STOCK_OK, Gtk.ResponseType.OK, Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL))
-        preferences_dialog.set_size_request(350, 150)
-        preferences_dialog.set_transient_for(self)
-
-        notebook = Gtk.Notebook()
-
-        label_last_color = Gtk.Label("Save last color")
-        switch_last_color = Gtk.Switch()
-        switch_last_color.set_active(self.config["preferences"]["general"]["save_last_color"])
-
-        grid = Gtk.Grid(row_spacing=6, column_spacing=6, border_width=10)
-        grid.attach(label_last_color, 0, 0, 1, 1)
-        grid.attach(switch_last_color, 1, 0, 1, 1)
-
-        notebook.append_page(grid, Gtk.Label("General"))
-
-        box = preferences_dialog.get_content_area()
-        box.add(notebook)
-
-        preferences_dialog.show_all()
-
-        response = preferences_dialog.run()
-        if response == Gtk.ResponseType.OK:
-            # Save settings
-            save_last_color = bool(switch_last_color.get_active())
-            try:
-                with open(self.config["preferences_file"], "r+") as preferences_file:
-                    data = json.load(preferences_file)
-                    data["general"]["save_last_color"] = save_last_color
-                    preferences_file.seek(0)
-                    preferences_file.write(json.dumps(data))
-                    preferences_file.truncate()
-                    self.config["preferences"] = data
-            except EnvironmentError:
-                print("Error when trying to set preferences file.")
-
-        preferences_dialog.destroy()
 
     def quit_coulr(self, event, data):
         """Save last color then quit app"""
@@ -314,10 +254,9 @@ class Coulr(Gtk.Window):
                     data = json.load(save_file)
                 except ValueError:
                     data = dict()
-                if self.config["preferences"]["general"]["save_last_color"]:
-                    data["color"] = rgb_to_hex(self.rgb_color)
+                data["color"] = rgb_to_hex(self.rgb_color)
                 json.dump(data, save_file)
-        except EnvironmentError:
+        except (OSError, json.JSONDecodeError):
             print("Error when trying to set save file.")
         Gtk.main_quit()
 
