@@ -1,0 +1,9 @@
+[Desktop Entry]
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;
+StartupNotify=false
+Name=Coulr
+Exec=/usr/bin/coulr
+Icon=coulr
+Comment=Coulr is a color box to help developers and designers.

@@ -1,8 +1,0 @@
-Type=Application
-Encoding=UTF-8
-Name=Coulr
-Categories=Graphics;GTK;Utility;2DGraphics;
-Comment=Enjoy colors and feel happy !
-Exec=python3 /usr/bin/Coulr/main.py
-Icon=/usr/bin/Coulr/coulr.png
-Terminal=false

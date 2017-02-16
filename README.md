@@ -1,7 +1,6 @@
 # Coulr
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c173929259648e19e883f465fb6c64b)](https://www.codacy.com/app/hugo-posnic/Coulr?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Huluti/Coulr&amp;utm_campaign=Badge_Grade)
-[![Github All Releases](https://img.shields.io/github/downloads/Huluti/Coulr/total.svg?maxAge=2592000)]()
 
 ## Enjoy colors and feel happy
 
@@ -12,12 +11,6 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 ### Screenshots
 
 ![alt tag](coulr_screenshoot.png)
-
-### Install
-
-#### Deb package
-
-Download [coulr_1.2.0_all.deb](https://github.com/Huluti/Coulr/releases/download/v1.2.0/coulr_1.2.0_all.deb).
 
 ### Version
 
