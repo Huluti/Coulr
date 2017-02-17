@@ -122,16 +122,16 @@ class App(Gtk.Window):
         self.entry_hex.connect("changed", self.hex_entry_changed)
         box_hex.add(self.entry_hex)
 
-        # Lucky tab
-        box_luck = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,
+        # Random tab
+        box_rand = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,
                            border_width=10)
-        self.button_luck = Gtk.Button("Feel lucky !")
-        self.button_luck.connect("clicked", self.luck_button_clicked)
-        box_luck.add(self.button_luck)
+        self.button_rand = Gtk.Button("Generate a random color")
+        self.button_rand.connect("clicked", self.rand_button_clicked)
+        box_rand.add(self.button_rand)
 
         self.notebook_input.append_page(grid_rgb, Gtk.Label("RGB"))
         self.notebook_input.append_page(box_hex, Gtk.Label("Hexadecimal"))
-        self.notebook_input.append_page(box_luck, Gtk.Label("Lucky mode"))
+        self.notebook_input.append_page(box_rand, Gtk.Label("Random"))
 
         # Layout 2
         # Output mode
@@ -223,8 +223,8 @@ class App(Gtk.Window):
             rgb = hex_to_rgb(value)
             self.change_color(rgb)
 
-    def luck_button_clicked(self, event):
-        """Luck button clicked"""
+    def rand_button_clicked(self, event):
+        """Random button clicked"""
         self.change_color(random_rgb())
 
     def copy_output(self, event):
