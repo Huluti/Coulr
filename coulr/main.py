@@ -26,7 +26,8 @@ class App(Gtk.Window):
 
         # Paths
         home_path = os.path.expanduser("~")
-        if os.path.basename(sys.argv[0]) == self.app:
+        run_path = os.path.realpath(__file__)
+        if run_path[:4] == "/usr":
             logo_path = "/usr/share/{name}/{name}.png".format(name=self.app)
         else:
             logo_path = "img/{}.png".format(self.app)
