@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2017-02-17
+  - Fix test of logo path.
+
 ## [1.3.0] - 2017-02-17
   - Remove preferences window.
   - Improve organization.
