@@ -4,6 +4,7 @@ Type=Application
 Categories=GNOME;GTK;Graphics;
 StartupNotify=false
 Name=Coulr
+Path=/usr/bin
 Exec=coulr
 Icon=/usr/share/coulr/coulr.png
 Comment=Coulr is a color box to help developers and designers.

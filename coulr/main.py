@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 
 import os
@@ -7,8 +6,7 @@ import json
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
-
-from helpers import rgb_to_hex, hex_to_rgb, random_rgb
+from random import randint
 
 
 class App(Gtk.Window):
@@ -26,8 +24,7 @@ class App(Gtk.Window):
 
         # Paths
         home_path = os.path.expanduser("~")
-        run_path = os.path.realpath(__file__)
-        if run_path[:4] == "/usr":
+        if os.path.basename(sys.argv[0]) == self.app:
             logo_path = "/usr/share/{name}/{name}.png".format(name=self.app)
         else:
             logo_path = "img/{}.png".format(self.app)
@@ -266,7 +263,39 @@ class App(Gtk.Window):
             print("Error when trying to set save file.")
         Gtk.main_quit()
 
-app = App()
-app.connect("delete-event", app.close)
-app.show_all()
-Gtk.main()
+
+def rgb_to_hex(rgb):
+    """Convert RGB color to hex color."
+    :param rgb: RGB color
+    :type rgb: tuple
+    :return: Hex color
+    :rtype: str
+    """
+
+    return "#{0:02x}{1:02x}{2:02x}".format(*rgb)
+
+
+def hex_to_rgb(hexa):
+    """Convert hex color to RGB color.
+    :param hexa: Hex color
+    :type hexa: str
+    :return: RGB color
+    :rtype: tuple
+    """
+
+    return tuple(int(hexa[i:i+2], 16) for i in (0, 2, 4))
+
+
+def random_rgb():
+    """Random rgb values.
+    :return: Random RGB color
+    :rtype: tuple
+    """
+    return (randint(0, 255), randint(0, 255), randint(0, 255))
+
+
+if __name__ == "__main__":
+    app = App()
+    app.connect("delete-event", app.close)
+    app.show_all()
+    Gtk.main()
