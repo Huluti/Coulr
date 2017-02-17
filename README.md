@@ -5,7 +5,7 @@
 ## Enjoy colors and feel happy
 
 Coulr is a color box to help developers and designers. Currently, it allows to:
-  - convert RGB color to its Hexadeciaml value and vice versa
+  - convert RGB color to its Hexadecimal value and vice versa
   - copy selected color
 
 ### Screenshots
@@ -14,7 +14,13 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 
 ### Version
 
-Coulr is currently in version 1.2.0
+Coulr is currently in version 1.3.2
+
+### Install
+
+#### Arch-based distributions
+
+* [AUR](https://aur.archlinux.org/packages/coulr)
 
 ### Tech
 
@@ -24,9 +30,9 @@ Coulr uses open-source projects to work properly:
 
 ### License
 
-This project is under MIT licence ... so do what you want with it :)
+This project is under MIT licence... so do what you want with it :)
 
 ### Help me
 
 That would make me very happy you make me feedback on using the software.
-Thanks for your interest and see you soon !
+Thanks for your interest and see you soon!
