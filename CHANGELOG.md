@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2017-02-17
+  - Improve organization.
+  - Fix size of spinners.
+  - Rename lucky mode to random mode.
+
 ## [1.3.2] - 2017-02-17
   - Simplify structure to make packaging easier.
 
