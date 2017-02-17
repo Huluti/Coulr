@@ -69,10 +69,10 @@ class App(Gtk.Window):
         self.add(main_box)
 
         # Layout 1
-        self.notebook_input = Gtk.Notebook()
+        self.notebook_input = Gtk.Notebook(vexpand=False)
 
         # RGB tab
-        grid_rgb = Gtk.Grid(row_spacing=6, column_spacing=6, border_width=10)
+        grid_rgb = Gtk.Grid(row_spacing=35, column_spacing=6, border_width=10)
 
         # Red spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
