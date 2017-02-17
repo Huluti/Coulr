@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2017-02-17
+  - Remove preferences window.
+  - Improve organization.
+  - Bug fixes.
+
 ## [1.2.0] - 2016-09-30
   - Add preferences window.
 
