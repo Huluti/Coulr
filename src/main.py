@@ -2,6 +2,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import json
 import gi
 gi.require_version("Gtk", "3.0")
@@ -10,32 +11,35 @@ from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
 from helpers import rgb_to_hex, hex_to_rgb, random_rgb
 
 
-class Coulr(Gtk.Window):
+class App(Gtk.Window):
     def __init__(self):
-        """Initialize Coulr"""
-        Gtk.Window.__init__(self, title="Coulr", border_width=10)
+        """Initialize app"""
+        self.app = "coulr"
+        self.app_name = "Coulr"
+        Gtk.Window.__init__(self, title=self.app_name, border_width=10)
         self.set_size_request(600, -1)
         self.set_position(Gtk.WindowPosition.CENTER)
 
         # Main vars
-        self.config = dict()
         self.rgb_color = None
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
-        # Config
-        self.config["run_path"] = os.path.dirname(
-                                    os.path.abspath(__file__)) + "/"
+        # Paths
         home_path = os.path.expanduser("~")
-        self.config["config_folder"] = home_path + "/.config/Coulr/"
-        self.config["save_file"] = self.config["config_folder"] + "save.json"
+        if os.path.basename(sys.argv[0]) == self.app:
+            logo_path = "/usr/share/{name}/{name}.png".format(name=self.app)
+        else:
+            logo_path = "img/{}.png".format(self.app)
+        self.save_file = "{}/.config/{}.json".format(home_path, self.app)
+        self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
 
-        if not os.path.isdir(self.config["config_folder"]):
-            os.makedirs(self.config["config_folder"])
+        # Icon
+        self.set_icon(self.logo)
 
         # Header bar
         header_bar = Gtk.HeaderBar()
         header_bar.set_show_close_button(True)
-        header_bar.props.title = "Coulr"
+        header_bar.props.title = self.app_name
         header_bar.set_subtitle("Enjoy colors and feel happy !")
         self.set_titlebar(header_bar)
 
@@ -152,9 +156,9 @@ class Coulr(Gtk.Window):
         layout2.add(self.output)
 
         # Initialize color
-        if os.path.exists(self.config["save_file"]):
+        if os.path.exists(self.save_file):
             try:
-                with open(self.config["save_file"], "r") as save_file:
+                with open(self.save_file, "r") as save_file:
                     data = json.load(save_file)
                     color = hex_to_rgb(data["color"].lstrip("#"))
             except (OSError, json.JSONDecodeError):
@@ -232,24 +236,25 @@ class Coulr(Gtk.Window):
     def about_dialog(self, event):
         """About dialog"""
         about_dialog = Gtk.AboutDialog(self)
-        about_dialog.set_program_name("Coulr")
+        about_dialog.set_program_name(self.app_name)
         about_dialog.set_version("1.2.0")
         about_dialog.set_copyright("Hugo Posnic")
         about_dialog.set_comments("Enjoy colors and feel happy !")
-        about_dialog.set_website("https://github.com/Huluti/Coulr")
+        about_dialog.set_website("https://github.com/Huluti/{}"
+                                    .format(self.app_name))
         about_dialog.set_website_label("Github")
         about_dialog.set_authors(["Hugo Posnic"])
-        about_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(
-                                self.config["run_path"] + "coulr.png"))
-        about_dialog.set_license("Coulr is under MIT Licence.")
+        about_dialog.set_logo(self.logo)
+        about_dialog.set_license("{} is under MIT Licence."
+                                    .format(self.app_name))
         about_dialog.set_transient_for(self)
         about_dialog.run()
         about_dialog.destroy()
 
-    def quit_coulr(self, event, data):
+    def close(self, event, data):
         """Save last color then quit app"""
         try:
-            with open(self.config["save_file"], "w+") as save_file:
+            with open(self.save_file, "w+") as save_file:
                 try:
                     data = json.load(save_file)
                 except ValueError:
@@ -260,7 +265,7 @@ class Coulr(Gtk.Window):
             print("Error when trying to set save file.")
         Gtk.main_quit()
 
-win = Coulr()
-win.connect("delete-event", win.quit_coulr)
-win.show_all()
+app = App()
+app.connect("delete-event", app.close)
+app.show_all()
 Gtk.main()
