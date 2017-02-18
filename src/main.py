@@ -38,7 +38,7 @@ class App(Gtk.Window):
         header_bar = Gtk.HeaderBar()
         header_bar.set_show_close_button(True)
         header_bar.props.title = self.app_name
-        header_bar.set_subtitle("Enjoy colors and feel happy !")
+        header_bar.set_subtitle("Enjoy colors and feel happy!")
         self.set_titlebar(header_bar)
 
         # About button
