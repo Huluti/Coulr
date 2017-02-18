@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2017-02-18
+- Add notifications.
+
 ## [1.3.3] - 2017-02-17
 - Improve organization.
 - Fix size of spinners.

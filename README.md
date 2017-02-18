@@ -14,7 +14,7 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 
 ### Version
 
-Coulr is currently in version 1.3.3
+Coulr is currently in version 1.4.0
 
 ### Install
 
