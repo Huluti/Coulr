@@ -5,7 +5,8 @@ import sys
 import json
 import gi
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, Gio, GdkPixbuf
+gi.require_version("Notify", "0.7")
+from gi.repository import Gtk, Gdk, Gio, GdkPixbuf, Notify
 from random import randint
 
 
@@ -17,6 +18,9 @@ class App(Gtk.Window):
         Gtk.Window.__init__(self, title=self.app_name, border_width=10)
         self.set_size_request(600, -1)
         self.set_position(Gtk.WindowPosition.CENTER)
+
+        # Enable notifications
+        Notify.init(self.app_name)
 
         # Main vars
         self.rgb_color = None
@@ -229,7 +233,13 @@ class App(Gtk.Window):
 
     def copy_output(self, event):
         """Copy current output"""
-        self.clipboard.set_text(self.output.get_text(), -1)
+        color = self.output.get_text()
+        self.clipboard.set_text(color, -1)
+
+        notification = Notify.Notification.new("Color copied", color)
+        notification.set_icon_from_pixbuf(self.logo)
+        notification.set_image_from_pixbuf(self.logo)
+        notification.show()
 
     def about_dialog(self, event):
         """About dialog"""
