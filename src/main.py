@@ -232,7 +232,7 @@ class App(Gtk.Window):
         self.change_color(random_rgb())
 
     def copy_output(self, event):
-        """Copy current output"""
+        """Copy output to clipboard"""
         color = self.output.get_text()
         self.clipboard.set_text(color, -1)
 
