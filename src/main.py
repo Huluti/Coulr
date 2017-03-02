@@ -76,13 +76,17 @@ class App(Gtk.Window):
         self.notebook_input = Gtk.Notebook(vexpand=False)
 
         # RGB tab
-        grid_rgb = Gtk.Grid(row_spacing=35, column_spacing=6, border_width=10)
+        grid_rgb = Gtk.Grid(row_spacing=35, column_spacing=10, border_width=10)
+
+        # Red label
+        label = Gtk.Label("R")
+        grid_rgb.attach(label, 0, 0, 1, 1)
 
         # Red spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_r = Gtk.SpinButton(adjustment=adj)
         self.spinbutton_r.connect("value-changed", self.rgb_spin_changed)
-        grid_rgb.attach(self.spinbutton_r, 0, 0, 1, 1)
+        grid_rgb.attach(self.spinbutton_r, 1, 0, 1, 1)
 
         # Red slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
@@ -90,13 +94,17 @@ class App(Gtk.Window):
         self.slider_r.set_vexpand(True)
         self.slider_r.set_hexpand(True)
         self.slider_r.connect("value-changed", self.rgb_slider_moved)
-        grid_rgb.attach(self.slider_r, 1, 0, 2, 1)
+        grid_rgb.attach(self.slider_r, 2, 0, 2, 1)
+
+        # Green label
+        label = Gtk.Label("G")
+        grid_rgb.attach(label, 0, 1, 1, 1)
 
         # Green spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_g = Gtk.SpinButton(adjustment=adj)
         self.spinbutton_g.connect("value-changed", self.rgb_spin_changed)
-        grid_rgb.attach(self.spinbutton_g, 0, 1, 1, 1)
+        grid_rgb.attach(self.spinbutton_g, 1, 1, 1, 1)
 
         # Green slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
@@ -104,13 +112,17 @@ class App(Gtk.Window):
         self.slider_g.set_vexpand(True)
         self.slider_g.set_hexpand(True)
         self.slider_g.connect("value-changed", self.rgb_slider_moved)
-        grid_rgb.attach(self.slider_g, 1, 1, 2, 1)
+        grid_rgb.attach(self.slider_g, 2, 1, 2, 1)
+
+        # Blue label
+        label = Gtk.Label("B")
+        grid_rgb.attach(label, 0, 2, 1, 1)
 
         # Blue spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_b = Gtk.SpinButton(adjustment=adj)
         self.spinbutton_b.connect("value-changed", self.rgb_spin_changed)
-        grid_rgb.attach(self.spinbutton_b, 0, 2, 1, 1)
+        grid_rgb.attach(self.spinbutton_b, 1, 2, 1, 1)
 
         # Blue slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
@@ -118,7 +130,7 @@ class App(Gtk.Window):
         self.slider_b.set_vexpand(True)
         self.slider_b.set_hexpand(True)
         self.slider_b.connect("value-changed", self.rgb_slider_moved)
-        grid_rgb.attach(self.slider_b, 1, 2, 2, 1)
+        grid_rgb.attach(self.slider_b, 2, 2, 2, 1)
 
         # Hex tab
         box_hex = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, border_width=10)
