@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2017-03-04
+- RGB tab: add indications to inputs.
+
 ## [1.4.0] - 2017-02-18
 - Add notifications.
 
