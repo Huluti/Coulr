@@ -262,7 +262,7 @@ class App(Gtk.Window):
         about_dialog.set_comments("Enjoy colors and feel happy !")
         about_dialog.set_website("https://github.com/Huluti/{}"
                                     .format(self.app_name))
-        about_dialog.set_website_label("Github")
+        about_dialog.set_website_label("GitHub")
         about_dialog.set_authors(["Hugo Posnic"])
         about_dialog.set_logo(self.logo)
         about_dialog.set_license("{} is under MIT Licence."
