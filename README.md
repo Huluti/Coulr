@@ -10,7 +10,7 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 
 ### Screenshots
 
-![alt tag](img/coulr_screenshoot.png)
+![alt tag](img/coulr_screenshot.png)
 
 ### Version
 
