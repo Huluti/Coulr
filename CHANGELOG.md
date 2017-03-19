@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2017-03-20
+- Simplify interface.
+- Add tooltips to buttons of HeaderBar.
+
 ## [1.4.1] - 2017-03-04
 - RGB tab: add indications to inputs.
 
