@@ -15,8 +15,9 @@ class App(Gtk.Window):
         """Initialize app"""
         self.app = "coulr"
         self.app_name = "Coulr"
-        Gtk.Window.__init__(self, title=self.app_name, border_width=10)
+        Gtk.Window.__init__(self, title=self.app_name, border_width=15)
         self.set_size_request(600, -1)
+        self.set_resizable(False)
         self.set_position(Gtk.WindowPosition.CENTER)
 
         # Enable notifications
@@ -47,6 +48,7 @@ class App(Gtk.Window):
 
         # About button
         button_about = Gtk.Button()
+        button_about.set_tooltip_text("About")
         icon_about = Gio.ThemedIcon(name="help-about-symbolic")
         image_about = Gtk.Image.new_from_gicon(icon_about, Gtk.IconSize.BUTTON)
         button_about.add(image_about)
@@ -55,99 +57,82 @@ class App(Gtk.Window):
 
         # Copy button
         button_copy = Gtk.Button()
+        button_copy.set_tooltip_text("Copy color")
         icon_copy = Gio.ThemedIcon(name="edit-copy-symbolic")
         image_copy = Gtk.Image.new_from_gicon(icon_copy, Gtk.IconSize.BUTTON)
         button_copy.add(image_copy)
         button_copy.connect("clicked", self.copy_output)
         header_bar.pack_end(button_copy)
 
-        # Main wrapper
-        main_box = Gtk.Grid(column_spacing=6)
+        # Random button
+        self.button_random = Gtk.Button()
+        self.button_random.set_tooltip_text("Generate random color")
+        icon_random = Gio.ThemedIcon(name="media-playlist-shuffle-symbolic")
+        image_random = Gtk.Image.new_from_gicon(icon_random, Gtk.IconSize.BUTTON)
+        self.button_random.add(image_random)
+        self.button_random.connect("clicked", self.random_button_clicked)
+        header_bar.pack_end(self.button_random)
 
-        # Second layout level
-        layout1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, vexpand=False)
-        layout2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-
-        main_box.attach(layout1, 0, 0, 1, 1)
-        main_box.attach(layout2, 1, 0, 1, 1)
+        # Main wrappers
+        main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        layout1 = Gtk.Grid(row_spacing=30, column_spacing=10, valign=Gtk.Align.CENTER)
+        layout2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5, valign=Gtk.Align.CENTER)
+        main_box.add(layout1)
+        main_box.add(layout2)
         self.add(main_box)
 
-        # Layout 1
-        self.notebook_input = Gtk.Notebook(vexpand=False)
-
-        # RGB tab
-        grid_rgb = Gtk.Grid(row_spacing=35, column_spacing=10, border_width=10)
+        # RGB
 
         # Red label
         label = Gtk.Label("R")
-        grid_rgb.attach(label, 0, 0, 1, 1)
+        layout1.attach(label, 0, 1, 1, 1)
 
         # Red spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_r = Gtk.SpinButton(adjustment=adj)
         self.spinbutton_r.connect("value-changed", self.rgb_spin_changed)
-        grid_rgb.attach(self.spinbutton_r, 1, 0, 1, 1)
+        layout1.attach(self.spinbutton_r, 1, 1, 1, 1)
 
         # Red slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
         self.slider_r = Gtk.Scale(adjustment=adj, draw_value=False)
-        self.slider_r.set_vexpand(True)
         self.slider_r.set_hexpand(True)
         self.slider_r.connect("value-changed", self.rgb_slider_moved)
-        grid_rgb.attach(self.slider_r, 2, 0, 2, 1)
+        layout1.attach(self.slider_r, 2, 1, 2, 1)
 
         # Green label
         label = Gtk.Label("G")
-        grid_rgb.attach(label, 0, 1, 1, 1)
+        layout1.attach(label, 0, 2, 1, 1)
 
         # Green spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_g = Gtk.SpinButton(adjustment=adj)
         self.spinbutton_g.connect("value-changed", self.rgb_spin_changed)
-        grid_rgb.attach(self.spinbutton_g, 1, 1, 1, 1)
+        layout1.attach(self.spinbutton_g, 1, 2, 1, 1)
 
         # Green slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
         self.slider_g = Gtk.Scale(adjustment=adj, draw_value=False)
-        self.slider_g.set_vexpand(True)
         self.slider_g.set_hexpand(True)
         self.slider_g.connect("value-changed", self.rgb_slider_moved)
-        grid_rgb.attach(self.slider_g, 2, 1, 2, 1)
+        layout1.attach(self.slider_g, 2, 2, 2, 1)
 
         # Blue label
         label = Gtk.Label("B")
-        grid_rgb.attach(label, 0, 2, 1, 1)
+        layout1.attach(label, 0, 3, 1, 1)
 
         # Blue spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_b = Gtk.SpinButton(adjustment=adj)
         self.spinbutton_b.connect("value-changed", self.rgb_spin_changed)
-        grid_rgb.attach(self.spinbutton_b, 1, 2, 1, 1)
+        layout1.attach(self.spinbutton_b, 1, 3, 1, 1)
 
         # Blue slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
         self.slider_b = Gtk.Scale(adjustment=adj, draw_value=False)
-        self.slider_b.set_vexpand(True)
         self.slider_b.set_hexpand(True)
         self.slider_b.connect("value-changed", self.rgb_slider_moved)
-        grid_rgb.attach(self.slider_b, 2, 2, 2, 1)
-
-        # Hex tab
-        box_hex = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, border_width=10)
-        self.entry_hex = Gtk.Entry(max_length=7)
-        self.entry_hex.connect("changed", self.hex_entry_changed)
-        box_hex.add(self.entry_hex)
-
-        # Random tab
-        box_rand = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,
-                           border_width=10)
-        self.button_rand = Gtk.Button("Generate a random color")
-        self.button_rand.connect("clicked", self.rand_button_clicked)
-        box_rand.add(self.button_rand)
-
-        self.notebook_input.append_page(grid_rgb, Gtk.Label("RGB"))
-        self.notebook_input.append_page(box_hex, Gtk.Label("Hexadecimal"))
-        self.notebook_input.append_page(box_rand, Gtk.Label("Random"))
+        layout1.attach(self.slider_b, 2, 3, 2, 1)
 
         # Layout 2
         # Output mode
@@ -157,14 +142,14 @@ class App(Gtk.Window):
         self.combo_output.set_active(0)
         self.combo_output.connect("changed", self.change_output)
 
-        # Output label
-        self.output = Gtk.Label(selectable=True)
+        # Output entry
+        self.output = Gtk.Entry()
+        self.output.connect("changed", self.output_entry_changed)
 
         # Preview color with square
         self.square = Gtk.Frame()
         self.square.set_size_request(150, 150)
 
-        layout1.add(self.notebook_input)
         layout2.add(self.square)
         layout2.add(self.combo_output)
         layout2.add(self.output)
@@ -200,7 +185,7 @@ class App(Gtk.Window):
         self.slider_b.set_value(rgb[2])
         self.spinbutton_b.set_value(rgb[2])
 
-        self.entry_hex.set_text(rgb_to_hex(rgb))
+        self.output.set_text(rgb_to_hex(rgb))
 
         self.rgb_color = rgb
         self.change_output()
@@ -231,15 +216,15 @@ class App(Gtk.Window):
 
         self.change_color((slider_red, slider_green, slider_blue))
 
-    def hex_entry_changed(self, event):
+    def output_entry_changed(self, event):
         """Hex entry value changed"""
-        value = self.entry_hex.get_text().lstrip("#")
+        value = self.output.get_text().lstrip("#")
 
         if len(value) == 6:
             rgb = hex_to_rgb(value)
             self.change_color(rgb)
 
-    def rand_button_clicked(self, event):
+    def random_button_clicked(self, event):
         """Random button clicked"""
         self.change_color(random_rgb())
 
