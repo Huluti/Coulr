@@ -6,7 +6,7 @@ import json
 import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
-from gi.repository import Gtk, Gdk, Gio, GdkPixbuf, Notify
+from gi.repository import Gtk, Gdk, Gio, GObject, GdkPixbuf, Notify
 from random import randint
 
 
@@ -90,14 +90,14 @@ class App(Gtk.Window):
         # Red spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_r = Gtk.SpinButton(adjustment=adj)
-        self.spinbutton_r.connect("value-changed", self.rgb_spin_changed)
+        self.red_sb_id = self.spinbutton_r.connect("value-changed", self.rgb_spin_changed)
         layout1.attach(self.spinbutton_r, 1, 1, 1, 1)
 
         # Red slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
         self.slider_r = Gtk.Scale(adjustment=adj, draw_value=False)
         self.slider_r.set_hexpand(True)
-        self.slider_r.connect("value-changed", self.rgb_slider_moved)
+        self.red_s_id = self.slider_r.connect("value-changed", self.rgb_slider_moved)
         layout1.attach(self.slider_r, 2, 1, 2, 1)
 
         # Green label
@@ -107,14 +107,14 @@ class App(Gtk.Window):
         # Green spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_g = Gtk.SpinButton(adjustment=adj)
-        self.spinbutton_g.connect("value-changed", self.rgb_spin_changed)
+        self.green_sb_id = self.spinbutton_g.connect("value-changed", self.rgb_spin_changed)
         layout1.attach(self.spinbutton_g, 1, 2, 1, 1)
 
         # Green slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
         self.slider_g = Gtk.Scale(adjustment=adj, draw_value=False)
         self.slider_g.set_hexpand(True)
-        self.slider_g.connect("value-changed", self.rgb_slider_moved)
+        self.green_s_id = self.slider_g.connect("value-changed", self.rgb_slider_moved)
         layout1.attach(self.slider_g, 2, 2, 2, 1)
 
         # Blue label
@@ -124,14 +124,14 @@ class App(Gtk.Window):
         # Blue spinner
         adj = Gtk.Adjustment(0, 0, 255, 1, 10, 0)
         self.spinbutton_b = Gtk.SpinButton(adjustment=adj)
-        self.spinbutton_b.connect("value-changed", self.rgb_spin_changed)
+        self.blue_sb_id = self.spinbutton_b.connect("value-changed", self.rgb_spin_changed)
         layout1.attach(self.spinbutton_b, 1, 3, 1, 1)
 
         # Blue slider
         adj = Gtk.Adjustment(0, 0, 255, 2, 10, 0)
         self.slider_b = Gtk.Scale(adjustment=adj, draw_value=False)
         self.slider_b.set_hexpand(True)
-        self.slider_b.connect("value-changed", self.rgb_slider_moved)
+        self.blue_s_id = self.slider_b.connect("value-changed", self.rgb_slider_moved)
         layout1.attach(self.slider_b, 2, 3, 2, 1)
 
         # Layout 2
@@ -144,7 +144,7 @@ class App(Gtk.Window):
 
         # Output entry
         self.output = Gtk.Entry()
-        self.output.connect("changed", self.output_entry_changed)
+        self.output_id = self.output.connect("changed", self.output_entry_changed)
 
         # Preview color with square
         self.square = Gtk.Frame()
@@ -176,16 +176,30 @@ class App(Gtk.Window):
         rgba.parse("rgb({},{},{})".format(*rgb))
         self.square.override_background_color(Gtk.StateType.NORMAL, rgba)
 
+        GObject.signal_handler_block(self.spinbutton_r, self.red_sb_id)
         self.spinbutton_r.set_value(rgb[0])
+        GObject.signal_handler_unblock(self.spinbutton_r, self.red_sb_id)
+        GObject.signal_handler_block(self.slider_r, self.red_s_id)
         self.slider_r.set_value(rgb[0])
+        GObject.signal_handler_unblock(self.slider_r, self.red_s_id)
 
-        self.slider_g.set_value(rgb[1])
+        GObject.signal_handler_block(self.spinbutton_g, self.green_sb_id)
         self.spinbutton_g.set_value(rgb[1])
+        GObject.signal_handler_block(self.spinbutton_g, self.green_sb_id)
+        GObject.signal_handler_block(self.slider_g, self.green_s_id)
+        self.slider_g.set_value(rgb[1])
+        GObject.signal_handler_unblock(self.slider_g, self.green_s_id)
 
-        self.slider_b.set_value(rgb[2])
+        GObject.signal_handler_block(self.spinbutton_b, self.blue_sb_id)
         self.spinbutton_b.set_value(rgb[2])
+        GObject.signal_handler_unblock(self.spinbutton_b, self.blue_sb_id)
+        GObject.signal_handler_block(self.slider_b, self.blue_s_id)
+        self.slider_b.set_value(rgb[2])
+        GObject.signal_handler_unblock(self.slider_b, self.blue_s_id)
 
+        GObject.signal_handler_block(self.output, self.output_id)
         self.output.set_text(rgb_to_hex(rgb))
+        GObject.signal_handler_unblock(self.output, self.output_id)
 
         self.rgb_color = rgb
         self.change_output()
