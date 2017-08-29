@@ -185,7 +185,7 @@ class App(Gtk.Window):
 
         GObject.signal_handler_block(self.spinbutton_g, self.green_sb_id)
         self.spinbutton_g.set_value(rgb[1])
-        GObject.signal_handler_block(self.spinbutton_g, self.green_sb_id)
+        GObject.signal_handler_unblock(self.spinbutton_g, self.green_sb_id)
         GObject.signal_handler_block(self.slider_g, self.green_s_id)
         self.slider_g.set_value(rgb[1])
         GObject.signal_handler_unblock(self.slider_g, self.green_s_id)
