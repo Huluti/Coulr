@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2017-09-09
+- Fix a performance issue.
+
 ## [1.5.0] - 2017-03-20
 - Simplify interface.
 - Add tooltips to buttons of HeaderBar.
