@@ -21,12 +21,18 @@ class App(Gtk.Window):
         self.set_resizable(False)
         self.set_position(Gtk.WindowPosition.CENTER)
 
-        # Translations
+        # Paths
+        home_path = os.path.expanduser("~")
         if os.path.basename(sys.argv[0]) == self.app:
+            logo_path = "/usr/share/{name}/{name}.png".format(name=self.app)
             locale_path = "/usr/share/locale"
         else:
+            logo_path = "img/{}.png".format(self.app)
             locale_path = "po"
+        self.save_file = "{}/.config/{}.json".format(home_path, self.app)
+        self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
 
+        # Translations
         sys_locale = locale.getdefaultlocale()[0]
         try:
             tr = gettext.translation(self.app, localedir=locale_path, languages=[sys_locale])
@@ -45,15 +51,6 @@ class App(Gtk.Window):
         # Main vars
         self.rgb_color = None
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
-
-        # Paths
-        home_path = os.path.expanduser("~")
-        if os.path.basename(sys.argv[0]) == self.app:
-            logo_path = "/usr/share/{name}/{name}.png".format(name=self.app)
-        else:
-            logo_path = "img/{}.png".format(self.app)
-        self.save_file = "{}/.config/{}.json".format(home_path, self.app)
-        self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
 
         # Icon
         self.set_icon(self.logo)
