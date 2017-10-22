@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-22 14:59+0200\n"
-"PO-Revision-Date: 2017-10-22 15:00+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2017-10-22 15:22+0200\n"
+"PO-Revision-Date: 2017-10-22 15:23+0200\n"
+"Last-Translator: Hugo Posnic <hugo.posnic@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,9 @@ msgstr "RVB"
 
 #: src/main.py:165
 msgid "An error occurred when trying to read save file."
-msgstr "Une erreur s'est produite lors de la tentative de lecture du fichier de sauvegarde."
+msgstr ""
+"Une erreur s'est produite lors de la tentative de lecture du fichier de "
+"sauvegarde."
 
 #: src/main.py:251
 msgid "Color copied"
@@ -68,4 +70,6 @@ msgstr "{} est sous licence MIT."
 
 #: src/main.py:285
 msgid "An error occurred when trying to write save file."
-msgstr "Une erreur s'est produite lors de la tentative d'écriture du fichier de sauvegarde."
+msgstr ""
+"Une erreur s'est produite lors de la tentative d'écriture du fichier de "
+"sauvegarde."
