@@ -6,65 +6,65 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-22 15:22+0200\n"
+"POT-Creation-Date: 2017-10-22 16:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
 
-#: src/main.py:47 src/main.py:262
+#: src/main.py:65 src/main.py:280
 msgid "Enjoy colors and feel happy!"
 msgstr ""
 
-#: src/main.py:52
+#: src/main.py:70
 msgid "About"
 msgstr ""
 
-#: src/main.py:61
+#: src/main.py:79
 msgid "Copy color"
 msgstr ""
 
-#: src/main.py:70
+#: src/main.py:88
 msgid "Generate random color"
 msgstr ""
 
-#: src/main.py:88
+#: src/main.py:106
 msgid "R"
 msgstr ""
 
-#: src/main.py:105
+#: src/main.py:123
 msgid "G"
 msgstr ""
 
-#: src/main.py:122
+#: src/main.py:140
 msgid "B"
 msgstr ""
 
-#: src/main.py:141
+#: src/main.py:159
 msgid "Hexadecimal"
 msgstr ""
 
-#: src/main.py:142
+#: src/main.py:160
 msgid "RGB"
 msgstr ""
 
-#: src/main.py:165
+#: src/main.py:183
 msgid "An error occurred when trying to read save file."
 msgstr ""
 
-#: src/main.py:251
+#: src/main.py:269
 msgid "Color copied"
 msgstr ""
 
-#: src/main.py:268
-msgid "{} is under MIT Licence."
+#: src/main.py:286
+msgid "is under MIT Licence."
 msgstr ""
 
-#: src/main.py:285
+#: src/main.py:302
 msgid "An error occurred when trying to write save file."
 msgstr ""

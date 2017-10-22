@@ -283,8 +283,7 @@ class App(Gtk.Window):
         about_dialog.set_website_label("GitHub")
         about_dialog.set_authors(["Hugo Posnic"])
         about_dialog.set_logo(self.logo)
-        about_dialog.set_license(_("{} is under MIT Licence."
-                                    .format(self.app_name)))
+        about_dialog.set_license(self.app_name + " " + _("is under MIT Licence."))
         about_dialog.set_transient_for(self)
         about_dialog.run()
         about_dialog.destroy()

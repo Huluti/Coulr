@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-22 15:22+0200\n"
-"PO-Revision-Date: 2017-10-22 15:23+0200\n"
+"POT-Creation-Date: 2017-10-22 16:42+0200\n"
+"PO-Revision-Date: 2017-10-22 16:43+0200\n"
 "Last-Translator: Hugo Posnic <hugo.posnic@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,57 +18,57 @@ msgstr ""
 "X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main.py:47 src/main.py:262
+#: src/main.py:65 src/main.py:280
 msgid "Enjoy colors and feel happy!"
 msgstr "Appréciez les couleurs et soyez heureux !"
 
-#: src/main.py:52
+#: src/main.py:70
 msgid "About"
 msgstr "À propos"
 
-#: src/main.py:61
+#: src/main.py:79
 msgid "Copy color"
 msgstr "Copier la couleur"
 
-#: src/main.py:70
+#: src/main.py:88
 msgid "Generate random color"
 msgstr "Générer une couleur aléatoire"
 
-#: src/main.py:88
+#: src/main.py:106
 msgid "R"
 msgstr "R"
 
-#: src/main.py:105
+#: src/main.py:123
 msgid "G"
 msgstr "V"
 
-#: src/main.py:122
+#: src/main.py:140
 msgid "B"
 msgstr "B"
 
-#: src/main.py:141
+#: src/main.py:159
 msgid "Hexadecimal"
 msgstr "Hexadécimal"
 
-#: src/main.py:142
+#: src/main.py:160
 msgid "RGB"
 msgstr "RVB"
 
-#: src/main.py:165
+#: src/main.py:183
 msgid "An error occurred when trying to read save file."
 msgstr ""
 "Une erreur s'est produite lors de la tentative de lecture du fichier de "
 "sauvegarde."
 
-#: src/main.py:251
+#: src/main.py:269
 msgid "Color copied"
 msgstr "Couleur copiée"
 
-#: src/main.py:268
-msgid "{} is under MIT Licence."
-msgstr "{} est sous licence MIT."
+#: src/main.py:286
+msgid "is under MIT Licence."
+msgstr "est sous licence MIT."
 
-#: src/main.py:285
+#: src/main.py:302
 msgid "An error occurred when trying to write save file."
 msgstr ""
 "Une erreur s'est produite lors de la tentative d'écriture du fichier de "
