@@ -22,13 +22,18 @@ class App(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
 
         # Translations
+        if os.path.basename(sys.argv[0]) == self.app:
+            locale_path = "/usr/share/locale"
+        else:
+            locale_path = "po"
+
         sys_locale = locale.getdefaultlocale()[0]
         try:
-            tr = gettext.translation(self.app, localedir='po', languages=[sys_locale])
+            tr = gettext.translation(self.app, localedir=locale_path, languages=[sys_locale])
             tr.install()
         except OSError:
             try:
-                tr = gettext.translation(self.app, localedir='po', languages=[sys_locale[:2]])
+                tr = gettext.translation(self.app, localedir=locale_path, languages=[sys_locale[:2]])
                 tr.install()
             except OSError:
                 tr = gettext.NullTranslations()
