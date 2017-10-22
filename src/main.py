@@ -162,7 +162,7 @@ class App(Gtk.Window):
                     data = json.load(save_file)
                     color = hex_to_rgb(data["color"].lstrip("#"))
             except (OSError, json.JSONDecodeError):
-                print(_("Error when trying to read save file."))
+                print(_("An error occurred when trying to read save file."))
         else:
             color = random_rgb()
         self.change_color(color)
@@ -259,7 +259,7 @@ class App(Gtk.Window):
         about_dialog.set_program_name(self.app_name)
         about_dialog.set_version("1.5.1")
         about_dialog.set_copyright("Hugo Posnic")
-        about_dialog.set_comments(_("Enjoy colors and feel happy !"))
+        about_dialog.set_comments(_("Enjoy colors and feel happy!"))
         about_dialog.set_website("https://github.com/Huluti/{}"
                                     .format(self.app_name))
         about_dialog.set_website_label("GitHub")
@@ -282,7 +282,7 @@ class App(Gtk.Window):
                 data["color"] = rgb_to_hex(self.rgb_color)
                 json.dump(data, save_file)
         except (OSError, json.JSONDecodeError):
-            print(_("Error when trying to set save file."))
+            print(_("An error occurred when trying to write save file."))
         Gtk.main_quit()
 
 
