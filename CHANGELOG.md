@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.6.2] - 2017-10-22
+- Fix translation of licence string.
+
 ## [1.6.1] - 2017-10-22
 - Fix translation system.
 
