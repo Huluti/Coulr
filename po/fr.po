@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-22 14:59+0200\n"
+"PO-Revision-Date: 2017-10-22 15:00+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/main.py:47 src/main.py:262
+msgid "Enjoy colors and feel happy!"
+msgstr "Appréciez les couleurs et soyez heureux !"
+
+#: src/main.py:52
+msgid "About"
+msgstr "À propos"
+
+#: src/main.py:61
+msgid "Copy color"
+msgstr "Copier la couleur"
+
+#: src/main.py:70
+msgid "Generate random color"
+msgstr "Générer une couleur aléatoire"
+
+#: src/main.py:88
+msgid "R"
+msgstr "R"
+
+#: src/main.py:105
+msgid "G"
+msgstr "V"
+
+#: src/main.py:122
+msgid "B"
+msgstr "B"
+
+#: src/main.py:141
+msgid "Hexadecimal"
+msgstr "Hexadécimal"
+
+#: src/main.py:142
+msgid "RGB"
+msgstr "RVB"
+
+#: src/main.py:165
+msgid "An error occurred when trying to read save file."
+msgstr "Une erreur s'est produite lors de la tentative de lecture du fichier de sauvegarde."
+
+#: src/main.py:251
+msgid "Color copied"
+msgstr "Couleur copiée"
+
+#: src/main.py:268
+msgid "{} is under MIT Licence."
+msgstr "{} est sous licence MIT."
+
+#: src/main.py:285
+msgid "An error occurred when trying to write save file."
+msgstr "Une erreur s'est produite lors de la tentative d'écriture du fichier de sauvegarde."
