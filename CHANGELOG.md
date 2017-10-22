@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.6.1] - 2017-10-22
+- Fix translation system.
+
 ## [1.6.0] - 2017-10-22
 - Make the tool translatable.
 
