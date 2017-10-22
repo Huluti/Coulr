@@ -4,12 +4,12 @@ import os
 import sys
 import json
 import gi
+import gettext
+import locale
 gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
 from gi.repository import Gtk, Gdk, Gio, GObject, GdkPixbuf, Notify
 from random import randint
-from gettext import gettext as _
-
 
 class App(Gtk.Window):
     def __init__(self):
@@ -20,6 +20,19 @@ class App(Gtk.Window):
         self.set_size_request(600, -1)
         self.set_resizable(False)
         self.set_position(Gtk.WindowPosition.CENTER)
+
+        # Translations
+        sys_locale = locale.getdefaultlocale()[0]
+        try:
+            tr = gettext.translation(self.app, localedir='po', languages=[sys_locale])
+            tr.install()
+        except OSError:
+            try:
+                tr = gettext.translation(self.app, localedir='po', languages=[sys_locale[:2]])
+                tr.install()
+            except OSError:
+                tr = gettext.NullTranslations()
+                tr.install()
 
         # Enable notifications
         Notify.init(self.app_name)
