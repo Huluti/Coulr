@@ -16,11 +16,24 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 
 Coulr is currently in version 1.6.3
 
-### Install
+## Installation instructions
 
-#### Arch-based distributions
+### Archlinux-based distributions (AUR)
 
-* [AUR](https://aur.archlinux.org/packages/coulr)
+    yaourt -S coulr
+
+### Build from source
+
+Build and install by running:
+
+    sudo python3 setup.py build
+    sudo python3 setup.py install
+
+### Developer install
+
+Installing Coulr with develop mode creates binaries that link back to source code. Therefore changes will be reflected immediately with no need to repeatedly install.
+
+    sudo python3 setup.py develop
 
 ### Tech
 
