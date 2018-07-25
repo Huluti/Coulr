@@ -23,12 +23,13 @@ class App(Gtk.Window):
 
         # Paths
         home_path = os.path.expanduser("~")
-        if os.path.basename(sys.argv[0]) == self.app:
-            logo_path = "/usr/share/{name}/{name}.png".format(name=self.app)
-            locale_path = "/usr/share/locale"
-        else:
-            logo_path = "img/{}.png".format(self.app)
-            locale_path = "po"
+
+        # if os.path.basename(sys.argv[0]) == self.app:
+        #     logo_path = "/usr/share/{name}/{name}.png".format(name=self.app)
+        #     locale_path = "/usr/share/locale"
+        # else:
+        logo_path = "{0}/assets/{0}.png".format(self.app)
+        locale_path = "po"
         self.save_file = "{}/.config/{}.json".format(home_path, self.app)
         self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
 
@@ -328,8 +329,11 @@ def random_rgb():
     return (randint(0, 255), randint(0, 255), randint(0, 255))
 
 
-if __name__ == "__main__":
+def main():
     app = App()
     app.connect("delete-event", app.close)
     app.show_all()
     Gtk.main()
+
+if __name__ == "__main__":
+    main()
