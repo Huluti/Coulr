@@ -35,6 +35,11 @@ Installing Coulr with develop mode creates binaries that link back to source cod
 
     sudo python3 setup.py develop
 
+After that, change the value of the `develop` var in the coulr/main.py file to `True`.
+Finaly, launch Coulr:
+
+    coulr
+
 ### Tech
 
 Coulr uses open-source projects to work properly:
