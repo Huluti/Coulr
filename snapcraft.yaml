@@ -1,0 +1,17 @@
+name: coulr
+version: git
+summary: Enjoy colors and feel happy!
+description: >
+  Color box to help developers and designers
+
+confinement: devmode
+
+parts:
+  offlineimap:
+    plugin: python
+    python-version: python3
+    source: .
+
+apps:
+  offlineimap:
+    command: bin/coulr
