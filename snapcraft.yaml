@@ -4,7 +4,7 @@ summary: Enjoy colors and feel happy!
 description: >
   Color box to help developers and designers
 
-confinement: devmode
+confinement: strict
 
 parts:
   coulr:
