@@ -6,5 +6,5 @@ StartupNotify=false
 Name=Coulr
 Path=/usr/bin
 Exec=coulr
-Icon=/usr/share/coulr/coulr.png
+Icon=/usr/share/pixmaps/coulr.png
 Comment=Coulr is a color box to help developers and designers.

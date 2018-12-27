@@ -17,9 +17,11 @@ setup(
     ],
     keywords = 'colors colours coulr',
     packages=find_packages(),
-    package_data = {'coulr' : ['assets/*.*'] },
-    data_files=[('share/pixmaps', ['coulr/assets/coulr.png']),
-            ('share/applications', ['coulr.desktop'])],
+    include_package_data=True,
+    data_files=[
+        ('/usr/share/pixmaps', ['coulr/assets/coulr.png']),
+        ('/usr/share/applications', ['coulr.desktop'])
+    ],
     entry_points={
         'gui_scripts': [
             'coulr = coulr.main:main',
