@@ -3,6 +3,7 @@ version: git
 summary: Enjoy colors and feel happy!
 description: >
   Color box to help developers and designers
+icon: coulr/assets/coulr.png
 
 confinement: strict
 
