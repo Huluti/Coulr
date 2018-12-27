@@ -7,11 +7,11 @@ description: >
 confinement: devmode
 
 parts:
-  offlineimap:
+  coulr:
     plugin: python
     python-version: python3
     source: .
 
 apps:
-  offlineimap:
+  coulr:
     command: bin/coulr
