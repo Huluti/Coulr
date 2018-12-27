@@ -20,7 +20,7 @@ parts:
       set -eu
       snapcraftctl prime
       # Fix-up application icon lookup
-      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/icon.png|' usr/share/pixmaps/coulr.desktop
+      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/icon.png|' usr/share/pixmaps/coulr.png
 
 apps:
   coulr:
