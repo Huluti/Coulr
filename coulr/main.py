@@ -4,8 +4,6 @@ import os
 import sys
 import json
 import gi
-import gettext
-import locale
 gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
 from gi.repository import Gtk, Gdk, Gio, GObject, GdkPixbuf, Notify
@@ -24,22 +22,8 @@ class App(Gtk.Window):
         # Paths
         home_path = os.path.expanduser("~")
         logo_path = "/usr/share/pixmaps/{name}.png".format(name=self.app)
-        locale_path = "/usr/share/locale"
         self.save_file = "{}/.config/{}.json".format(home_path, self.app)
         self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
-
-        # Translations
-        sys_locale = locale.getdefaultlocale()[0]
-        try:
-            tr = gettext.translation(self.app, localedir=locale_path, languages=[sys_locale])
-            tr.install()
-        except OSError:
-            try:
-                tr = gettext.translation(self.app, localedir=locale_path, languages=[sys_locale[:2]])
-                tr.install()
-            except OSError:
-                tr = gettext.NullTranslations()
-                tr.install()
 
         # Enable notifications
         Notify.init(self.app_name)
@@ -55,12 +39,12 @@ class App(Gtk.Window):
         header_bar = Gtk.HeaderBar()
         header_bar.set_show_close_button(True)
         header_bar.props.title = self.app_name
-        header_bar.set_subtitle(_("Enjoy colors and feel happy!"))
+        header_bar.set_subtitle("Enjoy colors and feel happy!")
         self.set_titlebar(header_bar)
 
         # About button
         button_about = Gtk.Button()
-        button_about.set_tooltip_text(_("About"))
+        button_about.set_tooltip_text("About")
         icon_about = Gio.ThemedIcon(name="help-about-symbolic")
         image_about = Gtk.Image.new_from_gicon(icon_about, Gtk.IconSize.BUTTON)
         button_about.add(image_about)
@@ -69,7 +53,7 @@ class App(Gtk.Window):
 
         # Copy button
         button_copy = Gtk.Button()
-        button_copy.set_tooltip_text(_("Copy color"))
+        button_copy.set_tooltip_text("Copy color")
         icon_copy = Gio.ThemedIcon(name="edit-copy-symbolic")
         image_copy = Gtk.Image.new_from_gicon(icon_copy, Gtk.IconSize.BUTTON)
         button_copy.add(image_copy)
@@ -78,7 +62,7 @@ class App(Gtk.Window):
 
         # Random button
         self.button_random = Gtk.Button()
-        self.button_random.set_tooltip_text(_("Generate random color"))
+        self.button_random.set_tooltip_text("Generate random color")
         icon_random = Gio.ThemedIcon(name="media-playlist-shuffle-symbolic")
         image_random = Gtk.Image.new_from_gicon(icon_random, Gtk.IconSize.BUTTON)
         self.button_random.add(image_random)
@@ -96,7 +80,7 @@ class App(Gtk.Window):
         # RGB
 
         # Red label
-        label = Gtk.Label(_("R"))
+        label = Gtk.Label("R")
         layout1.attach(label, 0, 1, 1, 1)
 
         # Red spinner
@@ -113,7 +97,7 @@ class App(Gtk.Window):
         layout1.attach(self.slider_r, 2, 1, 2, 1)
 
         # Green label
-        label = Gtk.Label(_("G"))
+        label = Gtk.Label("G")
         layout1.attach(label, 0, 2, 1, 1)
 
         # Green spinner
@@ -130,7 +114,7 @@ class App(Gtk.Window):
         layout1.attach(self.slider_g, 2, 2, 2, 1)
 
         # Blue label
-        label = Gtk.Label(_("B"))
+        label = Gtk.Label("B")
         layout1.attach(label, 0, 3, 1, 1)
 
         # Blue spinner
@@ -149,8 +133,8 @@ class App(Gtk.Window):
         # Layout 2
         # Output mode
         self.combo_output = Gtk.ComboBoxText()
-        self.combo_output.append("hex", _("Hexadecimal"))
-        self.combo_output.append("rgb", _("RGB"))
+        self.combo_output.append("hex", "Hexadecimal")
+        self.combo_output.append("rgb", "RGB")
         self.combo_output.set_active(0)
         self.combo_output.connect("changed", self.change_output)
 
@@ -173,7 +157,7 @@ class App(Gtk.Window):
                     data = json.load(save_file)
                     color = hex_to_rgb(data["color"].lstrip("#"))
             except (OSError, json.JSONDecodeError):
-                print(_("An error occurred when trying to read save file."))
+                print("An error occurred when trying to read save file.")
         else:
             color = random_rgb()
         self.change_color(color)
@@ -259,7 +243,7 @@ class App(Gtk.Window):
         color = self.output.get_text()
         self.clipboard.set_text(color, -1)
 
-        notification = Notify.Notification.new(_("Color copied"), color)
+        notification = Notify.Notification.new("Color copied", color)
         notification.set_icon_from_pixbuf(self.logo)
         notification.set_image_from_pixbuf(self.logo)
         notification.show()
@@ -270,13 +254,13 @@ class App(Gtk.Window):
         about_dialog.set_program_name(self.app_name)
         about_dialog.set_version("1.6.3")
         about_dialog.set_copyright("Hugo Posnic")
-        about_dialog.set_comments(_("Enjoy colors and feel happy!"))
+        about_dialog.set_comments("Enjoy colors and feel happy!")
         about_dialog.set_website("https://github.com/Huluti/{}"
                                     .format(self.app_name))
         about_dialog.set_website_label("GitHub")
         about_dialog.set_authors(["Hugo Posnic"])
         about_dialog.set_logo(self.logo)
-        about_dialog.set_license(self.app_name + " " + _("is under MIT Licence."))
+        about_dialog.set_license(self.app_name + " is under MIT Licence.")
         about_dialog.set_transient_for(self)
         about_dialog.run()
         about_dialog.destroy()
@@ -292,7 +276,7 @@ class App(Gtk.Window):
                 data["color"] = rgb_to_hex(self.rgb_color)
                 json.dump(data, save_file)
         except (OSError, json.JSONDecodeError):
-            print(_("An error occurred when trying to write save file."))
+            print("An error occurred when trying to write save file.")
         Gtk.main_quit()
 
 

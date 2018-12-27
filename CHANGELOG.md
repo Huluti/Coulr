@@ -2,7 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [1.7] - DEV
-- Improve organization.
+- Improve packaging.
+- Remove translations for now.
 
 ## [1.6.3] - 2017-10-22
 - Change logo.
