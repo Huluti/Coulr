@@ -1,6 +1,7 @@
 # Coulr
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c173929259648e19e883f465fb6c64b)](https://www.codacy.com/app/hugo-posnic/Coulr?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Huluti/Coulr&amp;utm_campaign=Badge_Grade)
+[![Snap Status](https://build.snapcraft.io/badge/Huluti/Coulr.svg)](https://build.snapcraft.io/user/Huluti/Coulr)
 
 ## Enjoy colors and feel happy
 
