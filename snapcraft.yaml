@@ -11,7 +11,18 @@ parts:
     plugin: python
     python-version: python3
     source: .
+    stage-packages:
+      - python3-gi
+      - gir1.2-gtk-3.0
+      - gir1.2-notify-0.7
+    after: [desktop-gtk3]
+    override-prime: |
+      set -eu
+      snapcraftctl prime
+      # Fix-up application icon lookup
+      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/icon.png|' usr/share/pixmaps/coulr.desktop
 
 apps:
   coulr:
-    command: bin/coulr
+    command: desktop-launch $SNAP/bin/coulr
+    desktop: usr/share/applications/coulr.desktop
