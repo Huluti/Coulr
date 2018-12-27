@@ -18,9 +18,9 @@ Coulr is currently in version 1.6.3
 
 ## Installation instructions
 
-### Archlinux-based distributions (AUR)
+### Universal package for Linux (recommended)
 
-    yaourt -S coulr
+    snap install imeditor
 
 ### Build from source
 
