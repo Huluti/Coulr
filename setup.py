@@ -19,8 +19,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     data_files=[
-        ('/usr/share/pixmaps', ['coulr/assets/coulr.png']),
-        ('/usr/share/applications', ['coulr.desktop'])
+        ('usr/share/pixmaps', ['coulr/assets/coulr.png']),
+        ('usr/share/applications', ['coulr.desktop'])
     ],
     entry_points={
         'gui_scripts': [
