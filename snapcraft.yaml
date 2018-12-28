@@ -4,7 +4,7 @@ summary: Enjoy colors and feel happy!
 description: >
   Color box to help developers and designers
 icon: coulr/assets/coulr.png
-
+grade: stable
 confinement: strict
 
 parts:
@@ -22,6 +22,8 @@ parts:
       snapcraftctl prime
       # Fix-up application icon lookup
       sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/icon.png|' usr/share/applications/coulr.desktop
+    organize:
+      snap/$SNAPCRAFT_PROJECT_NAME/current: /
 
 apps:
   coulr:
