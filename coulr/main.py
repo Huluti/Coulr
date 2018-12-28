@@ -20,8 +20,9 @@ class App(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
 
         # Paths
+        script_path = os.path.dirname(os.path.abspath(__file__))
         home_path = os.path.expanduser("~")
-        logo_path = "assets/{name}.png".format(name=self.app)
+        logo_path = "{}/assets/{}.png".format(script_path, self.app)
         self.save_file = "{}/.config/{}.json".format(home_path, self.app)
         self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
 
