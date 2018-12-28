@@ -22,8 +22,6 @@ parts:
       snapcraftctl prime
       # Fix-up application icon lookup
       sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/icon.png|' usr/share/applications/coulr.desktop
-    organize:
-      snap/$SNAPCRAFT_PROJECT_NAME/current: /
 
 apps:
   coulr:

@@ -21,7 +21,7 @@ class App(Gtk.Window):
 
         # Paths
         home_path = os.path.expanduser("~")
-        logo_path = "/usr/share/pixmaps/{name}.png".format(name=self.app)
+        logo_path = "assets/{name}.png".format(name=self.app)
         self.save_file = "{}/.config/{}.json".format(home_path, self.app)
         self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
 
