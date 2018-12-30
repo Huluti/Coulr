@@ -12,7 +12,6 @@ from random import randint
 class App(Gtk.Window):
     def __init__(self):
         """Initialize app"""
-        self.app = "coulr"
         self.app_name = "Coulr"
         Gtk.Window.__init__(self, title=self.app_name, border_width=15)
         self.set_size_request(600, -1)
@@ -20,10 +19,15 @@ class App(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
 
         # Paths
-        print(os.path.dirname(os.path.abspath(__file__)))
-        home_path = os.path.expanduser("~")
-        logo_path = "assets/{name}.png".format(name=self.app)
-        self.save_file = "{}/.config/{}.json".format(home_path, self.app)
+        coulr_script = sys.argv[0]
+        coulr_script = os.path.realpath(coulr_script)
+        coulr_dir = os.path.dirname(coulr_script)
+        prefix = os.path.abspath(os.path.normpath(coulr_dir))
+
+        assets_dir = os.path.join(prefix, 'assets')
+
+        self.save_file = os.path.join(os.path.expanduser("~"), ".config/coulr.json")
+        logo_path = os.path.join(assets_dir, "coulr.png")
         self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
 
         # Enable notifications
