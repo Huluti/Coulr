@@ -19,16 +19,18 @@ class App(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
 
         # Paths
-        coulr_script = sys.argv[0]
-        coulr_script = os.path.realpath(coulr_script)
+        coulr_script = os.path.realpath(__file__)
         coulr_dir = os.path.dirname(coulr_script)
         prefix = os.path.abspath(os.path.normpath(coulr_dir))
 
         assets_dir = os.path.join(prefix, 'assets')
 
         self.save_file = os.path.join(os.path.expanduser("~"), ".config/coulr.json")
-        logo_path = os.path.join(assets_dir, "coulr.png")
-        self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
+        logo_path = os.path.join(assets_dir, "coulr.pndg")
+        try:
+            self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
+        except:
+            self.logo = None
 
         # Enable notifications
         Notify.init(self.app_name)
@@ -249,8 +251,9 @@ class App(Gtk.Window):
         self.clipboard.set_text(color, -1)
 
         notification = Notify.Notification.new("Color copied", color)
-        notification.set_icon_from_pixbuf(self.logo)
-        notification.set_image_from_pixbuf(self.logo)
+        if self.logo:
+            notification.set_icon_from_pixbuf(self.logo)
+            notification.set_image_from_pixbuf(self.logo)
         notification.show()
 
     def about_dialog(self, event):
