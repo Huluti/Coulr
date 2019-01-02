@@ -26,7 +26,7 @@ class App(Gtk.Window):
         assets_dir = os.path.join(prefix, 'assets')
 
         self.save_file = os.path.join(os.path.expanduser("~"), ".config/coulr.json")
-        logo_path = os.path.join(assets_dir, "coulr.pndg")
+        logo_path = os.path.join(assets_dir, "coulr.png")
         try:
             self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
         except:

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [1.7] - DEV
 - Improve packaging.
 - Remove translations for now.
+- Make the app available as a snap package.
 
 ## [1.6.3] - 2017-10-22
 - Change logo.
