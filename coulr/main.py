@@ -7,6 +7,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
 from gi.repository import Gtk, Gdk, Gio, GObject, GdkPixbuf, Notify
+from xdg.BaseDirectory import save_config_path
 from random import randint
 
 class App(Gtk.Window):
@@ -23,9 +24,10 @@ class App(Gtk.Window):
         coulr_dir = os.path.dirname(coulr_script)
         prefix = os.path.abspath(os.path.normpath(coulr_dir))
 
+        config_dir = save_config_path("coulr")
         assets_dir = os.path.join(prefix, 'assets')
 
-        self.save_file = os.path.join(os.path.expanduser("~"), ".config/coulr.json")
+        self.save_file = os.path.join(config_dir, "save.json")
         logo_path = os.path.join(assets_dir, "coulr.png")
         try:
             self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
