@@ -30,10 +30,7 @@ apps:
     command: desktop-launch $SNAP/bin/coulr
     desktop: usr/share/applications/coulr.desktop
     plugs:
-      - x11
-      - unity7
-      - pulseaudio
-      - wayland
       - desktop
-      - gsettings
-      - opengl
+      - desktop-legacy
+      - wayland
+      - x11
