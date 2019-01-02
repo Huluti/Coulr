@@ -17,6 +17,7 @@ setup(
     ],
     keywords = 'colors colours coulr',
     packages=find_packages(),
+    install_requires=['xdg'],
     include_package_data=True,
     data_files=[
         ('usr/share/pixmaps', ['coulr/assets/coulr.png']),
