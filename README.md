@@ -28,7 +28,7 @@ Build and install by running:
 
 ### Developer install
 
-Installing Coulr with develop mode creates binaries that link back to source code. Therefore changes will be reflected immediately with no need to repeatedly install.
+Installing Coulr with develop mode creates binaries that link back to source code. Therefore changes will be reflected immediately with no need to repeatedly install:
 
     sudo python3 setup.py develop
 
