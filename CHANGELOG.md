@@ -1,10 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [1.7] - DEV
-- Improve packaging.
-- Remove translations for now.
+## [1.7] - 2019-01-02
+- Improve packaging by adding a setup file.
 - Make the app available as a snap package.
+- Remove translations for now.
 
 ## [1.6.3] - 2017-10-22
 - Change logo.

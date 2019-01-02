@@ -13,10 +13,6 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 
 ![alt tag](coulr/assets/coulr_screenshot.png)
 
-### Version
-
-Coulr is currently in version 1.6.3
-
 ## Installation instructions
 
 ### Universal package for Linux (recommended)

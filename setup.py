@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='coulr',
-    version='1.6.3',
+    version='1.7',
     description='Enjoy colors and feel happy!',
     author='Hugo Posnic',
     license='MIT',
