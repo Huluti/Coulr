@@ -27,10 +27,12 @@ parts:
 
 apps:
   coulr:
+    environment:
+      DISABLE_WAYLAND: 1
     command: desktop-launch $SNAP/bin/coulr
     desktop: usr/share/applications/coulr.desktop
     plugs:
       - desktop
       - desktop-legacy
-      - wayland
+      - unity7
       - x11
