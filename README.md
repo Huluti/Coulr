@@ -20,7 +20,7 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/coulr)
 
 
-    snap install imeditor
+    snap install coulr
 
 ### Build from source
 
