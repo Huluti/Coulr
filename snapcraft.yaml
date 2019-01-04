@@ -7,6 +7,16 @@ icon: coulr/assets/coulr.png
 grade: stable
 confinement: strict
 
+plugs:
+  gtk-3-themes:
+    default-provider: gtk-common-themes
+    interface: content
+    target: $SNAP/data-dir/themes
+  icon-themes:
+    default-provider: gtk-common-themes
+    interface: content
+    target: $SNAP/data-dir/icons
+
 parts:
   coulr:
     plugin: python
@@ -32,6 +42,7 @@ apps:
     command: desktop-launch $SNAP/bin/coulr
     desktop: usr/share/applications/coulr.desktop
     plugs:
+      - gsettings
       - desktop
       - desktop-legacy
       - unity7
