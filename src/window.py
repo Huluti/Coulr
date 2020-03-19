@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import sys
 import json
@@ -7,32 +5,29 @@ import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
 from gi.repository import Gtk, Gdk, Gio, GObject, GdkPixbuf, Notify
-from xdg.BaseDirectory import save_config_path
 from random import randint
 
-class App(Gtk.Window):
-    def __init__(self):
+
+SETTINGS_SCHEMA = 'com.github.huluti.Coulr'
+
+
+class CoulrWindow(Gtk.ApplicationWindow):
+    __gtype_name__ = 'CoulrWindow'
+
+    _settings = Gio.Settings.new(SETTINGS_SCHEMA)
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.app = kwargs['application']
+
         """Initialize app"""
         self.app_name = "Coulr"
-        Gtk.Window.__init__(self, title=self.app_name, border_width=15)
+        self.set_border_width(15)
         self.set_size_request(600, -1)
         self.set_resizable(False)
         self.set_position(Gtk.WindowPosition.CENTER)
 
-        # Paths
-        coulr_script = os.path.realpath(__file__)
-        coulr_dir = os.path.dirname(coulr_script)
-        prefix = os.path.abspath(os.path.normpath(coulr_dir))
-
-        config_dir = save_config_path("coulr")
-        assets_dir = os.path.join(prefix, 'assets')
-
-        self.save_file = os.path.join(config_dir, "save.json")
-        logo_path = os.path.join(assets_dir, "coulr.png")
-        try:
-            self.logo = GdkPixbuf.Pixbuf.new_from_file(logo_path)
-        except:
-            self.logo = None
+        self.connect('delete-event', self.quit_app)
 
         # Enable notifications
         Notify.init(self.app_name)
@@ -41,19 +36,16 @@ class App(Gtk.Window):
         self.rgb_color = None
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
-        # Icon
-        self.set_icon(self.logo)
-
         # Header bar
         header_bar = Gtk.HeaderBar()
         header_bar.set_show_close_button(True)
         header_bar.props.title = self.app_name
-        header_bar.set_subtitle("Enjoy colors and feel happy!")
+        header_bar.set_subtitle(_("Enjoy colors and feel happy!"))
         self.set_titlebar(header_bar)
 
         # About button
         button_about = Gtk.Button()
-        button_about.set_tooltip_text("About")
+        button_about.set_tooltip_text(_("About"))
         icon_about = Gio.ThemedIcon(name="help-about-symbolic")
         image_about = Gtk.Image.new_from_gicon(icon_about, Gtk.IconSize.BUTTON)
         button_about.add(image_about)
@@ -62,7 +54,7 @@ class App(Gtk.Window):
 
         # Copy button
         button_copy = Gtk.Button()
-        button_copy.set_tooltip_text("Copy color")
+        button_copy.set_tooltip_text(_("Copy color"))
         icon_copy = Gio.ThemedIcon(name="edit-copy-symbolic")
         image_copy = Gtk.Image.new_from_gicon(icon_copy, Gtk.IconSize.BUTTON)
         button_copy.add(image_copy)
@@ -71,7 +63,7 @@ class App(Gtk.Window):
 
         # Random button
         self.button_random = Gtk.Button()
-        self.button_random.set_tooltip_text("Generate random color")
+        self.button_random.set_tooltip_text(_("Generate random color"))
         icon_random = Gio.ThemedIcon(name="media-playlist-shuffle-symbolic")
         image_random = Gtk.Image.new_from_gicon(icon_random, Gtk.IconSize.BUTTON)
         self.button_random.add(image_random)
@@ -89,7 +81,7 @@ class App(Gtk.Window):
         # RGB
 
         # Red label
-        label = Gtk.Label("R")
+        label = Gtk.Label(_("R"))
         layout1.attach(label, 0, 1, 1, 1)
 
         # Red spinner
@@ -106,7 +98,7 @@ class App(Gtk.Window):
         layout1.attach(self.slider_r, 2, 1, 2, 1)
 
         # Green label
-        label = Gtk.Label("G")
+        label = Gtk.Label(_("G"))
         layout1.attach(label, 0, 2, 1, 1)
 
         # Green spinner
@@ -123,7 +115,7 @@ class App(Gtk.Window):
         layout1.attach(self.slider_g, 2, 2, 2, 1)
 
         # Blue label
-        label = Gtk.Label("B")
+        label = Gtk.Label(_("B"))
         layout1.attach(label, 0, 3, 1, 1)
 
         # Blue spinner
@@ -142,8 +134,8 @@ class App(Gtk.Window):
         # Layout 2
         # Output mode
         self.combo_output = Gtk.ComboBoxText()
-        self.combo_output.append("hex", "Hexadecimal")
-        self.combo_output.append("rgb", "RGB")
+        self.combo_output.append("hex", _("Hexadecimal"))
+        self.combo_output.append("rgb", _("RGB"))
         self.combo_output.set_active(0)
         self.combo_output.connect("changed", self.change_output)
 
@@ -159,17 +151,12 @@ class App(Gtk.Window):
         layout2.add(self.combo_output)
         layout2.add(self.output)
 
-        # Initialize color
-        if os.path.exists(self.save_file):
-            try:
-                with open(self.save_file, "r") as save_file:
-                    data = json.load(save_file)
-                    color = hex_to_rgb(data["color"].lstrip("#"))
-            except (OSError, json.JSONDecodeError):
-                print("An error occurred when trying to read save file.")
+        if self._settings.get_string("last-color"):
+            color = hex_to_rgb(self._settings.get_string("last-color").lstrip("#"))
         else:
             color = random_rgb()
         self.change_color(color)
+        self.show_all()
 
     def change_color(self, rgb):
         """Refresh preview and set values of all fields.
@@ -252,42 +239,30 @@ class App(Gtk.Window):
         color = self.output.get_text()
         self.clipboard.set_text(color, -1)
 
-        notification = Notify.Notification.new("Color copied", color)
-        if self.logo:
-            notification.set_icon_from_pixbuf(self.logo)
-            notification.set_image_from_pixbuf(self.logo)
+        notification = Notify.Notification.new(_("Color copied"), color)
         notification.show()
 
     def about_dialog(self, event):
         """About dialog"""
         about_dialog = Gtk.AboutDialog(self)
         about_dialog.set_program_name(self.app_name)
-        about_dialog.set_version("1.7")
+        about_dialog.set_version("1.8")
         about_dialog.set_copyright("Hugo Posnic")
-        about_dialog.set_comments("Enjoy colors and feel happy!")
+        about_dialog.set_comments(_("Enjoy colors and feel happy!"))
         about_dialog.set_website("https://github.com/Huluti/{}"
                                     .format(self.app_name))
         about_dialog.set_website_label("GitHub")
         about_dialog.set_authors(["Hugo Posnic"])
-        about_dialog.set_logo(self.logo)
-        about_dialog.set_license(self.app_name + " is under MIT Licence.")
+        about_dialog.set_logo_icon_name('com.github.huluti.Coulr')
+        about_dialog.set_license(self.app_name + " " + _("is under MIT Licence."))
         about_dialog.set_transient_for(self)
         about_dialog.run()
         about_dialog.destroy()
 
-    def close(self, event, data):
-        """Save last color then quit app"""
-        try:
-            with open(self.save_file, "w+") as save_file:
-                try:
-                    data = json.load(save_file)
-                except ValueError:
-                    data = dict()
-                data["color"] = rgb_to_hex(self.rgb_color)
-                json.dump(data, save_file)
-        except (OSError, json.JSONDecodeError):
-            print("An error occurred when trying to write save file.")
-        Gtk.main_quit()
+    def quit_app(self, *args):
+        """Quit app and save current color"""
+        self._settings.set_string("last-color", rgb_to_hex(self.rgb_color))
+        self.app.quit()
 
 
 def rgb_to_hex(rgb):
@@ -316,13 +291,3 @@ def random_rgb():
     :rtype: tuple
     """
     return (randint(0, 255), randint(0, 255), randint(0, 255))
-
-
-def main():
-    app = App()
-    app.connect("delete-event", app.close)
-    app.show_all()
-    Gtk.main()
-
-if __name__ == "__main__":
-    main()

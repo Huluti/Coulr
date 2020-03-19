@@ -1,0 +1,5 @@
+data/com.github.huluti.Coulr.desktop.in
+data/com.github.huluti.Coulr.appdata.xml.in
+data/com.github.huluti.Coulr.gschema.xml
+src/main.py
+src/window.py

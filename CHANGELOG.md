@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.8] - 2020-03-19
+- Adopt meson and use flatpak over snap.
+- Reintroduce translations (with en and fr for now).
+
 ## [1.7] - 2019-01-02
 - Improve packaging by adding a setup file.
 - Make the app available as a snap package.

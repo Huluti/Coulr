@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>com.github.huluti.Coulr.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <content_rating type="oars-1.1" />
+  <name>Coulr</name>
+  <summary>Enjoy colors and feel happy!</summary>
+  <description>
+    <p>Color box to help developers and designers.</p>
+  </description>
+
+  <developer_name>Hugo Posnic</developer_name>
+  <update_contact>hugo.posnic@gmail.com</update_contact>
+  <url type="bugtracker">https://github.com/Huluti/Coulr/issues</url>
+  <url type="homepage">https://github.com/Huluti/Coulr</url>
+
+  <kudos>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
+
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://raw.githubusercontent.com/Huluti/Coulr/master/data/screenshots/screen1.png</image>
+    </screenshot>
+  </screenshots>
+
+  <translation type="gettext">coulr</translation>
+  <launchable type="desktop-id">com.github.huluti.Coulr.desktop</launchable>
+
+  <releases>
+    <release version="1.8" date="2020-03-19">
+      <description>
+        <ul>
+          <li>Adopt meson and use flatpak over snap</li>
+          <li>Reintroduce translations (with en and fr for now)</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+</component>

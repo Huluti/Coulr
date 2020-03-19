@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the coulr package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: coulr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-19 21:30+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.huluti.Coulr.desktop.in:3
+#: data/com.github.huluti.Coulr.appdata.xml.in:7
+msgid "Coulr"
+msgstr ""
+
+#: data/com.github.huluti.Coulr.desktop.in:5
+msgid "Color box to help developers and designers"
+msgstr ""
+
+#. Icon name, do not translate
+#: data/com.github.huluti.Coulr.desktop.in:10
+msgid "com.github.huluti.Coulr"
+msgstr ""
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:43
+#: src/window.py:251
+msgid "Enjoy colors and feel happy!"
+msgstr ""
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:10
+msgid "Color box to help developers and designers."
+msgstr ""
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:13
+msgid "Hugo Posnic"
+msgstr ""
+
+#: data/com.github.huluti.Coulr.gschema.xml:6
+msgid "Last color"
+msgstr ""
+
+#: data/com.github.huluti.Coulr.gschema.xml:7
+msgid "Last saved color for next startup."
+msgstr ""
+
+#: src/window.py:48
+msgid "About"
+msgstr ""
+
+#: src/window.py:57
+msgid "Copy color"
+msgstr ""
+
+#: src/window.py:66
+msgid "Generate random color"
+msgstr ""
+
+#. RGB
+#. Red label
+#: src/window.py:84
+msgid "R"
+msgstr ""
+
+#. Green label
+#: src/window.py:101
+msgid "G"
+msgstr ""
+
+#. Blue label
+#: src/window.py:118
+msgid "B"
+msgstr ""
+
+#: src/window.py:137
+msgid "Hexadecimal"
+msgstr ""
+
+#: src/window.py:138
+msgid "RGB"
+msgstr ""
+
+#: src/window.py:242
+msgid "Color copied"
+msgstr ""
+
+#: src/window.py:257
+msgid "is under MIT Licence."
+msgstr ""

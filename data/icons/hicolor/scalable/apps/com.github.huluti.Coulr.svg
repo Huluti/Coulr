@@ -15,8 +15,8 @@
    viewBox="0 0 33.866666 33.866669"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="logo.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="com.github.huluti.Coulr.svg"
    inkscape:export-filename="/home/hugop/Documents/Dev/Coulr/img/coulr.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -39,15 +39,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="77.621236"
-     inkscape:cy="19.530363"
+     inkscape:cx="57.264093"
+     inkscape:cy="30.958934"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="text840"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-height="995"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      showguides="false"
      units="px" />
@@ -78,18 +78,14 @@
        ry="7.8044643"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
-    <text
-       xml:space="preserve"
+    <g
+       aria-label="C"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.81860352px;line-height:1.25;font-family:FreeMono;-inkscape-font-specification:FreeMono;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.84546512"
-       x="6.83848"
-       y="289.92477"
-       id="text840"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"><tspan
-         sodipodi:role="line"
-         id="tspan838"
-         x="6.83848"
-         y="289.92477"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;fill:#ffffff;stroke-width:0.84546512">C</tspan></text>
+       id="text840">
+      <path
+         d="m 22.488039,286.79653 q 0,3.11131 -1.318926,5.10661 -1.488018,2.26585 -4.328781,2.26585 -3.314223,0 -4.59933,-2.84077 -0.879284,-1.96148 -0.879284,-5.98589 v -13.05398 q 0,-1.79239 0.98074,-3.58477 1.488018,-2.73931 4.497874,-2.73931 3.212768,0 4.59933,2.43494 1.116014,1.86002 1.048377,4.97134 0,1.01455 -0.03382,1.55565 -0.03382,0.5411 -0.507279,0.60874 -0.47346,0.0676 -1.69093,0.0338 -1.69093,-0.0676 -1.521837,-0.0676 -0.608735,0 -0.642553,-0.57492 0,-1.21747 0,-2.40112 -0.202912,-1.75857 -1.251289,-1.75857 -1.386563,0 -1.386563,6.01971 v 9.60449 q 0,0.94692 0.270549,1.79238 0.372005,1.18365 1.116014,1.18365 1.318926,0 1.318926,-3.55095 0,-0.40582 0,-0.94692 -0.03382,-0.57492 -0.03382,-0.67637 0,-0.60874 0.473461,-0.60874 2.130572,0 3.38186,0.0338 0.507279,0 0.507279,0.57492 0.03382,0.87928 0,2.60403 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Headline One';-inkscape-font-specification:'Headline One';fill:#ffffff;stroke-width:0.84546512"
+         id="path12" />
+    </g>
   </g>
 </svg>

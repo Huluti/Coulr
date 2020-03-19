@@ -1,7 +1,6 @@
 # Coulr
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c173929259648e19e883f465fb6c64b)](https://www.codacy.com/app/hugo-posnic/Coulr?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Huluti/Coulr&amp;utm_campaign=Badge_Grade)
-[![Snap Status](https://build.snapcraft.io/badge/Huluti/Coulr.svg)](https://build.snapcraft.io/user/Huluti/Coulr)
 
 ## Enjoy colors and feel happy
 
@@ -11,33 +10,28 @@ Coulr is a color box to help developers and designers. Currently, it allows to:
 
 ### Screenshots
 
-![alt tag](coulr/assets/coulr_screenshot.png)
+![alt tag](data/screenshots/screen1.png)
 
 ## Installation instructions
 
 ### Universal package for Linux (recommended)
 
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/coulr)
+Coulr will be soon available as a flatpak package. Stay tuned.
 
-
-    snap install coulr
-
-### Build from source
+### Build from source (nightly)
 
 Build and install by running:
 
-    sudo python3 setup.py build
-    sudo python3 setup.py install
+    git clone https://github.com/Huluti/Coulr.git
+    cd Coulr
+    meson _build
+    cd _build
+    ninja
+    sudo ninja install
 
-### Developer install
+The app can then be removed with:
 
-Installing Coulr with develop mode creates binaries that link back to source code. Therefore changes will be reflected immediately with no need to repeatedly install:
-
-    sudo python3 setup.py develop
-
-Finaly, launch Coulr:
-
-    coulr
+    sudo ninja uninstall
 
 ### Tech
 

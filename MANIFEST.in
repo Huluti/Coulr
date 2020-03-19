@@ -1,4 +1,0 @@
-include setup.py
-include coulr.desktop
-include coulr/*.py
-include coulr/assets/coulr.png

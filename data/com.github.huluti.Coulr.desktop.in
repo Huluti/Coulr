@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Coulr
+Exec=coulr %U
+Comment=Color box to help developers and designers
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Graphics;
+# Icon name, do not translate
+Icon=com.github.huluti.Coulr
+StartupWMClass=coulr
+MimeType=image/jpeg;image/png;
+StartupNotify=true

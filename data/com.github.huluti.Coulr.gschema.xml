@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="coulr">
+	<schema id="com.github.huluti.Coulr" path="/com/github/huluti/Coulr/">
+	  <key type="s" name="last-color">
+      <default>'#8067db'</default>
+      <summary>Last color</summary>
+      <description>Last saved color for next startup.</description>
+    </key>
+	</schema>
+</schemalist>
