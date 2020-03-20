@@ -86,7 +86,7 @@ msgstr "Esadecimale"
 
 #: src/window.py:138
 msgid "RGB"
-msgstr "rgb"
+msgstr "RGB"
 
 #: src/window.py:242
 msgid "Color copied"
