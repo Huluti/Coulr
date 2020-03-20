@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the coulr package.
+# ALBANO BATTISTELLA <albano_battistella@hotmail.com>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: coulr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-19 21:30+0100\n"
+"PO-Revision-Date: 2020-03-20 13:30+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.huluti.Coulr.desktop.in:3
+#: data/com.github.huluti.Coulr.appdata.xml.in:7
+msgid "Coulr"
+msgstr "Coulr"
+
+#: data/com.github.huluti.Coulr.desktop.in:5
+msgid "Color box to help developers and designers"
+msgstr "Scatola dei colori per aiutare sviluppatori e designer"
+
+#. Icon name, do not translate
+#: data/com.github.huluti.Coulr.desktop.in:10
+msgid "com.github.huluti.Coulr"
+msgstr "com.github.huluti.Coulr"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:43
+#: src/window.py:251
+msgid "Enjoy colors and feel happy!"
+msgstr "Goditi i colori e sentiti felice!"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:10
+msgid "Color box to help developers and designers."
+msgstr "Scatola dei colori per aiutare sviluppatori e designer."
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:13
+msgid "Hugo Posnic"
+msgstr "Hugo Posnic"
+
+#: data/com.github.huluti.Coulr.gschema.xml:6
+msgid "Last color"
+msgstr "Ultimo colore"
+
+#: data/com.github.huluti.Coulr.gschema.xml:7
+msgid "Last saved color for next startup."
+msgstr "Ultimo colore salvato per il prossimo avvio."
+
+#: src/window.py:48
+msgid "About"
+msgstr "Informazioni su"
+
+#: src/window.py:57
+msgid "Copy color"
+msgstr "Copia colore"
+
+#: src/window.py:66
+msgid "Generate random color"
+msgstr "Genera colore casuale"
+
+#. RGB
+#. Red label
+#: src/window.py:84
+msgid "R"
+msgstr "R"
+
+#. Green label
+#: src/window.py:101
+msgid "G"
+msgstr "G"
+
+#. Blue label
+#: src/window.py:118
+msgid "B"
+msgstr "B"
+
+#: src/window.py:137
+msgid "Hexadecimal"
+msgstr "Esadecimale"
+
+#: src/window.py:138
+msgid "RGB"
+msgstr "rgb"
+
+#: src/window.py:242
+msgid "Color copied"
+msgstr "Colore copiato"
+
+#: src/window.py:257
+msgid "is under MIT Licence."
+msgstr "è sotto licenza MIT."
