@@ -244,7 +244,7 @@ class CoulrWindow(Gtk.ApplicationWindow):
         """About dialog"""
         about_dialog = Gtk.AboutDialog(self)
         about_dialog.set_program_name(self.app_name)
-        about_dialog.set_version("1.8")
+        about_dialog.set_version("1.8.1")
         about_dialog.set_copyright("Hugo Posnic")
         about_dialog.set_comments(_("Enjoy colors and feel happy!"))
         about_dialog.set_website("https://github.com/Huluti/{}"

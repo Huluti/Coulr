@@ -29,6 +29,14 @@
   <launchable type="desktop-id">com.github.huluti.Coulr.desktop</launchable>
 
   <releases>
+    <release version="1.8.1" date="2020-04-25">
+      <description>
+        <ul>
+          <li>Drop libnotify in favor of Gio.notification</li>
+          <li>Add it and de translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.8" date="2020-03-19">
       <description>
         <ul>

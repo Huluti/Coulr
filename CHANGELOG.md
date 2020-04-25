@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [1.8.1] - 2020-04-25
+- Drop libnotify in favor of Gio.notification.
+- Add it and de translations.
+
 ## [1.8] - 2020-03-19
 - Adopt meson and use flatpak over snap.
 - Reintroduce translations (with en and fr for now).
