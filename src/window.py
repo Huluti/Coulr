@@ -4,7 +4,7 @@ import json
 import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
-from gi.repository import Gtk, Gdk, Gio, GObject, GdkPixbuf, Notify
+from gi.repository import Gtk, Gdk, Gio, GObject, GdkPixbuf
 from random import randint
 
 
@@ -28,9 +28,6 @@ class CoulrWindow(Gtk.ApplicationWindow):
         self.set_position(Gtk.WindowPosition.CENTER)
 
         self.connect('delete-event', self.quit_app)
-
-        # Enable notifications
-        Notify.init(self.app_name)
 
         # Main vars
         self.rgb_color = None
@@ -239,8 +236,9 @@ class CoulrWindow(Gtk.ApplicationWindow):
         color = self.output.get_text()
         self.clipboard.set_text(color, -1)
 
-        notification = Notify.Notification.new(_("Color copied"), color)
-        notification.show()
+        notification = Gio.Notification.new(_("Color copied"))
+        notification.set_body(color)
+        self.app.send_notification(None, notification)
 
     def about_dialog(self, event):
         """About dialog"""
