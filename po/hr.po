@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the coulr package.
+# Milo Ivir <mail@milotype.de>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: coulr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-19 21:30+0100\n"
+"PO-Revision-Date: 2021-09-19 18:05+0200\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: data/com.github.huluti.Coulr.desktop.in:3
+#: data/com.github.huluti.Coulr.appdata.xml.in:7
+msgid "Coulr"
+msgstr "Coulr"
+
+#: data/com.github.huluti.Coulr.desktop.in:5
+msgid "Color box to help developers and designers"
+msgstr "Polje boje kao pomoć za programere i dizajnere"
+
+#. Icon name, do not translate
+#: data/com.github.huluti.Coulr.desktop.in:10
+msgid "com.github.huluti.Coulr"
+msgstr "com.github.huluti.Coulr"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:43
+#: src/window.py:251
+msgid "Enjoy colors and feel happy!"
+msgstr "Uživaj u bojama i osjeti radost!"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:10
+msgid "Color box to help developers and designers."
+msgstr "Polje boje kao pomoć za programere i dizajnere."
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:13
+msgid "Hugo Posnic"
+msgstr "Hugo Posnic"
+
+#: data/com.github.huluti.Coulr.gschema.xml:6
+msgid "Last color"
+msgstr "Zadnja boja"
+
+#: data/com.github.huluti.Coulr.gschema.xml:7
+msgid "Last saved color for next startup."
+msgstr "Zadnja spremljena boja za sljedeće pokretanje."
+
+#: src/window.py:48
+msgid "About"
+msgstr "Informacije"
+
+#: src/window.py:57
+msgid "Copy color"
+msgstr "Kopiraj boju"
+
+#: src/window.py:66
+msgid "Generate random color"
+msgstr "Generiraj boju slučajno"
+
+#. RGB
+#. Red label
+#: src/window.py:84
+msgid "R"
+msgstr "R"
+
+#. Green label
+#: src/window.py:101
+msgid "G"
+msgstr "G"
+
+#. Blue label
+#: src/window.py:118
+msgid "B"
+msgstr "B"
+
+#: src/window.py:137
+msgid "Hexadecimal"
+msgstr "Heksadecimalno"
+
+#: src/window.py:138
+msgid "RGB"
+msgstr "RGB"
+
+#: src/window.py:242
+msgid "Color copied"
+msgstr "Boja je kopirana"
+
+#: src/window.py:257
+msgid "is under MIT Licence."
+msgstr "je pod MIT licencom."
