@@ -8,5 +8,4 @@ Categories=GNOME;GTK;Graphics;
 # Icon name, do not translate
 Icon=com.github.huluti.Coulr
 StartupWMClass=coulr
-MimeType=image/jpeg;image/png;
 StartupNotify=true
