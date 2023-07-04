@@ -226,6 +226,9 @@ class CoulrWindow(Gtk.ApplicationWindow):
         """Hex entry value changed"""
         if self.output_rgb() != None:
             self.change_color(self.output_rgb(), False)
+            self.output.get_style_context().remove_class("warning")
+        else:
+            self.output.get_style_context().add_class("warning")
 
     def output_rgb(self):
         """Get the rgb value displated in the output field
