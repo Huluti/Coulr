@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import gi
+import re
 gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
 from gi.repository import Gtk, Gdk, Gio, GObject, GdkPixbuf
@@ -155,10 +156,12 @@ class CoulrWindow(Gtk.ApplicationWindow):
         self.change_color(color)
         self.show_all()
 
-    def change_color(self, rgb):
+    def change_color(self, rgb, update_output=True):
         """Refresh preview and set values of all fields.
         :param rgb: rgb color values
         :type rgb: tuple
+        :param update_output: whether to update output field
+        :type update_output: bool
         """
 
         rgba = Gdk.RGBA()
@@ -186,16 +189,16 @@ class CoulrWindow(Gtk.ApplicationWindow):
         self.slider_b.set_value(rgb[2])
         GObject.signal_handler_unblock(self.slider_b, self.blue_s_id)
 
-        GObject.signal_handler_block(self.output, self.output_id)
-        self.output.set_text(rgb_to_hex(rgb))
-        GObject.signal_handler_unblock(self.output, self.output_id)
-
         self.rgb_color = rgb
-        self.change_output()
+        if update_output:
+            GObject.signal_handler_block(self.output, self.output_id)
+            self.change_output()
+            GObject.signal_handler_unblock(self.output, self.output_id)
 
     def change_output(self, event=None):
         """Set output field"""
         combo_id = self.combo_output.get_active_id()
+
         if combo_id == "hex":
             output = rgb_to_hex(self.rgb_color)
         elif combo_id == "rgb":
@@ -221,11 +224,31 @@ class CoulrWindow(Gtk.ApplicationWindow):
 
     def output_entry_changed(self, event):
         """Hex entry value changed"""
+        if self.output_rgb() != None:
+            self.change_color(self.output_rgb(), False)
+            self.output.get_style_context().remove_class("warning")
+        else:
+            self.output.get_style_context().add_class("warning")
+
+    def output_rgb(self):
+        """Get the rgb value displated in the output field
+        :return: RGB
+        :rtype: tuple
+        """
+        combo_id = self.combo_output.get_active_id()
         value = self.output.get_text().lstrip("#")
 
-        if len(value) == 6:
-            rgb = hex_to_rgb(value)
-            self.change_color(rgb)
+        if combo_id == "hex":
+            if len(value) == 6:
+                rgb = hex_to_rgb(value)
+                return rgb
+        elif combo_id == "rgb":
+            pattern = re.compile(" ?rgb\( ?[0-9]+ ?, ?[0-9]+ ?, ?[0-9]+ ?\) ?")
+            if pattern.match(value):
+                rgb = parse_rgb(value)
+                return rgb
+
+        return None
 
     def random_button_clicked(self, event):
         """Random button clicked"""
@@ -272,6 +295,19 @@ def rgb_to_hex(rgb):
     """
     return "#{0:02x}{1:02x}{2:02x}".format(*rgb)
 
+def parse_rgb(rgb_string):
+    """Parse RGB string in form rgb(255,255,255)
+    :param rgb_string: RGB string
+    :type rgb: str
+    :return: RGB Color
+    :rtype: tuple
+    """
+
+    rgb_string = rgb_string.split("rgb(")[1]
+    rgb_string = rgb_string.split(")")[0]
+    rgb = tuple([int(s) for s in rgb_string.split(",")])
+    return rgb
+
 
 def hex_to_rgb(hexa):
     """Convert hex color to RGB color.
@@ -289,3 +325,4 @@ def random_rgb():
     :rtype: tuple
     """
     return (randint(0, 255), randint(0, 255), randint(0, 255))
+
