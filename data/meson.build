@@ -1,3 +1,14 @@
+pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
+
+gnome = import('gnome')
+
+gnome.compile_resources('coulr',
+  'coulr.gresource.xml',
+  gresource_bundle: true,
+  install: true,
+  install_dir: pkgdatadir,
+)
+
 desktop_file = i18n.merge_file(
   input: 'com.github.huluti.Coulr.desktop.in',
   output: 'com.github.huluti.Coulr.desktop',
