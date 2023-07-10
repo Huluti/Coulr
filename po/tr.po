@@ -1,0 +1,99 @@
+# Turkish translation for com.github.huluti.Coulr
+# Copyright (C) 2022 com.github.huluti.Coulr's COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.huluti.Coulr package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: coulr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-19 21:30+0100\n"
+"PO-Revision-Date: 2022-09-10 20:14+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: data/com.github.huluti.Coulr.desktop.in:3
+#: data/com.github.huluti.Coulr.appdata.xml.in:7
+msgid "Coulr"
+msgstr "Coulr"
+
+#: data/com.github.huluti.Coulr.desktop.in:5
+msgid "Color box to help developers and designers"
+msgstr "Geliştiricilere ve tasarımcılara yardımcı olacak bir renk kutusu"
+
+#. Icon name, do not translate
+#: data/com.github.huluti.Coulr.desktop.in:10
+msgid "com.github.huluti.Coulr"
+msgstr "com.github.huluti.Coulr"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:43
+#: src/window.py:251
+msgid "Enjoy colors and feel happy!"
+msgstr "Renklerin tadını çıkarın ve mutlu hissedin!"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:10
+msgid "Color box to help developers and designers."
+msgstr "Geliştiricilere ve tasarımcılara yardımcı olacak bir renk kutusu."
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:13
+msgid "Hugo Posnic"
+msgstr "Hugo Posnic"
+
+#: data/com.github.huluti.Coulr.gschema.xml:6
+msgid "Last color"
+msgstr "Son renk"
+
+#: data/com.github.huluti.Coulr.gschema.xml:7
+msgid "Last saved color for next startup."
+msgstr "Bir sonraki başlatma için son kaydedilen renk."
+
+#: src/window.py:48
+msgid "About"
+msgstr "Hakkında"
+
+#: src/window.py:57
+msgid "Copy color"
+msgstr "Renk kopyala"
+
+#: src/window.py:66
+msgid "Generate random color"
+msgstr "Rastgele renk oluştur"
+
+#. RGB
+#. Red label
+#: src/window.py:84
+msgid "R"
+msgstr "R"
+
+#. Green label
+#: src/window.py:101
+msgid "G"
+msgstr "G"
+
+#. Blue label
+#: src/window.py:118
+msgid "B"
+msgstr "B"
+
+#: src/window.py:137
+msgid "Hexadecimal"
+msgstr "Onaltılık"
+
+#: src/window.py:138
+msgid "RGB"
+msgstr "RGB"
+
+#: src/window.py:242
+msgid "Color copied"
+msgstr "Renk kopyalandı"
+
+#: src/window.py:257
+msgid "is under MIT Licence."
+msgstr "MIT Lisans ile lisanslanmıştır."
