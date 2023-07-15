@@ -15,4 +15,8 @@
   <gresource prefix="/com/github/huluti/Coulr/icons/scalable/actions/">
     <file preprocess="xml-stripblanks" alias="color-picker-symbolic.svg">icons/scalable/actions/color-picker-symbolic.svg</file>
   </gresource>
+
+  <gresource prefix="/com/github/huluti/Coulr/icons/scalable/actions/">
+    <file preprocess="xml-stripblanks" alias="menu-symbolic.svg">icons/scalable/actions/menu-symbolic.svg</file>
+  </gresource>
 </gresources>

@@ -48,22 +48,22 @@ class CoulrWindow(Adw.ApplicationWindow):
         root_box.append(header_bar)
 
         # Menu
-        image_menu = Gtk.Image.new_from_icon_name("open-menu-symbolic")
+        image_menu = Gtk.Image.new_from_icon_name("menu-symbolic")
         menu_button = Gtk.MenuButton(child=image_menu)
 
         menu = Gio.Menu()
-        menu.append(f"About {self.app_name}...", "win.about-action")
-        menu_button.set_menu_model(menu)
-
-        about_action = Gio.SimpleAction.new('about-action', None)
-        about_action.connect('activate', self.about_dialog)
-        self.add_action(about_action)
-
         menu.append("Generate random color", "win.random-action")
 
         random_action = Gio.SimpleAction.new("random-action", None)
         random_action.connect('activate', self.random_button_clicked)
         self.add_action(random_action)
+
+        menu.append(f"About {self.app_name}...", "win.about-action")
+
+        about_action = Gio.SimpleAction.new('about-action', None)
+        about_action.connect('activate', self.about_dialog)
+        self.add_action(about_action)
+        menu_button.set_menu_model(menu)
 
         header_bar.pack_end(menu_button)
 
