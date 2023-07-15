@@ -7,8 +7,10 @@ import re
 gi.require_version("Gtk", "4.0")
 gi.require_version("Notify", "0.7")
 gi.require_version("Adw", "1")
+gi.require_version("Xdp", "1.0")
+gi.require_version('XdpGtk4', '1.0')
 
-from gi.repository import Gtk, Adw, Gdk, Gio, GObject, GdkPixbuf, GLib
+from gi.repository import Gtk, Adw, Gdk, Gio, GObject, GdkPixbuf, GLib, Xdp, XdpGtk4
 from random import randint
 
 
@@ -34,6 +36,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         # Main vars
         self.rgb_color = None
         self.clipboard = Gdk.Display().get_default().get_clipboard()
+        self.portal = Xdp.Portal.new()
 
         # Root box
         root_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
@@ -41,15 +44,28 @@ class CoulrWindow(Adw.ApplicationWindow):
         # Header bar
         header_bar = Adw.HeaderBar()
         header_bar.set_show_end_title_buttons(True)
-        header_bar.set_title_widget(Adw.WindowTitle.new("Coulr", "Enjoy colors and feel happy!"))
+        header_bar.set_title_widget(Adw.WindowTitle.new(self.app_name, "Enjoy colors and feel happy!"))
         root_box.append(header_bar)
 
-        # About button
-        image_about = Gtk.Image.new_from_icon_name("about-symbolic")
-        button_about = Gtk.Button(child=image_about)
-        button_about.set_tooltip_text(_("About"))
-        button_about.connect("clicked", self.about_dialog)
-        header_bar.pack_end(button_about)
+        # Menu
+        image_menu = Gtk.Image.new_from_icon_name("open-menu-symbolic")
+        menu_button = Gtk.MenuButton(child=image_menu)
+
+        menu = Gio.Menu()
+        menu.append(f"About {self.app_name}...", "win.about-action")
+        menu_button.set_menu_model(menu)
+
+        about_action = Gio.SimpleAction.new('about-action', None)
+        about_action.connect('activate', self.about_dialog)
+        self.add_action(about_action)
+
+        menu.append("Generate random color", "win.random-action")
+
+        random_action = Gio.SimpleAction.new("random-action", None)
+        random_action.connect('activate', self.random_button_clicked)
+        self.add_action(random_action)
+
+        header_bar.pack_end(menu_button)
 
         # Copy button
         image_copy = Gtk.Image.new_from_icon_name("copy-symbolic")
@@ -58,12 +74,12 @@ class CoulrWindow(Adw.ApplicationWindow):
         button_copy.connect("clicked", self.copy_output)
         header_bar.pack_end(button_copy)
 
-        # Random button
-        image_random = Gtk.Image.new_from_icon_name("update-symbolic")
-        self.button_random = Gtk.Button(child=image_random)
-        self.button_random.set_tooltip_text(_("Generate random color"))
-        self.button_random.connect("clicked", self.random_button_clicked)
-        header_bar.pack_end(self.button_random)
+        # Picker button
+        image_picker = Gtk.Image.new_from_icon_name("color-picker-symbolic")
+        self.button_picker = Gtk.Button(child=image_picker)
+        self.button_picker.set_tooltip_text(_("Pick a color from the screen"))
+        self.button_picker.connect("clicked", self.pick_color)
+        header_bar.pack_start(self.button_picker)
 
         # Main wrappers
         main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
@@ -258,7 +274,18 @@ class CoulrWindow(Adw.ApplicationWindow):
 
         return None
 
-    def random_button_clicked(self, event):
+    def pick_color(self, event):
+        """Trigger color picker"""
+        parent = XdpGtk4.parent_new_gtk(self)
+        self.portal.pick_color(parent, None, self.color_picked)
+
+    def color_picked(self, source_object, res, *user_data):
+        """Color picked from the screen"""
+        color = self.portal.pick_color_finish(res)
+        color = tuple([int(x * 255) for x in color])
+        self.change_color(color)
+
+    def random_button_clicked(self, action, info):
         """Random button clicked"""
         self.change_color(random_rgb())
 
@@ -278,7 +305,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         notification.set_body(color_text)
         self.app.send_notification(None, notification)
 
-    def about_dialog(self, event):
+    def about_dialog(self, action, info):
         """About dialog"""
         about_dialog = Adw.AboutWindow()
         about_dialog.set_application_name(self.app_name)
@@ -287,9 +314,11 @@ class CoulrWindow(Adw.ApplicationWindow):
         about_dialog.set_comments(_("Enjoy colors and feel happy!"))
         about_dialog.set_website("https://github.com/Huluti/{}"
                                     .format(self.app_name))
-        about_dialog.set_developers(["Hugo Posnic"])
+        about_dialog.set_issue_url("https://github.com/Huluti/{}/issues"
+                                    .format(self.app_name))
+        about_dialog.set_developers(["Hugo Posnic", "Ramy K"])
         about_dialog.set_application_icon('com.github.huluti.Coulr')
-        about_dialog.set_license(self.app_name + " " + _("is under MIT Licence."))
+        about_dialog.set_license(self.app_name + " " + _("is under MIT License."))
         about_dialog.set_transient_for(self)
         about_dialog.set_modal(self)
         about_dialog.show()
