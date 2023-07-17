@@ -39,7 +39,9 @@ class CoulrWindow(Adw.ApplicationWindow):
         self.portal = Xdp.Portal.new()
 
         # Root box
+        self.toast_overlay = Adw.ToastOverlay.new()
         root_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+        self.toast_overlay.set_child(root_box)
 
         # Header bar
         header_bar = Adw.HeaderBar()
@@ -58,7 +60,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         random_action.connect('activate', self.random_button_clicked)
         self.add_action(random_action)
 
-        menu.append(f"About {self.app_name}...", "win.about-action")
+        menu.append(f"About {self.app_name}", "win.about-action")
 
         about_action = Gio.SimpleAction.new('about-action', None)
         about_action.connect('activate', self.about_dialog)
@@ -89,7 +91,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         main_box.append(layout1)
         main_box.append(layout2)
         root_box.append(main_box)
-        self.set_content(root_box)
+        self.set_content(self.toast_overlay)
 
         #Styling
         css_str = "#main-box {padding: 15px;}"
@@ -301,9 +303,8 @@ class CoulrWindow(Adw.ApplicationWindow):
         content_provider = Gdk.ContentProvider.new_for_bytes("text/plain", GLib.Bytes.new(bytes(color_text, "utf-8")))
         self.clipboard.set_content(content_provider)
 
-        notification = Gio.Notification.new(_("Color copied"))
-        notification.set_body(color_text)
-        self.app.send_notification(None, notification)
+        toast = Adw.Toast.new(f"{color_text} copied!")
+        self.toast_overlay.add_toast(toast)
 
     def about_dialog(self, action, info):
         """About dialog"""
