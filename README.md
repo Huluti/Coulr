@@ -5,6 +5,7 @@
 Coulr is a color box to help developers and designers. Currently, it allows to:
   - convert RGB color to its Hexadecimal value and vice versa
   - copy selected color
+  - select a color from your screen with the color picker
 
 ## Screenshot
 
@@ -41,8 +42,9 @@ The app can then be removed with:
 
 Coulr uses open-source projects to work properly:
 
-- [GTK 3](https://www.gtk.org)
+- [GTK 4](https://www.gtk.org)
 - [Python 3](https://www.python.org)
+- [Libportal](https://github.com/flatpak/libportal)
 
 ## Donations
 
