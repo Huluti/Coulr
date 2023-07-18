@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/com/github/huluti/Coulr/icons/scalable/actions/">
-    <file preprocess="xml-stripblanks" alias="about-symbolic.svg">icons/scalable/actions/about-symbolic.svg</file>
-  </gresource>
-
-  <gresource prefix="/com/github/huluti/Coulr/icons/scalable/actions/">
     <file preprocess="xml-stripblanks" alias="copy-symbolic.svg">icons/scalable/actions/copy-symbolic.svg</file>
-  </gresource>
-
-  <gresource prefix="/com/github/huluti/Coulr/icons/scalable/actions/">
-    <file preprocess="xml-stripblanks" alias="update-symbolic.svg">icons/scalable/actions/update-symbolic.svg</file>
   </gresource>
 
   <gresource prefix="/com/github/huluti/Coulr/icons/scalable/actions/">

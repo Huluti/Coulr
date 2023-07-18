@@ -50,8 +50,8 @@ class CoulrWindow(Adw.ApplicationWindow):
         root_box.append(header_bar)
 
         # Menu
-        image_menu = Gtk.Image.new_from_icon_name("menu-symbolic")
-        menu_button = Gtk.MenuButton(child=image_menu)
+        menu_button = Gtk.MenuButton()
+        menu_button.set_icon_name("menu-symbolic")
 
         menu = Gio.Menu()
         menu.append("Generate random color", "win.random-action")
@@ -70,15 +70,15 @@ class CoulrWindow(Adw.ApplicationWindow):
         header_bar.pack_end(menu_button)
 
         # Copy button
-        image_copy = Gtk.Image.new_from_icon_name("copy-symbolic")
-        button_copy = Gtk.Button(child=image_copy)
+        button_copy = Gtk.Button()
+        button_copy.set_icon_name("copy-symbolic")
         button_copy.set_tooltip_text(_("Copy color"))
         button_copy.connect("clicked", self.copy_output)
         header_bar.pack_end(button_copy)
 
         # Picker button
-        image_picker = Gtk.Image.new_from_icon_name("color-picker-symbolic")
-        self.button_picker = Gtk.Button(child=image_picker)
+        self.button_picker = Gtk.Button()
+        self.button_picker.set_icon_name("color-picker-symbolic")
         self.button_picker.set_tooltip_text(_("Pick a color from the screen"))
         self.button_picker.connect("clicked", self.pick_color)
         header_bar.pack_start(self.button_picker)
@@ -93,7 +93,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         root_box.append(main_box)
         self.set_content(self.toast_overlay)
 
-        #Styling
+        # Styling
         css_str = "#main-box {padding: 15px;}"
         provider = Gtk.CssProvider()
         provider.load_from_data(css_str, len(css_str))
