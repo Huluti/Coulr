@@ -29,6 +29,15 @@
   <launchable type="desktop-id">com.github.huluti.Coulr.desktop</launchable>
 
   <releases>
+    <release version="2.0.0" date="2023-07-18">
+      <description>
+        <ul>
+          <li>Port to GTK 4 and libadwaita</li>
+          <li>Add a color picker tool</li>
+          <li>Add Croatian, Spanish, Dutch and Turkish translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.8.1" date="2020-04-25">
       <description>
         <ul>
@@ -47,3 +56,4 @@
     </release>
   </releases>
 </component>
+

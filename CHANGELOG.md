@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2023-07-18
+- Port to GTK 4 and libadwaita.
+- Add a color picker tool.
+- Add Croatian, Spanish, Dutch and Turkish translations.
+
 ## [1.8.1] - 2020-04-25
 - Drop libnotify in favor of Gio.notification.
 - Add it and de translations.
