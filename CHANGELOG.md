@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2023-07-18
+- Change way to load header button icons to make them flat.
+
 ## [2.0.0] - 2023-07-18
 - Port to GTK 4 and libadwaita.
 - Add a color picker tool.

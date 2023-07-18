@@ -310,7 +310,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         """About dialog"""
         about_dialog = Adw.AboutWindow()
         about_dialog.set_application_name(self.app_name)
-        about_dialog.set_version("2.0.0")
+        about_dialog.set_version("2.0.1")
         about_dialog.set_copyright("Hugo Posnic")
         about_dialog.set_comments(_("Enjoy colors and feel happy!"))
         about_dialog.set_website("https://github.com/Huluti/{}"

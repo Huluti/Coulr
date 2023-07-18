@@ -29,6 +29,13 @@
   <launchable type="desktop-id">com.github.huluti.Coulr.desktop</launchable>
 
   <releases>
+    <release version="2.0.1" date="2023-07-18">
+      <description>
+        <ul>
+          <li>Change way to load header button icons to make them flat</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.0.0" date="2023-07-18">
       <description>
         <ul>
@@ -56,4 +63,3 @@
     </release>
   </releases>
 </component>
-
