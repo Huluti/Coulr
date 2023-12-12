@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.huluti.Coulr",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "45",
     "sdk": "org.gnome.Sdk",
     "command": "coulr",
     "finish-args": [
