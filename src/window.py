@@ -46,7 +46,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         # Header bar
         header_bar = Adw.HeaderBar()
         header_bar.set_show_end_title_buttons(True)
-        header_bar.set_title_widget(Adw.WindowTitle.new(self.app_name, "Enjoy colors and feel happy!"))
+        header_bar.set_title_widget(Adw.WindowTitle.new(self.app_name, _("Enjoy colors and feel happy!")))
         root_box.append(header_bar)
 
         # Menu
@@ -54,7 +54,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         menu_button.set_icon_name("menu-symbolic")
 
         menu = Gio.Menu()
-        menu.append("Generate random color", "win.random-action")
+        menu.append(_("Generate random color"), "win.random-action")
 
         random_action = Gio.SimpleAction.new("random-action", None)
         random_action.connect('activate', self.random_button_clicked)
@@ -102,7 +102,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         # RGB
 
         # Red label
-        label = Gtk.Label.new("R")
+        label = Gtk.Label.new(_("R"))
         layout1.attach(label, 0, 1, 1, 1)
 
         # Red spinner
@@ -119,7 +119,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         layout1.attach(self.slider_r, 2, 1, 2, 1)
 
         # Green label
-        label = Gtk.Label.new("G")
+        label = Gtk.Label.new(_("G"))
         layout1.attach(label, 0, 2, 1, 1)
 
         # Green spinner
@@ -136,7 +136,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         layout1.attach(self.slider_g, 2, 2, 2, 1)
 
         # Blue label
-        label = Gtk.Label.new("B")
+        label = Gtk.Label.new(_("B"))
         layout1.attach(label, 0, 3, 1, 1)
 
         # Blue spinner
