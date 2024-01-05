@@ -60,7 +60,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         random_action.connect('activate', self.random_button_clicked)
         self.add_action(random_action)
 
-        menu.append(f"About {self.app_name}", "win.about-action")
+        menu.append(_("About Coulr"), "win.about-action")
 
         about_action = Gio.SimpleAction.new('about-action', None)
         about_action.connect('activate', self.about_dialog)
@@ -303,7 +303,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         content_provider = Gdk.ContentProvider.new_for_bytes("text/plain", GLib.Bytes.new(bytes(color_text, "utf-8")))
         self.clipboard.set_content(content_provider)
 
-        toast = Adw.Toast.new(f"{color_text} copied!")
+        toast = Adw.Toast.new(_("{} copied!").format(color_text))
         self.toast_overlay.add_toast(toast)
 
     def about_dialog(self, action, info):
@@ -319,7 +319,7 @@ class CoulrWindow(Adw.ApplicationWindow):
                                     .format(self.app_name))
         about_dialog.set_developers(["Hugo Posnic", "Ramy K"])
         about_dialog.set_application_icon('com.github.huluti.Coulr')
-        about_dialog.set_license(self.app_name + " " + _("is under MIT License."))
+        about_dialog.set_license(_("Coulr is under MIT License."))
         about_dialog.set_transient_for(self)
         about_dialog.set_modal(self)
         about_dialog.show()
