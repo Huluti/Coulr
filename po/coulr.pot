@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: coulr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 21:30+0100\n"
+"POT-Creation-Date: 2024-01-06 00:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,13 +26,8 @@ msgstr ""
 msgid "Color box to help developers and designers"
 msgstr ""
 
-#. Icon name, do not translate
-#: data/com.github.huluti.Coulr.desktop.in:10
-msgid "com.github.huluti.Coulr"
-msgstr ""
-
-#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:43
-#: src/window.py:251
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:49
+#: src/window.py:315
 msgid "Enjoy colors and feel happy!"
 msgstr ""
 
@@ -52,46 +47,50 @@ msgstr ""
 msgid "Last saved color for next startup."
 msgstr ""
 
-#: src/window.py:48
-msgid "About"
+#: src/window.py:57
+msgid "Generate random color"
 msgstr ""
 
-#: src/window.py:57
+#: src/window.py:63
+msgid "About Coulr"
+msgstr ""
+
+#: src/window.py:75
 msgid "Copy color"
 msgstr ""
 
-#: src/window.py:66
-msgid "Generate random color"
+#: src/window.py:82
+msgid "Pick a color from the screen"
 msgstr ""
 
 #. RGB
 #. Red label
-#: src/window.py:84
+#: src/window.py:105
 msgid "R"
 msgstr ""
 
 #. Green label
-#: src/window.py:101
+#: src/window.py:122
 msgid "G"
 msgstr ""
 
 #. Blue label
-#: src/window.py:118
+#: src/window.py:139
 msgid "B"
 msgstr ""
 
-#: src/window.py:137
+#: src/window.py:158
 msgid "Hexadecimal"
 msgstr ""
 
-#: src/window.py:138
+#: src/window.py:159
 msgid "RGB"
 msgstr ""
 
-#: src/window.py:242
-msgid "Color copied"
+#: src/window.py:306
+msgid "{} copied!"
 msgstr ""
 
-#: src/window.py:257
-msgid "is under MIT Licence."
+#: src/window.py:322
+msgid "Coulr is under MIT License."
 msgstr ""

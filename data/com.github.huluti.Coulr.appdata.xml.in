@@ -14,6 +14,8 @@
   <update_contact>hugo.posnic@gmail.com</update_contact>
   <url type="bugtracker">https://github.com/Huluti/Coulr/issues</url>
   <url type="homepage">https://github.com/Huluti/Coulr</url>
+  <url type="vcs-browser">https://github.com/Huluti/Coulr</url>
+  <url type="translate">https://github.com/Huluti/Coulr/tree/master/po</url>
 
   <kudos>
     <kudo>ModernToolkit</kudo>
@@ -30,14 +32,14 @@
 
   <releases>
     <release version="2.0.1" date="2023-07-18">
-      <description>
+      <description translatable="no">
         <ul>
           <li>Change way to load header button icons to make them flat</li>
         </ul>
       </description>
     </release>
     <release version="2.0.0" date="2023-07-18">
-      <description>
+      <description translatable="no">
         <ul>
           <li>Port to GTK 4 and libadwaita</li>
           <li>Add a color picker tool</li>
@@ -46,7 +48,7 @@
       </description>
     </release>
     <release version="1.8.1" date="2020-04-25">
-      <description>
+      <description translatable="no">
         <ul>
           <li>Drop libnotify in favor of Gio.notification</li>
           <li>Add it and de translations</li>
@@ -54,7 +56,7 @@
       </description>
     </release>
     <release version="1.8" date="2020-03-19">
-      <description>
+      <description translatable="no">
         <ul>
           <li>Adopt meson and use flatpak over snap</li>
           <li>Reintroduce translations (with en and fr for now)</li>
