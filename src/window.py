@@ -40,14 +40,14 @@ class CoulrWindow(Adw.ApplicationWindow):
 
         # Root box
         self.toast_overlay = Adw.ToastOverlay.new()
-        root_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-        self.toast_overlay.set_child(root_box)
+        toolbar_view = Adw.ToolbarView.new()
+        self.toast_overlay.set_child(toolbar_view)
 
         # Header bar
         header_bar = Adw.HeaderBar()
         header_bar.set_show_end_title_buttons(True)
         header_bar.set_title_widget(Adw.WindowTitle.new(self.app_name, _("Enjoy colors and feel happy!")))
-        root_box.append(header_bar)
+        toolbar_view.add_top_bar(header_bar)
 
         # Menu
         menu_button = Gtk.MenuButton()
@@ -71,7 +71,7 @@ class CoulrWindow(Adw.ApplicationWindow):
 
         # Copy button
         button_copy = Gtk.Button()
-        button_copy.set_icon_name("copy-symbolic")
+        button_copy.set_icon_name("edit-copy-symbolic")
         button_copy.set_tooltip_text(_("Copy color"))
         button_copy.connect("clicked", self.copy_output)
         header_bar.pack_end(button_copy)
@@ -90,7 +90,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         layout2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5, valign=Gtk.Align.CENTER)
         main_box.append(layout1)
         main_box.append(layout2)
-        root_box.append(main_box)
+        toolbar_view.set_content(main_box)
         self.set_content(self.toast_overlay)
 
         # Styling
@@ -318,6 +318,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         about_dialog.set_issue_url("https://github.com/Huluti/{}/issues"
                                     .format(self.app_name))
         about_dialog.set_developers(["Hugo Posnic", "Ramy K"])
+        about_dialog.set_artists(["Brage Fuglseth"])
         about_dialog.set_application_icon('com.github.huluti.Coulr')
         about_dialog.set_license(_("Coulr is under MIT License."))
         about_dialog.set_transient_for(self)
