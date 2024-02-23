@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2024-02-23
+- New app icon
+- Port to AdwToolbarView to get up-to-date with the modern platform styling
+- Replace copy icon with the modern GNOME one
+- Fix summary
+- Replace screenshot with guideline-conformant one
+- Update appdata
+
 ## [2.0.1] - 2023-07-18
 - Change way to load header button icons to make them flat.
 

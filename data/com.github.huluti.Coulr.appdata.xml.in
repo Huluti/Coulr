@@ -31,6 +31,18 @@
   <launchable type="desktop-id">com.github.huluti.Coulr.desktop</launchable>
 
   <releases>
+    <release version="2.1.0" date="2024-02-23">
+      <description translatable="no">
+        <ul>
+          <li>New app icon</li>
+          <li>Port to AdwToolbarView to get up-to-date with the modern platform styling</li>
+          <li>Replace copy icon with the modern GNOME one</li>
+          <li>Fix summary</li>
+          <li>Replace screenshot with guideline-conformant one</li>
+          <li>Update appdata</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.0.1" date="2023-07-18">
       <description translatable="no">
         <ul>
