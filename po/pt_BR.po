@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the coulr package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Filipe Motta <luizfilipemotta@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: coulr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-06 00:55+0300\n"
+"PO-Revision-Date: 2024-02-24 12:30-0300\n"
+"Last-Translator: Filipe Motta <luizfilipemotta@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 45.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: data/com.github.huluti.Coulr.desktop.in:3
+#: data/com.github.huluti.Coulr.appdata.xml.in:7
+msgid "Coulr"
+msgstr "Coulr"
+
+#: data/com.github.huluti.Coulr.desktop.in:5
+msgid "Color box to help developers and designers"
+msgstr "Caixa de cor para auxiliar desenvolvedores e designers"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:49
+#: src/window.py:315
+msgid "Enjoy colors and feel happy!"
+msgstr "Curta as cores e seja feliz!"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:10
+msgid "Color box to help developers and designers."
+msgstr "Caixa de cor para auxiliar desenvolvedores e designers."
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:13
+msgid "Hugo Posnic"
+msgstr "Hugo Posnic"
+
+#: data/com.github.huluti.Coulr.gschema.xml:6
+msgid "Last color"
+msgstr "Última cor"
+
+#: data/com.github.huluti.Coulr.gschema.xml:7
+msgid "Last saved color for next startup."
+msgstr "Usar a última cor salva na próxima inicialização."
+
+#: src/window.py:57
+msgid "Generate random color"
+msgstr "Gerar cor aleatória"
+
+#: src/window.py:63
+msgid "About Coulr"
+msgstr "Sobre o Coulr"
+
+#: src/window.py:75
+msgid "Copy color"
+msgstr "Copiar cor"
+
+#: src/window.py:82
+msgid "Pick a color from the screen"
+msgstr "Selecionar uma cor na tela"
+
+#. RGB
+#. Red label
+#: src/window.py:105
+msgid "R"
+msgstr "R"
+
+#. Green label
+#: src/window.py:122
+msgid "G"
+msgstr "G"
+
+#. Blue label
+#: src/window.py:139
+msgid "B"
+msgstr "B"
+
+#: src/window.py:158
+msgid "Hexadecimal"
+msgstr "Hexadecimal"
+
+#: src/window.py:159
+msgid "RGB"
+msgstr "RGB"
+
+#: src/window.py:306
+msgid "{} copied!"
+msgstr "{} copiada!"
+
+#: src/window.py:322
+msgid "Coulr is under MIT License."
+msgstr "Coulr usa a licença MIT."
