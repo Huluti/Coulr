@@ -11,6 +11,9 @@
   </description>
 
   <developer_name>Hugo Posnic</developer_name>
+  <developer id="io.github.huluti">
+    <name translate="no">Hugo Posnic</name>
+  </developer>
   <update_contact>hugo.posnic@gmail.com</update_contact>
   <url type="bugtracker">https://github.com/Huluti/Coulr/issues</url>
   <url type="homepage">https://github.com/Huluti/Coulr</url>
