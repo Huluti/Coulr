@@ -11,6 +11,9 @@
   </description>
 
   <developer_name>Hugo Posnic</developer_name>
+  <developer id="io.github.huluti">
+    <name translate="no">Hugo Posnic</name>
+  </developer>
   <update_contact>hugo.posnic@gmail.com</update_contact>
   <url type="bugtracker">https://github.com/Huluti/Coulr/issues</url>
   <url type="homepage">https://github.com/Huluti/Coulr</url>
@@ -32,7 +35,7 @@
 
   <releases>
     <release version="2.1.0" date="2024-02-23">
-      <description translatable="no">
+      <description translate="no">
         <ul>
           <li>New app icon</li>
           <li>Port to AdwToolbarView to get up-to-date with the modern platform styling</li>
@@ -44,14 +47,14 @@
       </description>
     </release>
     <release version="2.0.1" date="2023-07-18">
-      <description translatable="no">
+      <description translate="no">
         <ul>
           <li>Change way to load header button icons to make them flat</li>
         </ul>
       </description>
     </release>
     <release version="2.0.0" date="2023-07-18">
-      <description translatable="no">
+      <description translate="no">
         <ul>
           <li>Port to GTK 4 and libadwaita</li>
           <li>Add a color picker tool</li>
@@ -60,7 +63,7 @@
       </description>
     </release>
     <release version="1.8.1" date="2020-04-25">
-      <description translatable="no">
+      <description translate="no">
         <ul>
           <li>Drop libnotify in favor of Gio.notification</li>
           <li>Add it and de translations</li>
@@ -68,7 +71,7 @@
       </description>
     </release>
     <release version="1.8" date="2020-03-19">
-      <description translatable="no">
+      <description translate="no">
         <ul>
           <li>Adopt meson and use flatpak over snap</li>
           <li>Reintroduce translations (with en and fr for now)</li>
