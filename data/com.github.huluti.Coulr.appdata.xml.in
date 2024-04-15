@@ -30,6 +30,11 @@
     </screenshot>
   </screenshots>
 
+  <branding>
+    <color type="primary" scheme_preference="light">#57e389</color>
+    <color type="primary" scheme_preference="dark">#1c7a4f</color>
+  </branding>
+
   <translation type="gettext">coulr</translation>
   <launchable type="desktop-id">com.github.huluti.Coulr.desktop</launchable>
 
