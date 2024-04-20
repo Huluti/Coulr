@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the coulr package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# twlvnn <kraft_werk@tutanota.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: coulr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-06 00:55+0300\n"
+"PO-Revision-Date: 2024-04-16 22:34+0200\n"
+"Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 45.3\n"
+
+#: data/com.github.huluti.Coulr.desktop.in:3
+#: data/com.github.huluti.Coulr.appdata.xml.in:7
+msgid "Coulr"
+msgstr "Coulr"
+
+#: data/com.github.huluti.Coulr.desktop.in:5
+msgid "Color box to help developers and designers"
+msgstr "Цветно поле в помощ на разработчиците и дизайнерите"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:49
+#: src/window.py:315
+msgid "Enjoy colors and feel happy!"
+msgstr "Наслаждавайте се на цветовете и се чувствайте щастливи!"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:10
+msgid "Color box to help developers and designers."
+msgstr "Цветна кутия в помощ на разработчиците и дизайнерите."
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:13
+msgid "Hugo Posnic"
+msgstr "Hugo Posnic"
+
+#: data/com.github.huluti.Coulr.gschema.xml:6
+msgid "Last color"
+msgstr "Последен цвят"
+
+#: data/com.github.huluti.Coulr.gschema.xml:7
+msgid "Last saved color for next startup."
+msgstr "Последно запазен цвят за следващото стартиране."
+
+#: src/window.py:57
+msgid "Generate random color"
+msgstr "Генериране на произволен цвят"
+
+#: src/window.py:63
+msgid "About Coulr"
+msgstr "Относно „Coulr“"
+
+#: src/window.py:75
+msgid "Copy color"
+msgstr "Копиране на цвета"
+
+#: src/window.py:82
+msgid "Pick a color from the screen"
+msgstr "Избиране на цвят от екрана"
+
+#. RGB
+#. Red label
+#: src/window.py:105
+msgid "R"
+msgstr "R"
+
+#. Green label
+#: src/window.py:122
+msgid "G"
+msgstr "G"
+
+#. Blue label
+#: src/window.py:139
+msgid "B"
+msgstr "B"
+
+#: src/window.py:158
+msgid "Hexadecimal"
+msgstr "Шестнайсетична"
+
+#: src/window.py:159
+msgid "RGB"
+msgstr "RGB"
+
+#: src/window.py:306
+msgid "{} copied!"
+msgstr "{} е копирано!"
+
+#: src/window.py:322
+msgid "Coulr is under MIT License."
+msgstr "„Coulr“ е с лиценз на MIT."
