@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the coulr package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: coulr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-06 00:55+0300\n"
+"PO-Revision-Date: 2024-05-07 21:50+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/com.github.huluti.Coulr.desktop.in:3
+#: data/com.github.huluti.Coulr.appdata.xml.in:7
+msgid "Coulr"
+msgstr "Coulr"
+
+#: data/com.github.huluti.Coulr.desktop.in:5
+msgid "Color box to help developers and designers"
+msgstr "विकासकर्ताओं और डिजाइनरों की मदद के लिए रंग बॉक्स"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:49
+#: src/window.py:315
+msgid "Enjoy colors and feel happy!"
+msgstr "रंगों का आनंद लें और खुशी महसूस करें!"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:10
+msgid "Color box to help developers and designers."
+msgstr "विकासकर्ताओं और डिजाइनरों की मदद के लिए रंग बॉक्स।"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:13
+msgid "Hugo Posnic"
+msgstr "ह्यूगो पोस्निक"
+
+#: data/com.github.huluti.Coulr.gschema.xml:6
+msgid "Last color"
+msgstr "अंतिम रंग"
+
+#: data/com.github.huluti.Coulr.gschema.xml:7
+msgid "Last saved color for next startup."
+msgstr "अगली शुरुआत के लिए अंतिम सहेजा गया रंग।"
+
+#: src/window.py:57
+msgid "Generate random color"
+msgstr "यादृच्छिक रंग उत्पन्न करें"
+
+#: src/window.py:63
+msgid "About Coulr"
+msgstr "Coulr के बारे में"
+
+#: src/window.py:75
+msgid "Copy color"
+msgstr "रंग कॉपी करें"
+
+#: src/window.py:82
+msgid "Pick a color from the screen"
+msgstr "स्क्रीन से रंग चुनें"
+
+#. RGB
+#. Red label
+#: src/window.py:105
+msgid "R"
+msgstr "ला"
+
+#. Green label
+#: src/window.py:122
+msgid "G"
+msgstr "ह"
+
+#. Blue label
+#: src/window.py:139
+msgid "B"
+msgstr "नी"
+
+#: src/window.py:158
+msgid "Hexadecimal"
+msgstr "हेक्साडेसिमल"
+
+#: src/window.py:159
+msgid "RGB"
+msgstr "RGB"
+
+#: src/window.py:306
+msgid "{} copied!"
+msgstr "{} कॉपी किया गया!"
+
+#: src/window.py:322
+msgid "Coulr is under MIT License."
+msgstr "Coulr MIT लाइसेंस के अंतर्गत है।"
