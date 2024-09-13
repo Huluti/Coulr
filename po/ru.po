@@ -1,0 +1,97 @@
+# Russian translation for coulr.
+# Copyright (C) 2024 THE coulr'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the coulr package.
+# volkov <volkovissocool@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: coulr\n"
+"Report-Msgid-Bugs-To: https://github.com/Huluti/Coulr/issues\n"
+"POT-Creation-Date: 2024-01-06 00:55+0300\n"
+"PO-Revision-Date: 2024-08-15 10:29+0300\n"
+"Last-Translator: volkov <volkovissocool@gmail.com>\n"
+"Language-Team: volkov <volkovissocool@gmail.com>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: data/com.github.huluti.Coulr.desktop.in:3
+#: data/com.github.huluti.Coulr.appdata.xml.in:7
+msgid "Coulr"
+msgstr "Цвет"
+
+#: data/com.github.huluti.Coulr.desktop.in:5
+msgid "Color box to help developers and designers"
+msgstr "Коробка с цветом для разработчиков и дизайнеров"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:49
+#: src/window.py:315
+msgid "Enjoy colors and feel happy!"
+msgstr "Наслаждайтесь цветами и будь-те щасливы!"
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:10
+msgid "Color box to help developers and designers."
+msgstr "Коробка с цветом для разработчиков и дизайнеров."
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:13
+msgid "Hugo Posnic"
+msgstr ""
+
+#: data/com.github.huluti.Coulr.gschema.xml:6
+msgid "Last color"
+msgstr "Последний цвет"
+
+#: data/com.github.huluti.Coulr.gschema.xml:7
+msgid "Last saved color for next startup."
+msgstr "Последний сохраненный цвет для последующего запуска."
+
+#: src/window.py:57
+msgid "Generate random color"
+msgstr "Генерировать случайный цвет"
+
+#: src/window.py:63
+msgid "About Coulr"
+msgstr "Про Цвет"
+
+#: src/window.py:75
+msgid "Copy color"
+msgstr "Скопировать цвет"
+
+#: src/window.py:82
+msgid "Pick a color from the screen"
+msgstr "Выбери цвет с экрана"
+
+#. RGB
+#. Red label
+#: src/window.py:105
+msgid "R"
+msgstr ""
+
+#. Green label
+#: src/window.py:122
+msgid "G"
+msgstr ""
+
+#. Blue label
+#: src/window.py:139
+msgid "B"
+msgstr ""
+
+#: src/window.py:158
+msgid "Hexadecimal"
+msgstr "Шестнадцитиричный"
+
+#: src/window.py:159
+msgid "RGB"
+msgstr ""
+
+#: src/window.py:306
+msgid "{} copied!"
+msgstr "{} скопирован!"
+
+#: src/window.py:322
+msgid "Coulr is under MIT License."
+msgstr "'Цвет' лицензировано под MIT лицензией."
