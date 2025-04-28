@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: coulr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-06 00:55+0300\n"
+"POT-Creation-Date: 2025-04-28 17:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,13 @@ msgstr ""
 msgid "Color box to help developers and designers"
 msgstr ""
 
-#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:49
-#: src/window.py:315
-msgid "Enjoy colors and feel happy!"
+#. These are search terms to find this application. Do not translate or localize the semicolons. The list must also end with a semicolon.
+#: data/com.github.huluti.Coulr.desktop.in:10
+msgid "colour;color;picker; "
+msgstr ""
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8
+msgid "Enjoy colors and feel happy"
 msgstr ""
 
 #: data/com.github.huluti.Coulr.appdata.xml.in:10
@@ -45,6 +49,10 @@ msgstr ""
 
 #: data/com.github.huluti.Coulr.gschema.xml:7
 msgid "Last saved color for next startup."
+msgstr ""
+
+#: src/window.py:49 src/window.py:315
+msgid "Enjoy colors and feel happy!"
 msgstr ""
 
 #: src/window.py:57
@@ -91,6 +99,6 @@ msgstr ""
 msgid "{} copied!"
 msgstr ""
 
-#: src/window.py:322
+#: src/window.py:323
 msgid "Coulr is under MIT License."
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: coulr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-19 21:30+0100\n"
+"POT-Creation-Date: 2025-04-28 17:43+0300\n"
 "PO-Revision-Date: 2021-09-19 18:05+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
@@ -28,14 +28,14 @@ msgstr "Coulr"
 msgid "Color box to help developers and designers"
 msgstr "Polje boje kao pomoć za programere i dizajnere"
 
-#. Icon name, do not translate
+#. These are search terms to find this application. Do not translate or localize the semicolons. The list must also end with a semicolon.
 #: data/com.github.huluti.Coulr.desktop.in:10
-msgid "com.github.huluti.Coulr"
-msgstr "com.github.huluti.Coulr"
+msgid "colour;color;picker; "
+msgstr ""
 
-#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:43
-#: src/window.py:251
-msgid "Enjoy colors and feel happy!"
+#: data/com.github.huluti.Coulr.appdata.xml.in:8
+#, fuzzy
+msgid "Enjoy colors and feel happy"
 msgstr "Uživaj u bojama i osjeti radost!"
 
 #: data/com.github.huluti.Coulr.appdata.xml.in:10
@@ -54,46 +54,63 @@ msgstr "Zadnja boja"
 msgid "Last saved color for next startup."
 msgstr "Zadnja spremljena boja za sljedeće pokretanje."
 
-#: src/window.py:48
-msgid "About"
-msgstr "Informacije"
+#: src/window.py:49 src/window.py:315
+msgid "Enjoy colors and feel happy!"
+msgstr "Uživaj u bojama i osjeti radost!"
 
 #: src/window.py:57
-msgid "Copy color"
-msgstr "Kopiraj boju"
-
-#: src/window.py:66
 msgid "Generate random color"
 msgstr "Generiraj boju slučajno"
 
+#: src/window.py:63
+#, fuzzy
+msgid "About Coulr"
+msgstr "Coulr"
+
+#: src/window.py:75
+msgid "Copy color"
+msgstr "Kopiraj boju"
+
+#: src/window.py:82
+msgid "Pick a color from the screen"
+msgstr ""
+
 #. RGB
 #. Red label
-#: src/window.py:84
+#: src/window.py:105
 msgid "R"
 msgstr "R"
 
 #. Green label
-#: src/window.py:101
+#: src/window.py:122
 msgid "G"
 msgstr "G"
 
 #. Blue label
-#: src/window.py:118
+#: src/window.py:139
 msgid "B"
 msgstr "B"
 
-#: src/window.py:137
+#: src/window.py:158
 msgid "Hexadecimal"
 msgstr "Heksadecimalno"
 
-#: src/window.py:138
+#: src/window.py:159
 msgid "RGB"
 msgstr "RGB"
 
-#: src/window.py:242
-msgid "Color copied"
+#: src/window.py:306
+#, fuzzy
+msgid "{} copied!"
 msgstr "Boja je kopirana"
 
-#: src/window.py:257
-msgid "is under MIT Licence."
+#: src/window.py:323
+#, fuzzy
+msgid "Coulr is under MIT License."
 msgstr "je pod MIT licencom."
+
+#~ msgid "com.github.huluti.Coulr"
+#~ msgstr "com.github.huluti.Coulr"
+
+#~ msgid "About"
+#~ msgstr "Informacije"
