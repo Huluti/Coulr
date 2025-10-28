@@ -86,7 +86,9 @@ class CoulrWindow(Adw.ApplicationWindow):
         # Main wrappers
         main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         main_box.set_name("main-box")
-        layout1 = Gtk.Grid(row_spacing=30, column_spacing=10, valign=Gtk.Align.CENTER)
+        main_box.set_homogeneous(True)
+        layout1 = Adw.PreferencesGroup.new()
+        layout1.set_valign(Gtk.Align.CENTER)
         layout2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5, valign=Gtk.Align.CENTER)
         main_box.append(layout1)
         main_box.append(layout2)
@@ -101,56 +103,42 @@ class CoulrWindow(Adw.ApplicationWindow):
 
         # RGB
 
-        # Red label
-        label = Gtk.Label.new(_("R"))
-        layout1.attach(label, 0, 1, 1, 1)
-
-        # Red spinner
+        # Red
+        row = Adw.ActionRow()
+        row.set_title(_("Red"))
+        row.set_subtitle(_("The red color strength"))
         adj = Gtk.Adjustment.new(0, 0, 255, 1, 10, 0)
         self.spinbutton_r = Gtk.SpinButton(adjustment=adj)
+        self.spinbutton_r.set_margin_top(3)
+        self.spinbutton_r.set_margin_bottom(3)
         self.red_sb_id = self.spinbutton_r.connect("value-changed", self.rgb_spin_changed)
-        layout1.attach(self.spinbutton_r, 1, 1, 1, 1)
+        row.add_suffix(self.spinbutton_r)
+        layout1.add(row)
 
-        # Red slider
-        adj = Gtk.Adjustment.new(0, 0, 255, 2, 10, 0)
-        self.slider_r = Gtk.Scale(adjustment=adj, draw_value=False)
-        self.slider_r.set_hexpand(True)
-        self.red_s_id = self.slider_r.connect("value-changed", self.rgb_slider_moved)
-        layout1.attach(self.slider_r, 2, 1, 2, 1)
-
-        # Green label
-        label = Gtk.Label.new(_("G"))
-        layout1.attach(label, 0, 2, 1, 1)
-
-        # Green spinner
+        # Green
+        row = Adw.ActionRow()
+        row.set_title(_("Green"))
+        row.set_subtitle(_("The green color strength"))
         adj = Gtk.Adjustment.new(0, 0, 255, 1, 10, 0)
         self.spinbutton_g = Gtk.SpinButton(adjustment=adj)
+        self.spinbutton_g.set_margin_top(3)
+        self.spinbutton_g.set_margin_bottom(3)
         self.green_sb_id = self.spinbutton_g.connect("value-changed", self.rgb_spin_changed)
-        layout1.attach(self.spinbutton_g, 1, 2, 1, 1)
+        row.add_suffix(self.spinbutton_g)
+        layout1.add(row)
 
-        # Green slider
-        adj = Gtk.Adjustment.new(0, 0, 255, 2, 10, 0)
-        self.slider_g = Gtk.Scale(adjustment=adj, draw_value=False)
-        self.slider_g.set_hexpand(True)
-        self.green_s_id = self.slider_g.connect("value-changed", self.rgb_slider_moved)
-        layout1.attach(self.slider_g, 2, 2, 2, 1)
-
-        # Blue label
-        label = Gtk.Label.new(_("B"))
-        layout1.attach(label, 0, 3, 1, 1)
-
-        # Blue spinner
+        # Blue
+        row = Adw.ActionRow()
+        row.set_title(_("Blue"))
+        row.set_subtitle(_("The blue color strength"))
         adj = Gtk.Adjustment.new(0, 0, 255, 1, 10, 0)
         self.spinbutton_b = Gtk.SpinButton(adjustment=adj)
+        self.spinbutton_b.set_margin_top(3)
+        self.spinbutton_b.set_margin_bottom(3)
         self.blue_sb_id = self.spinbutton_b.connect("value-changed", self.rgb_spin_changed)
-        layout1.attach(self.spinbutton_b, 1, 3, 1, 1)
+        row.add_suffix(self.spinbutton_b)
+        layout1.add(row)
 
-        # Blue slider
-        adj = Gtk.Adjustment.new(0, 0, 255, 2, 10, 0)
-        self.slider_b = Gtk.Scale(adjustment=adj, draw_value=False)
-        self.slider_b.set_hexpand(True)
-        self.blue_s_id = self.slider_b.connect("value-changed", self.rgb_slider_moved)
-        layout1.attach(self.slider_b, 2, 3, 2, 1)
 
         # Layout 2
         # Output mode
@@ -196,23 +184,14 @@ class CoulrWindow(Adw.ApplicationWindow):
         GObject.signal_handler_block(self.spinbutton_r, self.red_sb_id)
         self.spinbutton_r.set_value(rgb[0])
         GObject.signal_handler_unblock(self.spinbutton_r, self.red_sb_id)
-        GObject.signal_handler_block(self.slider_r, self.red_s_id)
-        self.slider_r.set_value(rgb[0])
-        GObject.signal_handler_unblock(self.slider_r, self.red_s_id)
 
         GObject.signal_handler_block(self.spinbutton_g, self.green_sb_id)
         self.spinbutton_g.set_value(rgb[1])
         GObject.signal_handler_unblock(self.spinbutton_g, self.green_sb_id)
-        GObject.signal_handler_block(self.slider_g, self.green_s_id)
-        self.slider_g.set_value(rgb[1])
-        GObject.signal_handler_unblock(self.slider_g, self.green_s_id)
 
         GObject.signal_handler_block(self.spinbutton_b, self.blue_sb_id)
         self.spinbutton_b.set_value(rgb[2])
         GObject.signal_handler_unblock(self.spinbutton_b, self.blue_sb_id)
-        GObject.signal_handler_block(self.slider_b, self.blue_s_id)
-        self.slider_b.set_value(rgb[2])
-        GObject.signal_handler_unblock(self.slider_b, self.blue_s_id)
 
         self.rgb_color = rgb
         if update_output:
@@ -317,7 +296,7 @@ class CoulrWindow(Adw.ApplicationWindow):
                                     .format(self.app_name))
         about_dialog.set_issue_url("https://github.com/Huluti/{}/issues"
                                     .format(self.app_name))
-        about_dialog.set_developers(["Hugo Posnic", "Ramy K"])
+        about_dialog.set_developers(["Hugo Posnic", "Ramy K", "Jakob Kokel"])
         about_dialog.set_artists(["Brage Fuglseth"])
         about_dialog.set_application_icon('com.github.huluti.Coulr')
         about_dialog.set_license(_("Coulr is under MIT License."))
@@ -370,5 +349,3 @@ def random_rgb():
     :rtype: tuple
     """
     return (randint(0, 255), randint(0, 255), randint(0, 255))
-
-
