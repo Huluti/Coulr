@@ -6,7 +6,7 @@ Terminal=false
 Type=Application
 Categories=GNOME;GTK;Graphics;
 # These are search terms to find this application. Do not translate or localize the semicolons. The list must also end with a semicolon.
-Keywords=colour;color;picker; 
+Keywords=colour;color;picker;color picker;color editor;graphic tools;
 # Icon name, do not translate
 Icon=com.github.huluti.Coulr
 StartupWMClass=coulr
