@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-  <id>com.github.huluti.Coulr.desktop</id>
+<component type="desktop-application">
+  <id>com.github.huluti.Coulr</id>
+  <provides><id>com.github.huluti.Coulr.desktop</id></provides>
+  <replaces><id>com.github.huluti.Coulr.desktop</id></replaces>
+
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <content_rating type="oars-1.1" />
@@ -10,7 +13,6 @@
     <p>Color box to help developers and designers.</p>
   </description>
 
-  <developer_name>Hugo Posnic</developer_name>
   <developer id="io.github.huluti">
     <name translate="no">Hugo Posnic</name>
   </developer>
