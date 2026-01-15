@@ -2,35 +2,41 @@
 # Copyright (C) 2024 THE coulr'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the coulr package.
 # volkov <volkovissocool@gmail.com>, 2024.
+# David Sultaniiazov <x1z53@alt-gnome.ru>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: coulr\n"
-"Report-Msgid-Bugs-To: https://github.com/Huluti/Coulr/issues\n"
-"POT-Creation-Date: 2024-01-06 00:55+0300\n"
-"PO-Revision-Date: 2024-08-15 10:29+0300\n"
-"Last-Translator: volkov <volkovissocool@gmail.com>\n"
-"Language-Team: volkov <volkovissocool@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-28 17:43+0300\n"
+"PO-Revision-Date: 2025-04-28 17:57+0300\n"
+"Last-Translator: David Sultaniiazov <x1z53@alt-gnome.ru>\n"
+"Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Gtranslator 48.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/com.github.huluti.Coulr.desktop.in:3
 #: data/com.github.huluti.Coulr.appdata.xml.in:7
 msgid "Coulr"
-msgstr "Цвет"
+msgstr "Coulr"
 
 #: data/com.github.huluti.Coulr.desktop.in:5
 msgid "Color box to help developers and designers"
 msgstr "Коробка с цветом для разработчиков и дизайнеров"
 
-#: data/com.github.huluti.Coulr.appdata.xml.in:8 src/window.py:49
-#: src/window.py:315
-msgid "Enjoy colors and feel happy!"
-msgstr "Наслаждайтесь цветами и будь-те щасливы!"
+#. These are search terms to find this application. Do not translate or localize the semicolons. The list must also end with a semicolon.
+#: data/com.github.huluti.Coulr.desktop.in:10
+msgid "colour;color;picker; "
+msgstr "colour;color;picker; "
+
+#: data/com.github.huluti.Coulr.appdata.xml.in:8
+msgid "Enjoy colors and feel happy"
+msgstr "Наслаждайтесь цветами и будьте счастливы"
 
 #: data/com.github.huluti.Coulr.appdata.xml.in:10
 msgid "Color box to help developers and designers."
@@ -38,7 +44,7 @@ msgstr "Коробка с цветом для разработчиков и ди
 
 #: data/com.github.huluti.Coulr.appdata.xml.in:13
 msgid "Hugo Posnic"
-msgstr ""
+msgstr "Hugo Posnic"
 
 #: data/com.github.huluti.Coulr.gschema.xml:6
 msgid "Last color"
@@ -46,7 +52,11 @@ msgstr "Последний цвет"
 
 #: data/com.github.huluti.Coulr.gschema.xml:7
 msgid "Last saved color for next startup."
-msgstr "Последний сохраненный цвет для последующего запуска."
+msgstr "Последний сохранённый цвет для следующего запуска."
+
+#: src/window.py:49 src/window.py:315
+msgid "Enjoy colors and feel happy!"
+msgstr "Наслаждайтесь цветами и будьте счасливы!"
 
 #: src/window.py:57
 msgid "Generate random color"
@@ -54,7 +64,7 @@ msgstr "Генерировать случайный цвет"
 
 #: src/window.py:63
 msgid "About Coulr"
-msgstr "Про Цвет"
+msgstr "Про Coulr"
 
 #: src/window.py:75
 msgid "Copy color"
@@ -68,30 +78,30 @@ msgstr "Выбери цвет с экрана"
 #. Red label
 #: src/window.py:105
 msgid "R"
-msgstr ""
+msgstr "Р"
 
 #. Green label
 #: src/window.py:122
 msgid "G"
-msgstr ""
+msgstr "З"
 
 #. Blue label
 #: src/window.py:139
 msgid "B"
-msgstr ""
+msgstr "С"
 
 #: src/window.py:158
 msgid "Hexadecimal"
-msgstr "Шестнадцитиричный"
+msgstr "Шестнадцатеричный"
 
 #: src/window.py:159
 msgid "RGB"
-msgstr ""
+msgstr "РГБ"
 
 #: src/window.py:306
 msgid "{} copied!"
 msgstr "{} скопирован!"
 
-#: src/window.py:322
+#: src/window.py:323
 msgid "Coulr is under MIT License."
-msgstr "'Цвет' лицензировано под MIT лицензией."
+msgstr "Coulr под MIT лицензией."
