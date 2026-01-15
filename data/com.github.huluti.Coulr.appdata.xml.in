@@ -41,6 +41,15 @@
   <launchable type="desktop-id">com.github.huluti.Coulr.desktop</launchable>
 
   <releases>
+    <release version="2.2.0" date="2026-01-15">
+      <description translate="no">
+        <ul>
+          <li>Update GNOME Runtime to 49</li>
+          <li>Update app and flatpak metadata files</li>
+          <li>Update translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.1.0" date="2024-02-23">
       <description translate="no">
         <ul>

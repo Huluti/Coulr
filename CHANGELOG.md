@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2026-01-15
+- Update GNOME Runtime to 49
+- Update app and flatpak metadata files
+- Update translations
+
 ## [2.1.0] - 2024-02-23
 - New app icon
 - Port to AdwToolbarView to get up-to-date with the modern platform styling
