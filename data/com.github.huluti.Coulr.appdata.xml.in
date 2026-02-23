@@ -26,6 +26,15 @@
     <kudo>ModernToolkit</kudo>
   </kudos>
 
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </supports>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+
   <screenshots>
     <screenshot type="default">
       <image type="source">https://raw.githubusercontent.com/Huluti/Coulr/master/data/screenshots/screen1.png</image>
@@ -41,6 +50,14 @@
   <launchable type="desktop-id">com.github.huluti.Coulr.desktop</launchable>
 
   <releases>
+    <release version="2.3.0" date="2026-02-23">
+      <description translate="no">
+        <ul>
+          <li>Mobile support</li>
+          <li>Fix some meson deprecations</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.2.0" date="2026-01-15">
       <description translate="no">
         <ul>

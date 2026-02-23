@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [2.3.0] - 2026-02-23
+- Mobile support
+- Fix some meson deprecations
+
 ## [2.2.0] - 2026-01-15
 - Update GNOME Runtime to 49
 - Update app and flatpak metadata files
