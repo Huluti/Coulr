@@ -114,6 +114,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         main_box.append(layout2)
 
         scrolled = Gtk.ScrolledWindow()
+        scrolled.set_propagate_natural_height(True)
         scrolled.set_child(main_box)
 
         toolbar_view.set_content(scrolled)
