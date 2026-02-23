@@ -28,8 +28,7 @@ class CoulrWindow(Adw.ApplicationWindow):
 
         """Initialize app"""
         self.app_name = "Coulr"
-        self.set_size_request(600, -1)
-        self.set_resizable(False)
+        self.set_default_size(601, -1)
 
         self.connect('close-request', self.quit_app)
 
@@ -65,8 +64,8 @@ class CoulrWindow(Adw.ApplicationWindow):
         about_action = Gio.SimpleAction.new('about-action', None)
         about_action.connect('activate', self.about_dialog)
         self.add_action(about_action)
-        menu_button.set_menu_model(menu)
 
+        menu_button.set_menu_model(menu)
         header_bar.pack_end(menu_button)
 
         # Copy button
@@ -86,11 +85,38 @@ class CoulrWindow(Adw.ApplicationWindow):
         # Main wrappers
         main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         main_box.set_name("main-box")
-        layout1 = Gtk.Grid(row_spacing=30, column_spacing=10, valign=Gtk.Align.CENTER)
-        layout2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5, valign=Gtk.Align.CENTER)
+
+        layout1 = Gtk.Grid(row_spacing=30, column_spacing=10)
+        layout2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
+
+        # Mobile breakpoint
+        narrow_bp = Adw.Breakpoint.new(
+            Adw.BreakpointCondition.parse("max-width: 600px")
+        )
+
+        def apply_narrow(*args):
+            main_box.set_orientation(Gtk.Orientation.VERTICAL)
+            self.slider_r.set_visible(False)
+            self.slider_g.set_visible(False)
+            self.slider_b.set_visible(False)
+
+        def unapply_narrow(*args):
+            main_box.set_orientation(Gtk.Orientation.HORIZONTAL)
+            self.slider_r.set_visible(True)
+            self.slider_g.set_visible(True)
+            self.slider_b.set_visible(True)
+
+        narrow_bp.connect("apply", apply_narrow)
+        narrow_bp.connect("unapply", unapply_narrow)
+        self.add_breakpoint(narrow_bp)
+
         main_box.append(layout1)
         main_box.append(layout2)
-        toolbar_view.set_content(main_box)
+
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_child(main_box)
+
+        toolbar_view.set_content(scrolled)
         self.set_content(self.toast_overlay)
 
         # Styling
@@ -108,6 +134,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         # Red spinner
         adj = Gtk.Adjustment.new(0, 0, 255, 1, 10, 0)
         self.spinbutton_r = Gtk.SpinButton(adjustment=adj)
+        self.spinbutton_r.set_hexpand(True)
         self.red_sb_id = self.spinbutton_r.connect("value-changed", self.rgb_spin_changed)
         layout1.attach(self.spinbutton_r, 1, 1, 1, 1)
 
@@ -125,6 +152,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         # Green spinner
         adj = Gtk.Adjustment.new(0, 0, 255, 1, 10, 0)
         self.spinbutton_g = Gtk.SpinButton(adjustment=adj)
+        self.spinbutton_g.set_hexpand(True)
         self.green_sb_id = self.spinbutton_g.connect("value-changed", self.rgb_spin_changed)
         layout1.attach(self.spinbutton_g, 1, 2, 1, 1)
 
@@ -142,6 +170,7 @@ class CoulrWindow(Adw.ApplicationWindow):
         # Blue spinner
         adj = Gtk.Adjustment.new(0, 0, 255, 1, 10, 0)
         self.spinbutton_b = Gtk.SpinButton(adjustment=adj)
+        self.spinbutton_b.set_hexpand(True)
         self.blue_sb_id = self.spinbutton_b.connect("value-changed", self.rgb_spin_changed)
         layout1.attach(self.spinbutton_b, 1, 3, 1, 1)
 
