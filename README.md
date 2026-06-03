@@ -46,12 +46,6 @@ Coulr uses open-source projects to work properly:
 - [Python 3](https://www.python.org)
 - [Libportal](https://github.com/flatpak/libportal)
 
-## Donations
-
-Do you like the app? Would you like to support its development? Feel free to donate.
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/hposnic)
-
 ## License
 
 This project is under MIT licence... so do what you want with it :)
